@@ -35,7 +35,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       analog({
         prerender: {
-          routes: ['/', '/components/button'],
+          routes: ['/', '/components/accordion', '/components/button'],
         },
       }),
       nxViteTsPaths(),

@@ -1,10 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&display=swap');
 @import '@ng-neo-brutalism/ui/styles.css';
 
 @tailwind utilities;
 
 body {
   margin: 0;
-  font-family: var(--nb-font-sans);
+  font-family: 'DM Sans', var(--nb-font-sans);
+  font-weight: var(--nb-font-weight-normal);
   background: var(--nb-background);
   color: var(--nb-foreground);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--nb-font-weight-bold);
+}
+
+.docs-prose article {
+  color: var(--nb-foreground);
+}
+
+.docs-prose h1 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: var(--nb-font-weight-bold);
+}
+
+.docs-prose h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  scroll-margin-top: 8rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: var(--nb-font-weight-bold);
+}
+
+.docs-prose h3 {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  scroll-margin-top: 8rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: var(--nb-font-weight-bold);
+}
+
+.docs-prose p {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.75rem;
+  font-weight: var(--nb-font-weight-normal);
+}
+
+.docs-prose li {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  font-weight: var(--nb-font-weight-normal);
+}
+
+.docs-prose docs-code-block,
+.docs-prose docs-example {
+  display: block;
+  /* margin-top: 1rem; */
+}
+
+.docs-prose :not(pre) > code {
+  margin-inline: 0.125rem;
+  border: 1px solid var(--nb-border);
+  background: var(--nb-secondary);
+  padding: 0.1875rem 0.3125rem;
+  font-size: 0.875rem;
+  font-weight: var(--nb-font-weight-bold);
+  color: var(--nb-secondary-foreground);
+}
+
+@media (min-width: 640px) {
+  .docs-prose h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .docs-prose h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .docs-prose h3 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .docs-prose p,
+  .docs-prose li {
+    font-size: 1rem;
+  }
 }
