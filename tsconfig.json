@@ -11,6 +11,11 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": true,
+    "paths": {
+      "ng-neo-brutalism": [
+        "./dist/ng-neo-brutalism"
+      ]
+    },
     "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,
