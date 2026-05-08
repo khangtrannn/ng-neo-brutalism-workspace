@@ -1,0 +1,21 @@
+/* styles.css - full theme + base reset */
+@import './theme.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--nb-background);
+  color: var(--nb-foreground);
+  font-family: var(--nb-font-sans);
+  font-weight: var(--nb-font-weight-normal);
+}
+
+/* Focus visible utility class */
+.nb-focus-visible:focus-visible {
+  outline: var(--nb-focus-ring);
+  outline-offset: var(--nb-focus-ring-offset);
+}

@@ -6,7 +6,21 @@
     "@angular/core": "^18.2.0"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.5.0",
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "exports": {
+    "./styles.css": {
+      "style": "./src/lib/styles/styles.css",
+      "default": "./src/lib/styles/styles.css"
+    },
+    "./theme.css": {
+      "style": "./src/lib/styles/theme.css",
+      "default": "./src/lib/styles/theme.css"
+    }
+  },
+  "sideEffects": [
+    "**/*.css"
+  ]
 }
