@@ -8,6 +8,8 @@ module.exports = {
     'border-[var(--nb-border)]',
     'focus-visible:outline-[var(--nb-focus-ring)]',
     'focus-visible:outline-offset-[var(--nb-focus-ring-offset)]',
+    'hover:-translate-x-[var(--nb-shadow-offset-x)]',
+    'hover:-translate-y-[var(--nb-shadow-offset-y)]',
     'active:translate-x-[var(--nb-shadow-offset-x)]',
     'active:translate-y-[var(--nb-shadow-offset-y)]',
   ],
@@ -21,6 +23,8 @@ module.exports = {
       },
       boxShadow: {
         nb: 'var(--nb-shadow-offset-x) var(--nb-shadow-offset-y) 0 0 var(--nb-shadow)',
+        'nb-hover':
+          'calc(var(--nb-shadow-offset-x) * 1.5) calc(var(--nb-shadow-offset-y) * 1.5) 0 0 var(--nb-shadow)',
         'nb-pressed': '0 0 0 0 var(--nb-shadow)',
       },
       colors: {

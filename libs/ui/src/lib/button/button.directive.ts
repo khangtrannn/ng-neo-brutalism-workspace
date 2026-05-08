@@ -23,8 +23,13 @@ export class NbButton {
       'inline-flex items-center justify-center select-none',
       'border-nb border-[var(--nb-border)]',
       'font-bold rounded-nb shadow-nb',
-      'transition-transform transition-shadow',
+      'transition-[transform,box-shadow] duration-150 ease-out',
       'outline-none',
+
+      // Hover neo-brutalist interaction.
+      'hover:-translate-x-[var(--nb-shadow-offset-x)]',
+      'hover:-translate-y-[var(--nb-shadow-offset-y)]',
+      'hover:shadow-nb-hover',
 
       // Focus visible only.
       'focus-visible:outline-[var(--nb-focus-ring)]',
