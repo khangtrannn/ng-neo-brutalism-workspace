@@ -2,12 +2,14 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  PLATFORM_ID,
   afterNextRender,
   computed,
   inject,
   signal,
   viewChild,
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter } from 'rxjs';
@@ -61,6 +63,7 @@ export class NbDocsSidebarComponent {
   containerRef = viewChild.required<ElementRef<HTMLElement>>('container')
 
   private readonly router = inject(Router);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   readonly indicatorTop = signal(0);
   readonly indicatorHeight = signal(32);
@@ -72,6 +75,10 @@ export class NbDocsSidebarComponent {
   );
 
   constructor() {
+    if (!this.isBrowser) {
+      return;
+    }
+
     afterNextRender(() => {
       this.positionAtActive();
       requestAnimationFrame(() => this.indicatorVisible.set(true));

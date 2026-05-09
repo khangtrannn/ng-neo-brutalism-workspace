@@ -42,6 +42,8 @@ export default defineConfig(({ mode }) => {
             '/components/accordion',
             '/components/button',
             '/docs/accordion',
+            '/docs/button',
+            '/docs/marquee',
           ],
         },
       }),

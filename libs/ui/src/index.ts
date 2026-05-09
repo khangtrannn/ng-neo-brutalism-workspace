@@ -12,3 +12,4 @@ export { NbAccordion, NbAccordionContent, NbAccordionItem, NbAccordionTrigger } 
 export type { NbAccordionType, NbAccordionValue } from './lib/accordion';
 export { NbButton } from './lib/button';
 export type { NbButtonSize, NbButtonVariant } from './lib/button';
+export { NbMarquee, NbMarqueeItem } from './lib/marquee';
