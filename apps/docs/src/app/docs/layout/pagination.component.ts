@@ -11,7 +11,7 @@ import { DOC_NAV } from '../nav';
   standalone: true,
   imports: [RouterLink, NbButton],
   template: `
-    <div class="mt-16 flex justify-between border-t-2 border-[var(--nb-border)] pt-6">
+    <div class="mt-16 flex justify-between border-t-2 border-(--nb-border) pt-6">
       @if (prev()) {
         <a [routerLink]="prev()!.path" nbButton variant="neutral">
           ← {{ prev()!.label }}

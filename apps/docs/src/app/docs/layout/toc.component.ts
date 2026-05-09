@@ -23,14 +23,14 @@ interface TocHeading {
   standalone: true,
   template: `
     <nav class="w-44 shrink-0" aria-label="On this page">
-      <p class="mb-3 border-b-2 border-[var(--nb-border)] pb-2 text-sm font-bold">
+      <p class="mb-3 border-b-2 border-(--nb-border) pb-2 text-sm font-bold">
         On this page
       </p>
 
       @for (heading of headings(); track heading.id) {
         <a
           [href]="'#' + heading.id"
-          class="block py-1 text-sm text-gray-600 hover:text-[var(--nb-foreground)] [&.active]:font-bold [&.active]:text-[var(--nb-foreground)]"
+          class="block py-1 text-sm text-gray-600 hover:text-(--nb-foreground) [&.active]:font-bold [&.active]:text-(--nb-foreground)"
           [class.pl-4]="heading.level === 3"
         >
           {{ heading.text }}

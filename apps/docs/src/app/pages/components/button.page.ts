@@ -101,23 +101,23 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
         <h2 class="mt-10 mb-4 text-2xl font-bold">API</h2>
 
         <div
-          class="overflow-hidden border-2 border-[var(--nb-border)] bg-nb-surface shadow-[5px_5px_0_0_var(--nb-shadow)]"
+          class="overflow-hidden border-2 border-(--nb-border) bg-nb-surface shadow-[5px_5px_0_0_var(--nb-shadow)]"
         >
           <table class="w-full border-collapse text-left">
             <thead class="bg-nb-secondary text-nb-secondary-fg">
               <tr>
                 <th
-                  class="border-b-2 border-r-2 border-[var(--nb-border)] px-4 py-3 font-bold"
+                  class="border-b-2 border-r-2 border-(--nb-border) px-4 py-3 font-bold"
                 >
                   Input
                 </th>
                 <th
-                  class="border-b-2 border-r-2 border-[var(--nb-border)] px-4 py-3 font-bold"
+                  class="border-b-2 border-r-2 border-(--nb-border) px-4 py-3 font-bold"
                 >
                   Type
                 </th>
                 <th
-                  class="border-b-2 border-[var(--nb-border)] px-4 py-3 font-bold"
+                  class="border-b-2 border-(--nb-border) px-4 py-3 font-bold"
                 >
                   Default
                 </th>
@@ -126,44 +126,44 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
             <tbody class="font-medium">
               <tr>
                 <td
-                  class="border-b-2 border-r-2 border-[var(--nb-border)] px-4 py-3"
+                  class="border-b-2 border-r-2 border-(--nb-border) px-4 py-3"
                 >
                   variant
                 </td>
                 <td
-                  class="border-b-2 border-r-2 border-[var(--nb-border)] px-4 py-3 font-mono text-sm"
+                  class="border-b-2 border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm"
                 >
                   'default' | 'reverse' | 'noShadow' | 'neutral'
                 </td>
                 <td
-                  class="border-b-2 border-[var(--nb-border)] px-4 py-3 font-mono text-sm"
+                  class="border-b-2 border-(--nb-border) px-4 py-3 font-mono text-sm"
                 >
                   'default'
                 </td>
               </tr>
               <tr>
                 <td
-                  class="border-b-2 border-r-2 border-[var(--nb-border)] px-4 py-3"
+                  class="border-b-2 border-r-2 border-(--nb-border) px-4 py-3"
                 >
                   size
                 </td>
                 <td
-                  class="border-b-2 border-r-2 border-[var(--nb-border)] px-4 py-3 font-mono text-sm"
+                  class="border-b-2 border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm"
                 >
                   'default' | 'sm' | 'lg' | 'icon'
                 </td>
                 <td
-                  class="border-b-2 border-[var(--nb-border)] px-4 py-3 font-mono text-sm"
+                  class="border-b-2 border-(--nb-border) px-4 py-3 font-mono text-sm"
                 >
                   'default'
                 </td>
               </tr>
               <tr>
-                <td class="border-r-2 border-[var(--nb-border)] px-4 py-3">
+                <td class="border-r-2 border-(--nb-border) px-4 py-3">
                   fullWidth
                 </td>
                 <td
-                  class="border-r-2 border-[var(--nb-border)] px-4 py-3 font-mono text-sm"
+                  class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm"
                 >
                   boolean
                 </td>

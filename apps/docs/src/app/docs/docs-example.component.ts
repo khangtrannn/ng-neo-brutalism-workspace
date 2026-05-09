@@ -17,13 +17,13 @@ type DocsExampleTab = 'preview' | 'code';
     <div class="shadow-[4px_4px_0_0_var(--nb-shadow)]">
       <!-- Tab bar: border on top/left/right only, no bottom border -->
       <div
-        class="grid grid-cols-2 border-2 border-b-0 border-[var(--nb-border)] bg-[var(--nb-secondary-background)]"
+        class="grid grid-cols-2 border-2 border-b-0 border-(--nb-border) bg-(--nb-secondary-background)"
       >
         <button
           type="button"
-          class="h-10 sm:h-12 text-sm sm:text-base font-bold border-r-2 border-[var(--nb-border)] transition-colors"
-          [class.bg-[var(--nb-main)]]="activeTab() === 'preview'"
-          [class.text-[var(--nb-main-foreground)]]="activeTab() === 'preview'"
+          class="h-10 sm:h-12 text-sm sm:text-base font-bold border-r-2 border-(--nb-border) transition-colors"
+          [class.bg-(--nb-main)]="activeTab() === 'preview'"
+          [class.text-(--nb-main-foreground)]="activeTab() === 'preview'"
           (click)="activeTab.set('preview')"
         >
           Preview
@@ -31,8 +31,8 @@ type DocsExampleTab = 'preview' | 'code';
         <button
           type="button"
           class="h-10 sm:h-12 text-sm sm:text-base font-bold transition-colors"
-          [class.bg-[var(--nb-main)]]="activeTab() === 'code'"
-          [class.text-[var(--nb-main-foreground)]]="activeTab() === 'code'"
+          [class.bg-(--nb-main)]="activeTab() === 'code'"
+          [class.text-(--nb-main-foreground)]="activeTab() === 'code'"
           (click)="activeTab.set('code')"
         >
           Code
@@ -40,7 +40,7 @@ type DocsExampleTab = 'preview' | 'code';
       </div>
 
       <!-- Content box: border on all sides, no shadow (shadow is on outer wrapper) -->
-      <div class="border-2 border-[var(--nb-border)]">
+      <div class="border-2 border-(--nb-border)">
         @if (activeTab() === 'preview') {
           <div
             class="docs-preview-grid flex min-h-[200px] items-center justify-center px-5 py-10 sm:px-10 sm:py-20"

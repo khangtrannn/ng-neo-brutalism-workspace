@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   template: `
     <nav
-      class="fixed inset-x-0 top-0 z-50 border-b-2 border-[var(--nb-border)] bg-[var(--nb-secondary-background)]"
+      class="fixed inset-x-0 top-0 z-50 border-b-2 border-(--nb-border) bg-(--nb-secondary-background)"
       aria-label="Main navigation"
     >
       <div class="flex h-14 items-center justify-between gap-4 px-4">
@@ -17,7 +17,7 @@ import { RouterLink } from '@angular/router';
           aria-label="Ng Neo Brutalism home"
         >
           <span
-            class="flex h-8 min-w-8 items-center justify-center border-2 border-[var(--nb-border)] px-2 text-lg leading-none"
+            class="flex h-8 min-w-8 items-center justify-center border-2 border-(--nb-border) px-2 text-lg leading-none"
           >
             N
           </span>
@@ -36,7 +36,7 @@ import { RouterLink } from '@angular/router';
         <div class="flex items-center gap-3">
           <button
             type="button"
-            class="border-2 border-[var(--nb-border)] bg-[var(--nb-secondary-background)] px-3 py-1 text-sm font-bold"
+            class="border-2 border-(--nb-border) bg-(--nb-secondary-background) px-3 py-1 text-sm font-bold"
             aria-label="Search documentation"
           >
             Search <span class="hidden sm:inline">⌘K</span>

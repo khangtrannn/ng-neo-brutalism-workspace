@@ -25,7 +25,7 @@ export class NbButton {
       'font-bold rounded-nb',
       'transition-all duration-150 ease-out',
       '[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
-      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--nb-border)] focus-visible:ring-offset-2',
+      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--nb-border) focus-visible:ring-offset-2',
       'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none',
       'aria-disabled:opacity-50 aria-disabled:cursor-not-allowed aria-disabled:pointer-events-none',
       this.variantClass(),
@@ -36,13 +36,13 @@ export class NbButton {
 
   private variantClass(): string {
     const variant = this.variant();
-    const base = 'border-2 border-[var(--nb-border)]';
+    const base = 'border-2 border-(--nb-border)';
 
     const map: Record<NbButtonVariant, string> = {
-      default: `${base} bg-[var(--nb-main)] text-[var(--nb-main-foreground)] shadow-nb hover:translate-x-[var(--nb-shadow-offset-x)] hover:translate-y-[var(--nb-shadow-offset-y)] hover:shadow-none`,
-      neutral: `${base} bg-[var(--nb-secondary-background)] text-[var(--nb-foreground)] shadow-nb hover:translate-x-[var(--nb-shadow-offset-x)] hover:translate-y-[var(--nb-shadow-offset-y)] hover:shadow-none`,
-      noShadow: `${base} bg-[var(--nb-main)] text-[var(--nb-main-foreground)]`,
-      reverse: `${base} bg-[var(--nb-main)] text-[var(--nb-main-foreground)] hover:-translate-x-[var(--nb-reverse-shadow-offset-x)] hover:-translate-y-[var(--nb-reverse-shadow-offset-y)] hover:shadow-nb`,
+      default: `${base} bg-(--nb-main) text-(--nb-main-foreground) shadow-nb hover:translate-x-(--nb-shadow-offset-x) hover:translate-y-(--nb-shadow-offset-y) hover:shadow-none`,
+      neutral: `${base} bg-(--nb-secondary-background) text-(--nb-foreground) shadow-nb hover:translate-x-(--nb-shadow-offset-x) hover:translate-y-(--nb-shadow-offset-y) hover:shadow-none`,
+      noShadow: `${base} bg-(--nb-main) text-(--nb-main-foreground)`,
+      reverse: `${base} bg-(--nb-main) text-(--nb-main-foreground) hover:-translate-x-(--nb-reverse-shadow-offset-x) hover:-translate-y-(--nb-reverse-shadow-offset-y) hover:shadow-nb`,
     };
 
     return map[variant];

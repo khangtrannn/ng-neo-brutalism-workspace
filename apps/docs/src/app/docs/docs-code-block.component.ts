@@ -17,7 +17,7 @@ type DocsCodeBlockVariant = 'standalone' | 'embedded';
     <div
       class="bg-black text-white"
       [class.border-4]="variant() === 'standalone'"
-      [class.border-[var(--nb-border)]]="variant() === 'standalone'"
+      [class.border-(--nb-border)]="variant() === 'standalone'"
       [class.shadow-[5px_5px_0_0_var(--nb-shadow)]]="variant() === 'standalone'"
     >
       <div
@@ -25,7 +25,7 @@ type DocsCodeBlockVariant = 'standalone' | 'embedded';
       >
         <button
           type="button"
-          class="absolute right-3 top-3 z-10 border-2 border-[var(--nb-border)] bg-nb-secondary px-3 py-1 text-sm font-bold text-nb-secondary-fg shadow-[2px_2px_0_0_var(--nb-shadow)] transition-transform focus-visible:outline-[var(--nb-focus-ring)] focus-visible:outline-offset-[var(--nb-focus-ring-offset)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
+          class="absolute right-3 top-3 z-10 border-2 border-(--nb-border) bg-nb-secondary px-3 py-1 text-sm font-bold text-nb-secondary-fg shadow-[2px_2px_0_0_var(--nb-shadow)] transition-transform focus-visible:outline-(--nb-focus-ring) focus-visible:outline-offset-(--nb-focus-ring-offset) active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
           (click)="copy()"
         >
           {{ copied() ? 'Copied' : 'Copy' }}
