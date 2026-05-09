@@ -14,47 +14,48 @@ type DocsExampleTab = 'preview' | 'code';
   standalone: true,
   imports: [DocsCodeBlockComponent],
   template: `
-    <div
-      class="border-4 border-[var(--nb-border)] bg-nb-surface shadow-[5px_5px_0_0_var(--nb-shadow)]"
-    >
-      <div class="grid grid-cols-2">
+    <div class="shadow-[4px_4px_0_0_var(--nb-shadow)]">
+      <!-- Tab bar: border on top/left/right only, no bottom border -->
+      <div
+        class="grid grid-cols-2 border-2 border-b-0 border-[var(--nb-border)] bg-[var(--nb-secondary-background)]"
+      >
         <button
           type="button"
-          class="appearance-none rounded-none border-2 border-[var(--nb-border)] px-4 py-4 text-base font-bold transition-colors focus-visible:outline-[var(--nb-focus-ring)] focus-visible:outline-offset-[var(--nb-focus-ring-offset)]"
-          [class.bg-white]="activeTab() !== 'preview'"
-          [class.bg-nb-secondary]="activeTab() === 'preview'"
-          [class.text-nb-secondary-fg]="activeTab() === 'preview'"
+          class="h-10 sm:h-12 text-sm sm:text-base font-bold border-r-2 border-[var(--nb-border)] transition-colors"
+          [class.bg-[var(--nb-main)]]="activeTab() === 'preview'"
+          [class.text-[var(--nb-main-foreground)]]="activeTab() === 'preview'"
           (click)="activeTab.set('preview')"
         >
           Preview
         </button>
         <button
           type="button"
-          class="appearance-none rounded-none border-2 border-[var(--nb-border)] px-4 py-4 text-base font-bold transition-colors focus-visible:outline-[var(--nb-focus-ring)] focus-visible:outline-offset-[var(--nb-focus-ring-offset)]"
-          [class.bg-white]="activeTab() !== 'code'"
-          [class.bg-nb-secondary]="activeTab() === 'code'"
-          [class.text-nb-secondary-fg]="activeTab() === 'code'"
+          class="h-10 sm:h-12 text-sm sm:text-base font-bold transition-colors"
+          [class.bg-[var(--nb-main)]]="activeTab() === 'code'"
+          [class.text-[var(--nb-main-foreground)]]="activeTab() === 'code'"
           (click)="activeTab.set('code')"
         >
           Code
         </button>
       </div>
 
-      @if (activeTab() === 'preview') {
-      <div
-        class="docs-preview-grid flex min-h-[200px] items-center justify-center px-5 py-10 sm:px-10 sm:py-20"
-      >
-        <ng-content />
+      <!-- Content box: border on all sides, no shadow (shadow is on outer wrapper) -->
+      <div class="border-2 border-[var(--nb-border)]">
+        @if (activeTab() === 'preview') {
+          <div
+            class="docs-preview-grid flex min-h-[200px] items-center justify-center px-5 py-10 sm:px-10 sm:py-20"
+          >
+            <ng-content />
+          </div>
+        } @else {
+          <docs-code-block variant="embedded" [code]="code()" />
+        }
       </div>
-      } @else {
-      <docs-code-block variant="embedded" [code]="code()" />
-      }
     </div>
   `,
   styles: [
     `
       .docs-preview-grid {
-        border: 2px solid;
         background-color: var(--nb-surface);
         background-image: linear-gradient(
             rgba(128, 128, 128, 0.3) 1px,

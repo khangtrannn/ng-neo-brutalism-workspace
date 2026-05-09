@@ -11,20 +11,12 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
   template: `
     <article>
       <header id="overview" class="mb-8 scroll-mt-32">
-        <div>
-          <neo-accordion>
-<neo-accordion-item>
-            <neo-accordion-trigger>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus exercitationem, nihil id illo delectus sint dolor autem enim excepturi vel.
-            </neo-accordion-trigger>
-          </neo-accordion-item>
-          </neo-accordion>
-
+        <div class="mb-4">
           <p class="mb-2 text-sm font-bold uppercase tracking-wide">
             Components
           </p>
-          <h1>Button</h1>
-          <p class="mt-0 max-w-3xl text-base font-medium sm:text-lg">
+          <h1 class="text-4xl font-black tracking-tight">Button</h1>
+          <p class="mt-2 max-w-3xl text-base font-medium sm:text-lg">
             Displays a button or link that looks like a button, with hard
             borders, offset shadows, strong colors, keyboard focus states, and
             native disabled behavior.
@@ -44,20 +36,20 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
       </header>
 
       <section id="preview">
-        <h2>Preview</h2>
+        <h2 class="mt-10 mb-4 text-2xl font-bold">Preview</h2>
         <docs-example [code]="defaultExampleCode">
           <button nbButton variant="neutral">Button</button>
         </docs-example>
       </section>
 
       <section id="usage">
-        <h2>Usage</h2>
+        <h2 class="mt-10 mb-4 text-2xl font-bold">Usage</h2>
         <docs-code-block class="block mb-5" title="Import" [code]="importCode" />
         <docs-code-block title="Template" [code]="defaultExampleCode" />
       </section>
 
       <section id="full-width">
-        <h2>Full width</h2>
+        <h2 class="mt-10 mb-4 text-2xl font-bold">Full width</h2>
         <docs-example [code]="fullWidthExampleCode">
           <div class="w-full max-w-md">
             <button nbButton variant="neutral" [fullWidth]="true">
@@ -68,7 +60,7 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
       </section>
 
       <section id="disabled">
-        <h2>Disabled</h2>
+        <h2 class="mt-10 mb-4 text-2xl font-bold">Disabled</h2>
         <docs-example [code]="disabledExampleCode">
           <div class="flex flex-wrap items-center justify-center gap-4">
             <button nbButton variant="neutral" disabled>
@@ -80,7 +72,7 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
       </section>
 
       <section id="anchor-usage">
-        <h2>Anchor usage</h2>
+        <h2 class="mt-10 mb-4 text-2xl font-bold">Anchor usage</h2>
         <docs-example [code]="anchorExampleCode">
           <div class="flex flex-wrap items-center justify-center gap-4">
             <a
@@ -106,26 +98,26 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
       </section>
 
       <section id="api">
-        <h2>API</h2>
+        <h2 class="mt-10 mb-4 text-2xl font-bold">API</h2>
 
         <div
-          class="overflow-hidden border-4 border-[var(--nb-border)] bg-nb-surface shadow-[5px_5px_0_0_var(--nb-shadow)]"
+          class="overflow-hidden border-2 border-[var(--nb-border)] bg-nb-surface shadow-[5px_5px_0_0_var(--nb-shadow)]"
         >
           <table class="w-full border-collapse text-left">
             <thead class="bg-nb-secondary text-nb-secondary-fg">
               <tr>
                 <th
-                  class="border-b-4 border-r-4 border-[var(--nb-border)] px-4 py-3 font-bold"
+                  class="border-b-2 border-r-2 border-[var(--nb-border)] px-4 py-3 font-bold"
                 >
                   Input
                 </th>
                 <th
-                  class="border-b-4 border-r-4 border-[var(--nb-border)] px-4 py-3 font-bold"
+                  class="border-b-2 border-r-2 border-[var(--nb-border)] px-4 py-3 font-bold"
                 >
                   Type
                 </th>
                 <th
-                  class="border-b-4 border-[var(--nb-border)] px-4 py-3 font-bold"
+                  class="border-b-2 border-[var(--nb-border)] px-4 py-3 font-bold"
                 >
                   Default
                 </th>
@@ -134,44 +126,44 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
             <tbody class="font-medium">
               <tr>
                 <td
-                  class="border-b-4 border-r-4 border-[var(--nb-border)] px-4 py-3"
+                  class="border-b-2 border-r-2 border-[var(--nb-border)] px-4 py-3"
                 >
                   variant
                 </td>
                 <td
-                  class="border-b-4 border-r-4 border-[var(--nb-border)] px-4 py-3 font-mono text-sm"
+                  class="border-b-2 border-r-2 border-[var(--nb-border)] px-4 py-3 font-mono text-sm"
                 >
                   'default' | 'reverse' | 'noShadow' | 'neutral'
                 </td>
                 <td
-                  class="border-b-4 border-[var(--nb-border)] px-4 py-3 font-mono text-sm"
+                  class="border-b-2 border-[var(--nb-border)] px-4 py-3 font-mono text-sm"
                 >
                   'default'
                 </td>
               </tr>
               <tr>
                 <td
-                  class="border-b-4 border-r-4 border-[var(--nb-border)] px-4 py-3"
+                  class="border-b-2 border-r-2 border-[var(--nb-border)] px-4 py-3"
                 >
                   size
                 </td>
                 <td
-                  class="border-b-4 border-r-4 border-[var(--nb-border)] px-4 py-3 font-mono text-sm"
+                  class="border-b-2 border-r-2 border-[var(--nb-border)] px-4 py-3 font-mono text-sm"
                 >
                   'default' | 'sm' | 'lg' | 'icon'
                 </td>
                 <td
-                  class="border-b-4 border-[var(--nb-border)] px-4 py-3 font-mono text-sm"
+                  class="border-b-2 border-[var(--nb-border)] px-4 py-3 font-mono text-sm"
                 >
                   'default'
                 </td>
               </tr>
               <tr>
-                <td class="border-r-4 border-[var(--nb-border)] px-4 py-3">
+                <td class="border-r-2 border-[var(--nb-border)] px-4 py-3">
                   fullWidth
                 </td>
                 <td
-                  class="border-r-4 border-[var(--nb-border)] px-4 py-3 font-mono text-sm"
+                  class="border-r-2 border-[var(--nb-border)] px-4 py-3 font-mono text-sm"
                 >
                   boolean
                 </td>
