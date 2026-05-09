@@ -43,6 +43,21 @@
   --radius-base: 5px;
 }
 
+/* === Docs layout: grid dot background === */
+.docs-grid-bg {
+  background-image: radial-gradient(circle, #c5cfe0 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* === Docs layout: sidebar scrollbar === */
+nb-docs-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+nb-docs-sidebar::-webkit-scrollbar-thumb {
+  background: var(--nb-border);
+}
+
 @layer base {
   * {
     @apply border-border;

@@ -1,16 +1,12 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+import AccordionPageComponent from '../components/accordion.page';
 
 @Component({
   selector: 'docs-accordion-redirect-page',
   standalone: true,
-  template: '',
+  imports: [AccordionPageComponent],
+  template: `<docs-accordion-page />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class AccordionRedirectPageComponent {
-  private readonly router = inject(Router);
-
-  constructor() {
-    void this.router.navigateByUrl('/components/accordion', { replaceUrl: true });
-  }
-}
+export default class AccordionRoutePageComponent {}
