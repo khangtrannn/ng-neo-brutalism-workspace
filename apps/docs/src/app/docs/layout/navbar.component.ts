@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { NbButton } from "@ng-neo-brutalism/ui";
 
 @Component({
   selector: 'nb-docs-navbar',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, NbButton],
   template: `
     <nav
       class="fixed inset-x-0 top-0 z-50 border-b-2 border-(--nb-border) bg-(--nb-secondary-background)"
@@ -34,16 +35,10 @@ import { RouterLink } from '@angular/router';
         </div>
 
         <div class="flex items-center gap-3">
-          <button
-            type="button"
-            class="border-2 border-(--nb-border) bg-(--nb-secondary-background) px-3 py-1 text-sm font-bold"
-            aria-label="Search documentation"
-          >
-            Search <span class="hidden sm:inline">⌘K</span>
-          </button>
-
           <a
             class="text-sm font-bold"
+            nbButton
+            variant="neutral"
             href="https://github.com/khangtrannn/ng-neo-brutalism-workspace"
             target="_blank"
             rel="noreferrer"

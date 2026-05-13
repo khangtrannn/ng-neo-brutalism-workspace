@@ -13,14 +13,16 @@ import { NbAccordionItemComponent } from './accordion-item';
   standalone: true,
   template: `
     <div
+      [id]="item.contentId"
       [class]="classes()"
       role="region"
+      [attr.aria-labelledby]="item.triggerId"
       [attr.data-slot]="'accordion-content'"
       [attr.data-state]="item.open() ? 'open' : 'closed'"
       [attr.data-orientation]="'vertical'"
       [attr.aria-hidden]="!item.open()"
     >
-      <div class="overflow-hidden">
+      <div class="min-h-0 overflow-hidden">
         <div class="p-4">
           <ng-content />
         </div>
@@ -37,8 +39,9 @@ export class NbAccordionContentComponent {
 
   protected readonly classes = computed(() =>
     nbClass(
-      'grid overflow-hidden rounded-b-nb bg-nb-surface text-sm font-medium',
-      'text-nb-surface-fg transition-[grid-template-rows] duration-200 ease-out',
+      'grid overflow-hidden bg-(--nb-surface) text-sm font-medium',
+      'text-(--nb-surface-foreground)',
+      'transition-[grid-template-rows] duration-200 ease-out',
       this.item.open() ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
     )
   );

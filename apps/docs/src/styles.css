@@ -10,7 +10,9 @@
 
 @theme {
   /* === Neobrutalism Button Tokens === */
-  --nb-main: oklch(90% 0.15 95);
+  --full-contrast: #000000;
+  --docs-main: #b5d6fb;
+  --nb-main: var(--docs-main);
   --nb-main-foreground: oklch(10% 0 0);
   --nb-secondary-background: oklch(96% 0 0);
   --nb-foreground: #000000;
@@ -31,7 +33,7 @@
   --font-weight-heading: 700;
   --font-weight-base: 500;
 
-  --color-main: #88aaee;
+  --color-main: var(--docs-main);
   --color-main-foreground: #000000;
 
   --color-background: #e8e8e8;
@@ -43,6 +45,13 @@
   --shadow-shadow: 4px 4px 0px 0px #000000;
 
   --radius-base: 5px;
+}
+
+:root {
+  --full-contrast: #000000;
+  --docs-main: #b5d6fb;
+  --nb-main: var(--docs-main);
+  --color-main: var(--docs-main);
 }
 
 /* === Docs layout: grid dot background === */
@@ -72,7 +81,10 @@ nb-docs-sidebar::-webkit-scrollbar-thumb {
 }
 
 .dark {
-  --color-main: #88aaee;
+  --full-contrast: #000000;
+  --docs-main: #b5d6fb;
+  --nb-main: var(--docs-main);
+  --color-main: var(--docs-main);
   --color-main-foreground: #000000;
   --color-background: #272933;
   --color-secondary-background: #1e2028;
