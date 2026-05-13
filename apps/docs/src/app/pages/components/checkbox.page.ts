@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NbButton, NbInput, NbLabel } from '@ng-neo-brutalism/ui';
+import { NbButton, NbCheckbox, NbLabel } from '@ng-neo-brutalism/ui';
 
 import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
 import { DocsExampleComponent } from '../../docs/docs-example.component';
 
 @Component({
-  selector: 'docs-input-page',
+  selector: 'docs-checkbox-page',
   standalone: true,
-  imports: [DocsCodeBlockComponent, DocsExampleComponent, NbButton, NbInput, NbLabel],
+  imports: [DocsCodeBlockComponent, DocsExampleComponent, NbButton, NbCheckbox, NbLabel],
   template: `
     <article>
       <header id="overview" class="mb-8 scroll-mt-32">
@@ -15,10 +15,10 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
           <p class="mb-2 text-sm font-bold uppercase tracking-wide">
             Components
           </p>
-          <h1 class="text-4xl font-black tracking-tight">Input</h1>
+          <h1 class="text-4xl font-black tracking-tight">Checkbox</h1>
           <p class="mt-2 max-w-3xl text-base font-medium sm:text-lg">
-            Displays a form input field with hard borders, offset shadow, and
-            strong focus states in the neo-brutalism style.
+            A control that allows the user to toggle between checked and not
+            checked in the neo-brutalism style.
           </p>
         </div>
 
@@ -26,7 +26,7 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
           nbButton
           size="sm"
           variant="neutral"
-          href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/input"
+          href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/checkbox"
           target="_blank"
           rel="noreferrer"
         >
@@ -37,7 +37,7 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
       <section id="preview">
         <h2 class="mt-10 mb-4 text-2xl font-bold">Preview</h2>
         <docs-example [code]="defaultExampleCode">
-          <input nbInput placeholder="Email" class="w-75" />
+          <input type="checkbox" nbCheckbox />
         </docs-example>
       </section>
 
@@ -50,10 +50,10 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
       <section id="sizes">
         <h2 class="mt-10 mb-4 text-2xl font-bold">Sizes</h2>
         <docs-example [code]="sizesExampleCode">
-          <div class="flex flex-col items-center gap-4">
-            <input nbInput size="sm" placeholder="Small" class="w-75" />
-            <input nbInput placeholder="Default" class="w-75" />
-            <input nbInput size="lg" placeholder="Large" class="w-75" />
+          <div class="flex items-center gap-4">
+            <input type="checkbox" nbCheckbox size="sm" />
+            <input type="checkbox" nbCheckbox />
+            <input type="checkbox" nbCheckbox size="lg" />
           </div>
         </docs-example>
       </section>
@@ -61,34 +61,20 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
       <section id="disabled">
         <h2 class="mt-10 mb-4 text-2xl font-bold">Disabled</h2>
         <docs-example [code]="disabledExampleCode">
-          <input nbInput placeholder="Email" class="w-75" disabled />
+          <div class="flex items-center gap-4">
+            <input type="checkbox" nbCheckbox disabled />
+            <input type="checkbox" nbCheckbox disabled checked />
+          </div>
         </docs-example>
       </section>
 
       <section id="with-label">
         <h2 class="mt-10 mb-4 text-2xl font-bold">With Label</h2>
         <docs-example [code]="withLabelExampleCode">
-          <div class="flex flex-col gap-2">
-            <label nbLabel for="email">Email</label>
-            <input nbInput id="email" type="email" placeholder="m@example.com" class="w-75" />
+          <div class="flex items-center gap-2">
+            <input type="checkbox" nbCheckbox id="terms" />
+            <label nbLabel for="terms">Accept terms and conditions</label>
           </div>
-        </docs-example>
-      </section>
-
-      <section id="with-button">
-        <h2 class="mt-10 mb-4 text-2xl font-bold">With Button</h2>
-        <docs-example [code]="withButtonExampleCode">
-          <div class="flex gap-2">
-            <input nbInput placeholder="Email" class="w-75" />
-            <button nbButton variant="neutral">Subscribe</button>
-          </div>
-        </docs-example>
-      </section>
-
-      <section id="file">
-        <h2 class="mt-10 mb-4 text-2xl font-bold">File</h2>
-        <docs-example [code]="fileExampleCode">
-          <input nbInput type="file" class="w-[250px]" />
         </docs-example>
       </section>
 
@@ -138,26 +124,20 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class InputPageComponent {
-  protected readonly defaultExampleCode = `<input nbInput placeholder="Email" class="w-75" />`;
+export default class CheckboxPageComponent {
+  protected readonly defaultExampleCode = `<input type="checkbox" nbCheckbox />`;
 
-  protected readonly importCode = `import { NbInput } from '@ng-neo-brutalism/ui';`;
+  protected readonly importCode = `import { NbCheckbox } from '@ng-neo-brutalism/ui';`;
 
-  protected readonly sizesExampleCode = `<input nbInput size="sm" placeholder="Small" class="w-75" />
-<input nbInput placeholder="Default" class="w-75" />
-<input nbInput size="lg" placeholder="Large" class="w-75" />`;
+  protected readonly sizesExampleCode = `<input type="checkbox" nbCheckbox size="sm" />
+<input type="checkbox" nbCheckbox />
+<input type="checkbox" nbCheckbox size="lg" />`;
 
-  protected readonly disabledExampleCode = `<input nbInput placeholder="Email" class="w-75" disabled />`;
+  protected readonly disabledExampleCode = `<input type="checkbox" nbCheckbox disabled />
+<input type="checkbox" nbCheckbox disabled checked />`;
 
-  protected readonly withLabelExampleCode = `<div class="flex flex-col gap-2">
-  <label nbLabel for="email">Email</label>
-  <input nbInput id="email" type="email" placeholder="m@example.com" class="w-75" />
+  protected readonly withLabelExampleCode = `<div class="flex items-center gap-2">
+  <input type="checkbox" nbCheckbox id="terms" />
+  <label nbLabel for="terms">Accept terms and conditions</label>
 </div>`;
-
-  protected readonly withButtonExampleCode = `<div class="flex gap-2">
-  <input nbInput placeholder="Email" class="w-75" />
-  <button nbButton variant="neutral">Subscribe</button>
-</div>`;
-
-  protected readonly fileExampleCode = `<input nbInput type="file" class="w-[250px]" />`;
 }

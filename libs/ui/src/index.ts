@@ -8,6 +8,8 @@ export { NB_DENSITY } from './lib/tokens/density.tokens';
 export type { NbDensity } from './lib/tokens/density.tokens';
 
 // Components
+export { NbCheckbox } from './lib/checkbox';
+export type { NbCheckboxSize } from './lib/checkbox';
 export { NbAccordion, NbAccordionContent, NbAccordionItem, NbAccordionTrigger } from './lib/accordion';
 export type { NbAccordionType, NbAccordionValue } from './lib/accordion';
 export { NbButton } from './lib/button';
