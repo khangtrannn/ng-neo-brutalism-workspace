@@ -13,3 +13,6 @@ export type { NbAccordionType, NbAccordionValue } from './lib/accordion';
 export { NbButton } from './lib/button';
 export type { NbButtonSize, NbButtonVariant } from './lib/button';
 export { NbMarquee, NbMarqueeItem } from './lib/marquee';
+export { NbInput } from './lib/input';
+export { NbLabel } from './lib/label';
+export type { NbInputSize } from './lib/input';

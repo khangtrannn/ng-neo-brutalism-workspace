@@ -6,6 +6,9 @@ import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 
+const chromeDevToolsProbePath =
+  '/.well-known/appspecific/com.chrome.devtools.json';
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   return {
@@ -34,6 +37,20 @@ export default defineConfig(({ mode }) => {
       },
     },
     plugins: [
+      {
+        name: 'docs-chrome-devtools-probe',
+        configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            if (req.url === chromeDevToolsProbePath) {
+              res.statusCode = 204;
+              res.end();
+              return;
+            }
+
+            next();
+          });
+        },
+      },
       tailwindcss(),
       analog({
         prerender: {
