@@ -53,14 +53,14 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
         <h2 class="mt-10 mb-4 text-2xl font-bold">Preview</h2>
         <docs-example [code]="exampleCode">
           <neo-accordion class="block w-full max-w-xl" collapsible>
-            <neo-accordion-item value="item-1">
+            <neo-accordion-item>
               <neo-accordion-trigger>Is it accessible?</neo-accordion-trigger>
               <neo-accordion-content>
                 Yes. It uses native button semantics and ARIA state.
               </neo-accordion-content>
             </neo-accordion-item>
 
-            <neo-accordion-item value="item-2">
+            <neo-accordion-item>
               <neo-accordion-trigger>
                 Is it styled like neobrutalism.dev?
               </neo-accordion-trigger>
@@ -137,14 +137,24 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
               >
                 Details
               </button>
+              <button
+                nbButton
+                size="sm"
+                variant="neutral"
+                type="button"
+                (click)="controlledValue.set(null)"
+              >
+                Collapse All
+              </button>
             </div>
 
-            <neo-accordion [(value)]="controlledValue" collapsible>
+            <neo-accordion [(value)]="controlledValue">
               <neo-accordion-item value="overview">
                 <neo-accordion-trigger>Overview</neo-accordion-trigger>
                 <neo-accordion-content>
                   Bind <code>[(value)]</code> when another control should open
-                  or close accordion panels.
+                  or close accordion panels. The trigger can switch panels, but
+                  only the external button can collapse the active panel.
                 </neo-accordion-content>
               </neo-accordion-item>
 
@@ -162,7 +172,7 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
       <section id="disabled">
         <h2 class="mt-10 mb-4 text-2xl font-bold">Disabled Item</h2>
         <docs-example [code]="disabledExampleCode">
-          <neo-accordion class="block w-full max-w-xl" defaultValue="enabled">
+          <neo-accordion collapsible class="block w-full max-w-xl" defaultValue="enabled">
             <neo-accordion-item value="enabled">
               <neo-accordion-trigger>Enabled item</neo-accordion-trigger>
               <neo-accordion-content>
@@ -308,7 +318,7 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
                 <td
                   class="border-b-2 border-(--nb-border) px-4 py-3 font-mono text-sm"
                 >
-                  required
+                  generated
                 </td>
               </tr>
               <tr>
@@ -343,14 +353,14 @@ export default class AccordionPageComponent {
 } from '@ng-neo-brutalism/ui';`;
 
   protected readonly exampleCode = `<neo-accordion class="block w-full max-w-xl" collapsible>
-  <neo-accordion-item value="item-1">
+  <neo-accordion-item>
     <neo-accordion-trigger>Is it accessible?</neo-accordion-trigger>
     <neo-accordion-content>
       Yes. It uses native button semantics and ARIA state.
     </neo-accordion-content>
   </neo-accordion-item>
 
-  <neo-accordion-item value="item-2">
+  <neo-accordion-item>
     <neo-accordion-trigger>Is it styled like neobrutalism.dev?</neo-accordion-trigger>
     <neo-accordion-content>
       Yes. It keeps the heavy border, offset shadow, bright trigger,
@@ -367,12 +377,14 @@ readonly value = signal<string | string[] | null>('overview');
 // component.html
 <button nbButton (click)="value.set('overview')">Overview</button>
 <button nbButton (click)="value.set('details')">Details</button>
+<button nbButton (click)="value.set(null)">Close</button>
 
-<neo-accordion [(value)]="value" collapsible>
+<neo-accordion [(value)]="value">
   <neo-accordion-item value="overview">
     <neo-accordion-trigger>Overview</neo-accordion-trigger>
     <neo-accordion-content>
       Bind [(value)] when another control should open or close panels.
+      Without collapsible, only the external button can collapse the active panel.
     </neo-accordion-content>
   </neo-accordion-item>
 

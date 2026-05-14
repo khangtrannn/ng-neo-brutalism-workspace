@@ -29,11 +29,12 @@ let nextAccordionItemId = 0;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NbAccordionItemComponent {
-  readonly value = input.required<string>();
+  private readonly id = nextAccordionItemId++;
+
+  readonly value = input(`neo-accordion-item-${this.id}`);
   readonly disabled = input(false, { transform: booleanAttribute });
 
   private readonly accordion = inject(NB_ACCORDION);
-  private readonly id = nextAccordionItemId++;
 
   readonly triggerId = `neo-accordion-trigger-${this.id}`;
   readonly contentId = `neo-accordion-content-${this.id}`;
