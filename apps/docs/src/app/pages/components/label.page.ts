@@ -17,27 +17,40 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
   ],
   template: `
     <article>
-      <header id="overview" class="mb-8 scroll-mt-32">
-        <div class="mb-4">
-          <p class="mb-2 text-sm font-bold uppercase tracking-wide">
-            Components
-          </p>
-          <h1 class="text-4xl font-black tracking-tight">Label</h1>
-          <p class="mt-2 max-w-3xl text-base font-medium sm:text-lg">
+      <header id="overview" class="relative mb-10 scroll-mt-32">
+        <div class="mb-5">
+          <p>Components</p>
+          <h1>Label</h1>
+          <p class="mt-3 max-w-3xl text-base font-medium sm:text-lg">
             Renders an accessible label associated with form controls.
           </p>
         </div>
 
-        <a
-          nbButton
-          size="sm"
-          variant="neutral"
-          href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/label"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Source
-        </a>
+        <div class="mt-7 flex flex-wrap items-center gap-3">
+          <div class="nb-stat-tile nb-stat-tile--yellow">
+            <span class="nb-stat-tile__value">FOR</span>
+            <span class="nb-stat-tile__label">htmlFor sync</span>
+          </div>
+          <div class="nb-stat-tile nb-stat-tile--mint">
+            <span class="nb-stat-tile__value">A11y</span>
+            <span class="nb-stat-tile__label">ARIA-ready</span>
+          </div>
+          <div class="nb-stat-tile nb-stat-tile--pink">
+            <span class="nb-stat-tile__value">∞</span>
+            <span class="nb-stat-tile__label">Pairs with</span>
+          </div>
+
+          <a
+            nbButton
+            size="sm"
+            variant="neutral"
+            href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/label"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Source ↗
+          </a>
+        </div>
       </header>
 
       <section id="preview">

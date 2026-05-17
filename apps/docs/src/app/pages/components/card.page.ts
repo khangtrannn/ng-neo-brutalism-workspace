@@ -13,6 +13,7 @@ import {
 
 import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
 import { DocsExampleComponent } from '../../docs/docs-example.component';
+import JobListingCardExampleComponent from './examples/job-listing-card.example';
 
 @Component({
   selector: 'docs-card-page',
@@ -20,6 +21,7 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
   imports: [
     DocsCodeBlockComponent,
     DocsExampleComponent,
+    JobListingCardExampleComponent,
     NbButton,
     NbCard,
     NbCardContent,
@@ -32,27 +34,40 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
   ],
   template: `
     <article>
-      <header id="overview" class="mb-8 scroll-mt-32">
-        <div class="mb-4">
-          <p class="mb-2 text-sm font-bold uppercase tracking-wide">
-            Components
-          </p>
-          <h1 class="text-4xl font-black tracking-tight">Card</h1>
-          <p class="mt-2 max-w-3xl text-base font-medium sm:text-lg">
+      <header id="overview" class="relative mb-10 scroll-mt-32">
+        <div class="mb-5">
+          <p>Components</p>
+          <h1>Card</h1>
+          <p class="mt-3 max-w-3xl text-base font-medium sm:text-lg">
             Displays a card with header, content, and footer.
           </p>
         </div>
 
-        <a
-          nbButton
-          size="sm"
-          variant="neutral"
-          href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/card"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Source
-        </a>
+        <div class="mt-7 flex flex-wrap items-center gap-3">
+          <div class="nb-stat-tile nb-stat-tile--yellow">
+            <span class="nb-stat-tile__value">6</span>
+            <span class="nb-stat-tile__label">Parts</span>
+          </div>
+          <div class="nb-stat-tile nb-stat-tile--mint">
+            <span class="nb-stat-tile__value">SLOT</span>
+            <span class="nb-stat-tile__label">Composable</span>
+          </div>
+          <div class="nb-stat-tile nb-stat-tile--pink">
+            <span class="nb-stat-tile__value">∞</span>
+            <span class="nb-stat-tile__label">Layouts</span>
+          </div>
+
+          <a
+            nbButton
+            size="sm"
+            variant="neutral"
+            href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/card"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Source ↗
+          </a>
+        </div>
       </header>
 
       <section id="preview">
@@ -109,6 +124,13 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
               </div>
             </neo-card-footer>
           </neo-card>
+        </docs-example>
+      </section>
+
+      <section id="job-card">
+        <h2 class="mt-10 mb-4 text-2xl font-bold">Job listing card</h2>
+        <docs-example [code]="jobListingExampleCode">
+          <docs-job-listing-card-example />
         </docs-example>
       </section>
 
@@ -253,6 +275,8 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
       </section>
     </article>
   `,
+  styles: [
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class CardPageComponent {
@@ -318,6 +342,16 @@ export default class CardPageComponent {
     </div>
   </neo-card-footer>
 </neo-card>`;
+
+  protected readonly jobListingExampleCode = `import JobListingCardExampleComponent from './examples/job-listing-card.example';
+
+@Component({
+  imports: [JobListingCardExampleComponent],
+  template: \`
+    <docs-job-listing-card-example />
+  \`,
+})
+export class CardDemoComponent {}`;
 
   protected readonly simpleExampleCode = `<neo-card class="w-full max-w-sm">
   <neo-card-header>

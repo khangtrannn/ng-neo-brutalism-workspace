@@ -14,24 +14,26 @@ type DocsExampleTab = 'preview' | 'code';
   standalone: true,
   imports: [DocsCodeBlockComponent],
   template: `
-    <div class="border-4 border-(--nb-border) bg-white shadow-[6px_6px_0_0_var(--nb-shadow)]">
+    <div class="docs-example border-4 border-(--nb-border) bg-white shadow-[8px_8px_0_0_var(--nb-shadow)]">
       <div
         class="flex items-center border-b-4 border-(--nb-border) bg-white"
       >
         <button
           type="button"
-          class="h-11 flex-1 border-r-2 border-(--nb-border) text-sm font-black uppercase transition-colors sm:text-base"
-          [class.bg-[var(--nb-main)]]="activeTab() === 'preview'"
+          class="docs-example__tab"
+          [class.is-active]="activeTab() === 'preview'"
           (click)="activeTab.set('preview')"
         >
+          <span class="docs-example__dot" aria-hidden="true"></span>
           Preview
         </button>
         <button
           type="button"
-          class="h-11 flex-1 text-sm font-black uppercase transition-colors sm:text-base"
-          [class.bg-[var(--nb-main)]]="activeTab() === 'code'"
+          class="docs-example__tab docs-example__tab--code"
+          [class.is-active]="activeTab() === 'code'"
           (click)="activeTab.set('code')"
         >
+          <span class="docs-example__dot" aria-hidden="true"></span>
           Code
         </button>
       </div>
@@ -51,8 +53,50 @@ type DocsExampleTab = 'preview' | 'code';
   `,
   styles: [
     `
+      .docs-example__tab {
+        display: inline-flex;
+        flex: 1 1 0;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        height: 3rem;
+        border-right: 3px solid var(--nb-border);
+        background: var(--nb-paper);
+        font-family: var(--font-display);
+        font-size: 0.95rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        transition: background-color 120ms;
+      }
+
+      .docs-example__tab--code {
+        border-right: none;
+      }
+
+      .docs-example__tab.is-active {
+        background: var(--nb-yellow);
+      }
+
+      .docs-example__tab--code.is-active {
+        background: var(--nb-pink);
+        color: #fff;
+      }
+
+      .docs-example__dot {
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        border: 2px solid var(--nb-border);
+        background: transparent;
+      }
+
+      .docs-example__tab.is-active .docs-example__dot {
+        background: var(--nb-border);
+      }
+
       .docs-preview-grid {
-        background-color: #ffffff;
+        background-color: var(--nb-paper);
         background-image:
           linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px),
           linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);

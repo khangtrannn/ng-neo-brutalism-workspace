@@ -10,28 +10,41 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
   imports: [DocsCodeBlockComponent, DocsExampleComponent, NbButton, NbCheckbox, NbLabel],
   template: `
     <article>
-      <header id="overview" class="mb-8 scroll-mt-32">
-        <div class="mb-4">
-          <p class="mb-2 text-sm font-bold uppercase tracking-wide">
-            Components
-          </p>
-          <h1 class="text-4xl font-black tracking-tight">Checkbox</h1>
-          <p class="mt-2 max-w-3xl text-base font-medium sm:text-lg">
+      <header id="overview" class="relative mb-10 scroll-mt-32">
+        <div class="mb-5">
+          <p>Components</p>
+          <h1>Checkbox</h1>
+          <p class="mt-3 max-w-3xl text-base font-medium sm:text-lg">
             A control that allows the user to toggle between checked and not
             checked in the neo-brutalism style.
           </p>
         </div>
 
-        <a
-          nbButton
-          size="sm"
-          variant="neutral"
-          href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/checkbox"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Source
-        </a>
+        <div class="mt-7 flex flex-wrap items-center gap-3">
+          <div class="nb-stat-tile nb-stat-tile--yellow">
+            <span class="nb-stat-tile__value">3</span>
+            <span class="nb-stat-tile__label">Sizes</span>
+          </div>
+          <div class="nb-stat-tile nb-stat-tile--mint">
+            <span class="nb-stat-tile__value">FORM</span>
+            <span class="nb-stat-tile__label">Native</span>
+          </div>
+          <div class="nb-stat-tile nb-stat-tile--pink">
+            <span class="nb-stat-tile__value">A11y</span>
+            <span class="nb-stat-tile__label">Label sync</span>
+          </div>
+
+          <a
+            nbButton
+            size="sm"
+            variant="neutral"
+            href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/checkbox"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Source ↗
+          </a>
+        </div>
       </header>
 
       <section id="preview">

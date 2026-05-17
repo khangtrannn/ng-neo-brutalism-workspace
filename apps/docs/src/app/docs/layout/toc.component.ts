@@ -22,21 +22,98 @@ interface TocHeading {
   selector: 'nb-docs-toc',
   standalone: true,
   template: `
-    <nav class="w-44 shrink-0" aria-label="On this page">
-      <p class="mb-3 border-b-2 border-(--nb-border) pb-2 text-xs font-black tracking-[0.12em] text-black/60 uppercase">
-        On this page
-      </p>
+    <nav class="toc" aria-label="On this page">
+      <p class="toc__header">On this page</p>
+
+      @if (headings().length === 0) {
+        <p class="toc__empty">No headings yet</p>
+      }
 
       @for (heading of headings(); track heading.id) {
         <a
           [href]="'#' + heading.id"
-          class="block border-2 border-transparent px-2 py-1 text-sm font-bold text-black/70 hover:text-black [&.active]:border-(--nb-border) [&.active]:bg-(--nb-main) [&.active]:text-black"
-          [class.pl-4]="heading.level === 3"
+          class="toc__link"
+          [class.toc__link--sub]="heading.level === 3"
         >
-          {{ heading.text }}
+          <span class="toc__marker" aria-hidden="true"></span>
+          <span class="toc__text">{{ heading.text }}</span>
         </a>
       }
     </nav>
+  `,
+  styles: `
+    .toc {
+      width: 100%;
+    }
+
+    .toc__header {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.3rem 0.7rem;
+      border: 3px solid var(--nb-border);
+      background: var(--nb-yellow);
+      box-shadow: 3px 3px 0 0 var(--nb-shadow);
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transform: rotate(-2deg);
+    }
+
+    .toc__empty {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .toc__link {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.5rem;
+      border: 2px solid transparent;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.75);
+      transition: transform 120ms, background-color 120ms;
+    }
+
+    .toc__link:hover {
+      color: #000;
+      background: var(--nb-secondary-background);
+      transform: translateX(2px);
+    }
+
+    .toc__link--sub {
+      padding-left: 1.25rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      opacity: 0.85;
+    }
+
+    .toc__marker {
+      flex-shrink: 0;
+      width: 6px;
+      height: 14px;
+      border: 2px solid var(--nb-border);
+      background: transparent;
+    }
+
+    .toc__link.active,
+    .toc__link:focus-visible {
+      border-color: var(--nb-border);
+      background: var(--nb-mint);
+      color: #000;
+      box-shadow: 3px 3px 0 0 var(--nb-shadow);
+      font-weight: 800;
+      outline: none;
+    }
+
+    .toc__link.active .toc__marker {
+      background: var(--nb-border);
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

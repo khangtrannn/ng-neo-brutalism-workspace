@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { NbButton } from '@ng-neo-brutalism/ui';
 import { filter, map, startWith } from 'rxjs';
 
 import { DOC_NAV } from '../nav';
@@ -9,23 +8,90 @@ import { DOC_NAV } from '../nav';
 @Component({
   selector: 'nb-docs-pagination',
   standalone: true,
-  imports: [RouterLink, NbButton],
+  imports: [RouterLink],
   template: `
-    <div class="mt-16 flex justify-between border-t-2 border-(--nb-border) pt-6">
+    <div class="pagination">
       @if (prev()) {
-        <a [routerLink]="prev()!.path" nbButton variant="neutral">
-          ← {{ prev()!.label }}
+        <a class="pagination__card pagination__card--prev" [routerLink]="prev()!.path">
+          <span class="pagination__eyebrow">← Previous</span>
+          <span class="pagination__title">{{ prev()!.label }}</span>
         </a>
       } @else {
         <span></span>
       }
 
       @if (next()) {
-        <a [routerLink]="next()!.path" nbButton variant="default">
-          {{ next()!.label }} →
+        <a class="pagination__card pagination__card--next" [routerLink]="next()!.path">
+          <span class="pagination__eyebrow">Up next →</span>
+          <span class="pagination__title">{{ next()!.label }}</span>
         </a>
       }
     </div>
+  `,
+  styles: `
+    .pagination {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      margin-top: 4rem;
+      padding-top: 1.75rem;
+      border-top: 3px dashed var(--nb-border);
+    }
+
+    .pagination__card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding: 0.85rem 1.1rem;
+      min-width: 12rem;
+      border: 3px solid var(--nb-border);
+      background: var(--nb-paper);
+      box-shadow: 5px 5px 0 0 var(--nb-shadow);
+      transition: transform 120ms, box-shadow 120ms;
+    }
+
+    .pagination__card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 0 var(--nb-shadow);
+    }
+
+    .pagination__card--prev {
+      background: var(--nb-mint);
+    }
+
+    .pagination__card--next {
+      background: var(--nb-pink);
+      text-align: right;
+      align-items: flex-end;
+      color: #fff;
+    }
+
+    .pagination__eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    .pagination__card--next .pagination__eyebrow {
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .pagination__title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #000;
+    }
+
+    .pagination__card--next .pagination__title {
+      color: #fff;
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

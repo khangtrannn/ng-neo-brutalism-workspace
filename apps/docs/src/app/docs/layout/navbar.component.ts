@@ -7,24 +7,28 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   template: `
     <nav
-      class="fixed top-2 right-2 left-2 z-50 border-4 border-(--nb-border) bg-white shadow-[6px_6px_0_0_var(--nb-shadow)]"
+      class="fixed top-3 right-3 left-3 z-50 border-4 border-(--nb-border) bg-(--nb-paper) shadow-[8px_8px_0_0_var(--nb-shadow)]"
       aria-label="Main navigation"
     >
       <div class="flex min-h-20 items-center justify-between gap-5 px-4 py-3 sm:px-6">
         <a
           routerLink="/"
-          class="group flex items-center gap-2 font-bold"
+          class="brand group flex items-center gap-3 font-bold"
           aria-label="Ng Neo Brutalism home"
         >
           <span
-            class="flex h-14 min-w-14 items-center justify-center border-4 border-(--nb-border) bg-black px-3 text-4xl leading-none text-white shadow-[4px_4px_0_0_var(--nb-shadow)] transition-transform group-hover:-translate-y-0.5"
+            class="brand-mark flex h-14 min-w-14 items-center justify-center border-4 border-(--nb-border) bg-(--nb-yellow) px-3 text-3xl leading-none text-black shadow-[4px_4px_0_0_var(--nb-shadow)] transition-transform group-hover:-rotate-6"
           >
-            N
+            N/B
+          </span>
+          <span class="hidden sm:flex flex-col leading-none">
+            <span class="brand-title">NEO·BRUTAL</span>
+            <span class="brand-sub">angular ui kit</span>
           </span>
         </a>
 
         <div
-          class="hidden flex-1 items-center justify-center gap-6 text-base font-black tracking-normal uppercase lg:flex"
+          class="hidden flex-1 items-center justify-center gap-3 text-base font-black tracking-normal uppercase lg:flex"
         >
           <a class="nav-link nav-link-active" routerLink="/docs">Docs</a>
           <a class="nav-link" routerLink="/docs/button">Components</a>
@@ -35,8 +39,15 @@ import { RouterLink } from '@angular/router';
         </div>
 
         <div class="flex items-center gap-3">
+          <span
+            class="hidden md:inline-flex h-10 items-center border-3 border-(--nb-border) bg-(--nb-mint) px-3 text-xs font-black tracking-wider uppercase shadow-[3px_3px_0_0_var(--nb-shadow)]"
+            style="font-family: var(--font-mono);"
+          >
+            v4.0 · NEW
+          </span>
+
           <a
-            class="inline-flex h-12 items-center gap-2 border-4 border-(--nb-border) bg-black px-5 text-base font-black tracking-normal text-white uppercase shadow-[4px_4px_0_0_var(--nb-shadow)] transition-transform hover:-translate-y-0.5"
+            class="cta inline-flex h-12 items-center gap-2 border-4 border-(--nb-border) bg-(--nb-hot) px-5 text-base font-black tracking-normal text-white uppercase shadow-[5px_5px_0_0_var(--nb-shadow)] transition-transform hover:-translate-y-0.5 hover:-rotate-1"
             href="https://github.com/khangtrannn/ng-neo-brutalism-workspace"
             target="_blank"
             rel="noreferrer"
@@ -61,24 +72,52 @@ import { RouterLink } from '@angular/router';
     </nav>
   `,
   styles: `
+    .brand-mark {
+      font-family: var(--font-display);
+      letter-spacing: -0.05em;
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-sub {
+      margin-top: 2px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.65);
+    }
+
     .nav-link {
       display: inline-flex;
-      min-height: 2.375rem;
+      min-height: 2.5rem;
       align-items: center;
-      border: 2px solid transparent;
-      padding: 0 0.875rem;
+      border: 3px solid transparent;
+      padding: 0 0.9rem;
+      font-family: var(--font-display);
       line-height: 1;
-      transition: background-color 120ms;
+      transition: transform 120ms, background-color 120ms;
     }
 
     .nav-link:hover {
       background: var(--nb-secondary-background);
+      transform: translateY(-1px);
     }
 
     .nav-link-active {
       border-color: var(--nb-border);
-      background: var(--nb-main);
+      background: var(--nb-yellow);
       box-shadow: 3px 3px 0 0 var(--nb-shadow);
+      transform: rotate(-1deg);
+    }
+
+    .nav-link-active:hover {
+      transform: rotate(-1deg) translateY(-1px);
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

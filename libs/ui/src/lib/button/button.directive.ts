@@ -23,6 +23,7 @@ export class NbButton {
       'inline-flex items-center justify-center whitespace-nowrap select-none',
       'gap-2',
       'font-bold rounded-nb',
+      'bg-(--nb-button-bg) text-(--nb-button-fg)',
       'transition-all duration-150 ease-out',
       '[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--nb-border) focus-visible:ring-offset-2',
@@ -39,10 +40,10 @@ export class NbButton {
     const base = 'border-2 border-(--nb-border)';
 
     const map: Record<NbButtonVariant, string> = {
-      default: `${base} bg-white text-(--nb-main-foreground) shadow-nb hover:translate-x-(--nb-shadow-offset-x) hover:translate-y-(--nb-shadow-offset-y) hover:shadow-none`,
-      neutral: `${base} bg-white text-(--nb-foreground) shadow-nb hover:translate-x-(--nb-shadow-offset-x) hover:translate-y-(--nb-shadow-offset-y) hover:shadow-none`,
-      noShadow: `${base} bg-white text-(--nb-main-foreground)`,
-      reverse: `${base} bg-white text-(--nb-main-foreground) hover:-translate-x-(--nb-reverse-shadow-offset-x) hover:-translate-y-(--nb-reverse-shadow-offset-y) hover:shadow-nb`,
+      default: `${base} [--nb-button-bg:#fff] [--nb-button-fg:var(--nb-main-foreground)] shadow-nb hover:translate-x-(--nb-shadow-offset-x) hover:translate-y-(--nb-shadow-offset-y) hover:shadow-none`,
+      neutral: `${base} [--nb-button-bg:#fff] [--nb-button-fg:var(--nb-foreground)] shadow-nb hover:translate-x-(--nb-shadow-offset-x) hover:translate-y-(--nb-shadow-offset-y) hover:shadow-none`,
+      noShadow: `${base} [--nb-button-bg:#fff] [--nb-button-fg:var(--nb-main-foreground)]`,
+      reverse: `${base} [--nb-button-bg:#fff] [--nb-button-fg:var(--nb-main-foreground)] hover:-translate-x-(--nb-reverse-shadow-offset-x) hover:-translate-y-(--nb-reverse-shadow-offset-y) hover:shadow-nb`,
     };
 
     return map[variant];

@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NbButton } from '@ng-neo-brutalism/ui';
+import JobListingCardExampleComponent from './components/examples/job-listing-card.example';
 
 @Component({
   selector: 'docs-home',
   standalone: true,
-  imports: [NbButton, RouterLink],
+  imports: [NbButton, RouterLink, JobListingCardExampleComponent],
   template: `
     <article>
       <header class="mb-8">
@@ -29,6 +30,10 @@ import { NbButton } from '@ng-neo-brutalism/ui';
         </a>
       </div>
     </article>
+
+    <div class="mt-8 flex justify-center">
+      <docs-job-listing-card-example />
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

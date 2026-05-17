@@ -15,27 +15,40 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
   ],
   template: `
     <article>
-      <header id="overview" class="mb-8 scroll-mt-32">
-        <div class="mb-4">
-          <p class="mb-2 text-sm font-bold uppercase tracking-wide">
-            Components
-          </p>
-          <h1 class="text-4xl font-black tracking-tight">Image Card</h1>
-          <p class="mt-2 max-w-3xl text-base font-medium sm:text-lg">
+      <header id="overview" class="relative mb-10 scroll-mt-32">
+        <div class="mb-5">
+          <p>Components</p>
+          <h1>Image Card</h1>
+          <p class="mt-3 max-w-3xl text-base font-medium sm:text-lg">
             A card component optimized for displaying images with captions.
           </p>
         </div>
 
-        <a
-          nbButton
-          size="sm"
-          variant="neutral"
-          href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/image-card"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Source
-        </a>
+        <div class="mt-7 flex flex-wrap items-center gap-3">
+          <div class="nb-stat-tile nb-stat-tile--yellow">
+            <span class="nb-stat-tile__value">2</span>
+            <span class="nb-stat-tile__label">Inputs</span>
+          </div>
+          <div class="nb-stat-tile nb-stat-tile--mint">
+            <span class="nb-stat-tile__value">A11y</span>
+            <span class="nb-stat-tile__label">Alt + caption</span>
+          </div>
+          <div class="nb-stat-tile nb-stat-tile--pink">
+            <span class="nb-stat-tile__value">IMG</span>
+            <span class="nb-stat-tile__label">Optimized</span>
+          </div>
+
+          <a
+            nbButton
+            size="sm"
+            variant="neutral"
+            href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/image-card"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Source ↗
+          </a>
+        </div>
       </header>
 
       <section id="preview">
