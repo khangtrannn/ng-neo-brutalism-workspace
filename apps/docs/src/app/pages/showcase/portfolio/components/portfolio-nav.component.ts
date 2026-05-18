@@ -6,7 +6,6 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 import type { NavLink } from '../portfolio.types';
 import { PortfolioContactDialogComponent } from './portfolio-contact-dialog.component';
@@ -14,7 +13,7 @@ import { PortfolioContactDialogComponent } from './portfolio-contact-dialog.comp
 @Component({
   selector: 'docs-portfolio-nav',
   standalone: true,
-  imports: [RouterLink, PortfolioContactDialogComponent],
+  imports: [PortfolioContactDialogComponent],
   template: `
     <header class="sticky top-4 z-50 w-full px-4">
       <nav
@@ -22,8 +21,7 @@ import { PortfolioContactDialogComponent } from './portfolio-contact-dialog.comp
         aria-label="Ronit portfolio"
       >
         <a
-          routerLink="/showcase/portfolio"
-          fragment="home"
+          href="/showcase/portfolio#home"
           class="block min-w-[80px] -rotate-2 transition-transform duration-300 hover:rotate-0 xs:min-w-[100px]"
           aria-label="Ronit Jadhav home"
         >
@@ -39,8 +37,8 @@ import { PortfolioContactDialogComponent } from './portfolio-contact-dialog.comp
           <a
             class="transform px-3 py-1 font-bold text-black transition-all duration-200 hover:-translate-y-1 hover:rotate-2"
             [href]="link.href"
-            [target]="link.external ? '_blank' : null"
-            [rel]="link.external ? 'noreferrer' : null"
+            [attr.target]="link.external ? '_blank' : null"
+            [attr.rel]="link.external ? 'noreferrer' : null"
           >
             {{ link.label }} @if (link.external) {
             <span aria-hidden="true">↗</span> }
@@ -82,8 +80,8 @@ import { PortfolioContactDialogComponent } from './portfolio-contact-dialog.comp
             <a
               class="border-2 border-black bg-yellow-300 p-2 text-center text-lg font-bold text-black shadow-[4px_4px_0px_0px_#000] transition-transform hover:rotate-2"
               [href]="link.href"
-              [target]="link.external ? '_blank' : null"
-              [rel]="link.external ? 'noreferrer' : null"
+              [attr.target]="link.external ? '_blank' : null"
+              [attr.rel]="link.external ? 'noreferrer' : null"
               (click)="menuClosed.emit()"
             >
               {{ link.label }} @if (link.external) {

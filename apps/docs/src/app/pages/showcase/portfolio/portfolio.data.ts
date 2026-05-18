@@ -9,10 +9,10 @@ import type {
 export const ASSET_PATH = '/showcase/portfolio';
 
 export const NAV_LINKS: NavLink[] = [
-  { href: '#home', label: 'Home', external: false },
-  { href: '#journey', label: 'Journey', external: false },
-  { href: '#projects', label: 'Projects', external: false },
-  { href: 'https://dev.to/ronitjadhav', label: 'Blogs', external: true },
+  { href: '/showcase/portfolio#home', label: 'Home', external: false },
+  { href: '/showcase/portfolio#journey', label: 'Journey', external: false },
+  { href: '/showcase/portfolio#projects', label: 'Projects', external: false },
+  { href: '#', label: 'Blogs', external: true },
 ];
 
 export const SKILLS: Skill[] = [

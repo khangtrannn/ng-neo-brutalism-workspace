@@ -9,7 +9,7 @@ import type { Project } from '../portfolio.types';
   template: `
     <section
       id="projects"
-      class="portfolio-grid-section relative bg-white p-3 py-8 dark:bg-black sm:p-5 sm:py-12 md:p-8 md:py-16"
+      class="portfolio-grid-section relative scroll-mt-6 bg-white p-3 py-8 dark:bg-black sm:p-5 sm:py-12 md:p-8 md:py-16"
     >
       <div class="portfolio-grid-bg absolute inset-0"></div>
       <div class="portfolio-radial absolute inset-0 dark:bg-black"></div>

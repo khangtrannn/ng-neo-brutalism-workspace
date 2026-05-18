@@ -19,7 +19,7 @@ import type { Skill } from '../portfolio.types';
   template: `
     <section
       id="home"
-      class="portfolio-grid-section relative flex h-screen max-h-[900px] min-h-[500px] w-full flex-col items-center justify-center overflow-hidden bg-white pb-14 dark:bg-black sm:min-h-[600px] sm:pb-16 md:pb-20"
+      class="portfolio-grid-section relative flex h-screen max-h-[900px] min-h-[500px] w-full scroll-mt-6 flex-col items-center justify-center overflow-hidden bg-white pb-14 dark:bg-black sm:min-h-[600px] sm:pb-16 md:pb-20"
     >
       <div class="portfolio-grid-bg absolute inset-0"></div>
       <div class="portfolio-radial absolute inset-0 dark:bg-black"></div>

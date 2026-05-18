@@ -55,7 +55,7 @@ const INITIAL_ZOOM = 3;
   template: `
     <section
       id="journey"
-      class="portfolio-grid-section relative bg-white p-2 py-8 sm:p-4 sm:py-12 md:p-6 md:py-16 lg:p-8"
+      class="portfolio-grid-section relative scroll-mt-6 bg-white p-2 py-8 sm:p-4 sm:py-12 md:p-6 md:py-16 lg:p-8"
     >
       <div class="portfolio-grid-bg absolute inset-0"></div>
       <div class="portfolio-radial absolute inset-0"></div>
