@@ -1,8 +1,6 @@
 export { NbDialogComponent, NbDialogComponent as NbDialog } from './dialog';
-export { NbDialogContentComponent, NbDialogContentComponent as NbDialogContent } from './dialog';
-export { NbDialogTrigger } from './dialog';
-export { NbDialogClose } from './dialog';
-export { NbDialogHeaderComponent, NbDialogHeaderComponent as NbDialogHeader } from './dialog';
-export { NbDialogTitleComponent, NbDialogTitleComponent as NbDialogTitle } from './dialog';
-export { NbDialogDescriptionComponent, NbDialogDescriptionComponent as NbDialogDescription } from './dialog';
-export { NbDialogFooterComponent, NbDialogFooterComponent as NbDialogFooter } from './dialog';
+export { NbDialogTitle } from './dialog-title';
+export { NbDialogDescription } from './dialog-description';
+export { NbDialogContent } from './dialog-content';
+export { NbDialogActions } from './dialog-actions';
+export { NbDialogClose } from './dialog-close';

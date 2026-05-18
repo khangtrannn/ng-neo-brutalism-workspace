@@ -35,11 +35,10 @@ export type { NbBadgeVariant } from './lib/badge';
 export { NbAvatar } from './lib/avatar';
 export {
   NbDialog,
-  NbDialogContent,
-  NbDialogTrigger,
-  NbDialogClose,
-  NbDialogHeader,
+  NbDialogComponent,
   NbDialogTitle,
   NbDialogDescription,
-  NbDialogFooter,
+  NbDialogContent,
+  NbDialogActions,
+  NbDialogClose,
 } from './lib/dialog';

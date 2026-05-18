@@ -3,17 +3,17 @@ import {
   Component,
   input,
   output,
+  viewChild,
 } from '@angular/core';
 import {
   NbButton,
   NbDialog,
+  NbDialogActions,
   NbDialogClose,
+  NbDialogComponent,
   NbDialogContent,
   NbDialogDescription,
-  NbDialogFooter,
-  NbDialogHeader,
   NbDialogTitle,
-  NbDialogTrigger,
   NbInput,
   NbLabel,
   NbTextarea,
@@ -25,38 +25,33 @@ import {
   imports: [
     NbButton,
     NbDialog,
+    NbDialogActions,
     NbDialogClose,
     NbDialogContent,
     NbDialogDescription,
-    NbDialogFooter,
-    NbDialogHeader,
     NbDialogTitle,
-    NbDialogTrigger,
     NbInput,
     NbLabel,
     NbTextarea,
   ],
   template: `
-    <nb-dialog>
-      <button
-        nbButton
-        nbDialogTrigger
-        style="--nb-button-bg: #76fbd9;"
-        class="h-10 font-heading text-base text-black transition-all hover:scale-[1.02] active:scale-[0.98] md:h-12 md:text-lg lg:h-14 lg:text-xl"
-      >
-        Get in Touch!
-      </button>
-      <nb-dialog-content>
-        <nb-dialog-header>
-          <nb-dialog-title>Get in Touch</nb-dialog-title>
-          <nb-dialog-description>
-            Please fill out the form below to get in touch with me.
-          </nb-dialog-description>
-        </nb-dialog-header>
+    <button
+      nbButton
+      (click)="contactDialog().open()"
+      style="--nb-button-bg: #76fbd9;"
+      class="h-10 font-heading text-base text-black transition-all hover:scale-[1.02] active:scale-[0.98] md:h-12 md:text-lg lg:h-14 lg:text-xl"
+    >
+      Get in Touch!
+    </button>
 
+    <nb-dialog #contactDialog>
+      <h2 nbDialogTitle>Get in Touch</h2>
+      <p nbDialogDescription>Please fill out the form below to get in touch with me.</p>
+
+      <nb-dialog-content>
         <form
           id="portfolio-contact"
-          class="grid gap-4 px-6 py-5"
+          class="grid gap-4"
           (submit)="submitContact($event)"
         >
           <div class="grid gap-2">
@@ -92,12 +87,12 @@ import {
           </p>
           }
         </form>
-
-        <nb-dialog-footer>
-          <button nbButton variant="neutral" nbDialogClose>Close</button>
-          <button nbButton type="submit" form="portfolio-contact">Send</button>
-        </nb-dialog-footer>
       </nb-dialog-content>
+
+      <nb-dialog-actions>
+        <button nbButton variant="neutral" nbDialogClose>Close</button>
+        <button nbButton type="submit" form="portfolio-contact">Send</button>
+      </nb-dialog-actions>
     </nb-dialog>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -105,6 +100,8 @@ import {
 export class PortfolioContactDialogComponent {
   readonly sent = input(false);
   readonly submitted = output<void>();
+
+  readonly contactDialog = viewChild.required<NbDialogComponent>('contactDialog');
 
   protected submitContact(event: SubmitEvent): void {
     event.preventDefault();

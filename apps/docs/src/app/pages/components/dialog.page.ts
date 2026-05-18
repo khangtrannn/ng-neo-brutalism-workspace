@@ -2,13 +2,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   NbButton,
   NbDialog,
+  NbDialogActions,
   NbDialogClose,
   NbDialogContent,
   NbDialogDescription,
-  NbDialogFooter,
-  NbDialogHeader,
   NbDialogTitle,
-  NbDialogTrigger,
   NbInput,
   NbLabel,
   NbTextarea,
@@ -25,13 +23,11 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
     DocsExampleComponent,
     NbButton,
     NbDialog,
+    NbDialogActions,
     NbDialogClose,
     NbDialogContent,
     NbDialogDescription,
-    NbDialogFooter,
-    NbDialogHeader,
     NbDialogTitle,
-    NbDialogTrigger,
     NbInput,
     NbLabel,
     NbTextarea,
@@ -51,7 +47,7 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
 
         <div class="mt-7 flex flex-wrap items-center gap-3">
           <div class="nb-stat-tile nb-stat-tile--yellow">
-            <span class="nb-stat-tile__value">8</span>
+            <span class="nb-stat-tile__value">6</span>
             <span class="nb-stat-tile__label">Parts</span>
           </div>
           <div class="nb-stat-tile nb-stat-tile--mint">
@@ -79,18 +75,14 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
       <section id="preview">
         <h2 class="mt-10 mb-4 text-2xl font-bold">Preview</h2>
         <docs-example [code]="defaultExampleCode">
-          <nb-dialog>
-            <button nbButton nbDialogTrigger>Open Dialog</button>
-            <nb-dialog-content>
-              <nb-dialog-header>
-                <nb-dialog-title>Confirm Action</nb-dialog-title>
-                <nb-dialog-description>Are you sure you want to continue? This action cannot be undone.</nb-dialog-description>
-              </nb-dialog-header>
-              <nb-dialog-footer>
-                <button nbButton variant="neutral" nbDialogClose>Cancel</button>
-                <button nbButton nbDialogClose>Confirm</button>
-              </nb-dialog-footer>
-            </nb-dialog-content>
+          <button nbButton (click)="confirmDialog.open()">Open Dialog</button>
+          <nb-dialog #confirmDialog>
+            <h2 nbDialogTitle>Confirm Action</h2>
+            <p nbDialogDescription>Are you sure you want to continue? This action cannot be undone.</p>
+            <nb-dialog-actions>
+              <button nbButton variant="neutral" nbDialogClose>Cancel</button>
+              <button nbButton nbDialogClose>Confirm</button>
+            </nb-dialog-actions>
           </nb-dialog>
         </docs-example>
       </section>
@@ -104,14 +96,12 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
       <section id="with-form">
         <h2 class="mt-10 mb-4 text-2xl font-bold">With Form</h2>
         <docs-example [code]="withFormExampleCode">
-          <nb-dialog>
-            <button nbButton nbDialogTrigger>Contact Us</button>
+          <button nbButton (click)="withFormDialog.open()">Contact Us</button>
+          <nb-dialog #withFormDialog>
+            <h2 nbDialogTitle>Send Message</h2>
+            <p nbDialogDescription>Fill in the form below and we'll get back to you.</p>
             <nb-dialog-content>
-              <nb-dialog-header>
-                <nb-dialog-title>Send Message</nb-dialog-title>
-                <nb-dialog-description>Fill in the form below and we'll get back to you.</nb-dialog-description>
-              </nb-dialog-header>
-              <div class="flex flex-col gap-4 px-6 py-4">
+              <div class="flex flex-col gap-4">
                 <div class="flex flex-col gap-2">
                   <label nbLabel for="name">Name</label>
                   <input nbInput id="name" placeholder="Your name" />
@@ -121,11 +111,11 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
                   <textarea nbTextarea id="msg" placeholder="Your message..."></textarea>
                 </div>
               </div>
-              <nb-dialog-footer>
-                <button nbButton variant="neutral" nbDialogClose>Cancel</button>
-                <button nbButton nbDialogClose>Send</button>
-              </nb-dialog-footer>
             </nb-dialog-content>
+            <nb-dialog-actions>
+              <button nbButton variant="neutral" nbDialogClose>Cancel</button>
+              <button nbButton nbDialogClose>Send</button>
+            </nb-dialog-actions>
           </nb-dialog>
         </docs-example>
       </section>
@@ -146,35 +136,27 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
             <tbody class="font-medium">
               <tr class="border-b-2 border-(--nb-border)">
                 <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">nb-dialog</td>
-                <td class="px-4 py-3">Root component. Provides the dialog controller context.</td>
+                <td class="px-4 py-3">Root component. Renders the native <code class="font-mono">&lt;dialog&gt;</code> modal. Exposes <code class="font-mono">open()</code> and <code class="font-mono">close()</code> for <code class="font-mono">viewChild</code> access.</td>
+              </tr>
+              <tr class="border-b-2 border-(--nb-border)">
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">[nbDialogTitle]</td>
+                <td class="px-4 py-3">Directive applied to a heading element. Styles the dialog title.</td>
+              </tr>
+              <tr class="border-b-2 border-(--nb-border)">
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">[nbDialogDescription]</td>
+                <td class="px-4 py-3">Directive for muted supporting text below the title.</td>
               </tr>
               <tr class="border-b-2 border-(--nb-border)">
                 <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">nb-dialog-content</td>
-                <td class="px-4 py-3">Renders the native <code class="font-mono">&lt;dialog&gt;</code> modal panel.</td>
+                <td class="px-4 py-3">Scrollable body section with top and bottom borders.</td>
               </tr>
               <tr class="border-b-2 border-(--nb-border)">
-                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">[nbDialogTrigger]</td>
-                <td class="px-4 py-3">Directive that opens the dialog on click.</td>
-              </tr>
-              <tr class="border-b-2 border-(--nb-border)">
-                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">[nbDialogClose]</td>
-                <td class="px-4 py-3">Directive that closes the dialog on click.</td>
-              </tr>
-              <tr class="border-b-2 border-(--nb-border)">
-                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">nb-dialog-header</td>
-                <td class="px-4 py-3">Header section with bottom border.</td>
-              </tr>
-              <tr class="border-b-2 border-(--nb-border)">
-                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">nb-dialog-title</td>
-                <td class="px-4 py-3">Bold dialog title.</td>
-              </tr>
-              <tr class="border-b-2 border-(--nb-border)">
-                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">nb-dialog-description</td>
-                <td class="px-4 py-3">Muted supporting text below the title.</td>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">nb-dialog-actions</td>
+                <td class="px-4 py-3">Footer section with right-aligned action buttons.</td>
               </tr>
               <tr>
-                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">nb-dialog-footer</td>
-                <td class="px-4 py-3">Footer section with top border, right-aligned actions.</td>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">[nbDialogClose]</td>
+                <td class="px-4 py-3">Directive that closes the dialog on click.</td>
               </tr>
             </tbody>
           </table>
@@ -185,39 +167,31 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class DialogPageComponent {
-  protected readonly defaultExampleCode = `<nb-dialog>
-  <button nbButton nbDialogTrigger>Open Dialog</button>
-  <nb-dialog-content>
-    <nb-dialog-header>
-      <nb-dialog-title>Confirm Action</nb-dialog-title>
-      <nb-dialog-description>Are you sure you want to continue?</nb-dialog-description>
-    </nb-dialog-header>
-    <nb-dialog-footer>
-      <button nbButton variant="neutral" nbDialogClose>Cancel</button>
-      <button nbButton nbDialogClose>Confirm</button>
-    </nb-dialog-footer>
-  </nb-dialog-content>
+  protected readonly defaultExampleCode = `<button nbButton (click)="dialog.open()">Open Dialog</button>
+<nb-dialog #dialog>
+  <h2 nbDialogTitle>Confirm Action</h2>
+  <p nbDialogDescription>Are you sure you want to continue?</p>
+  <nb-dialog-actions>
+    <button nbButton variant="neutral" nbDialogClose>Cancel</button>
+    <button nbButton nbDialogClose>Confirm</button>
+  </nb-dialog-actions>
 </nb-dialog>`;
 
   protected readonly importCode = `import {
   NbDialog,
-  NbDialogContent,
-  NbDialogTrigger,
-  NbDialogClose,
-  NbDialogHeader,
   NbDialogTitle,
   NbDialogDescription,
-  NbDialogFooter,
+  NbDialogContent,
+  NbDialogActions,
+  NbDialogClose,
 } from '@ng-brutalism/ui';`;
 
-  protected readonly withFormExampleCode = `<nb-dialog>
-  <button nbButton nbDialogTrigger>Contact Us</button>
+  protected readonly withFormExampleCode = `<button nbButton (click)="dialog.open()">Contact Us</button>
+<nb-dialog #dialog>
+  <h2 nbDialogTitle>Send Message</h2>
+  <p nbDialogDescription>Fill in the form below.</p>
   <nb-dialog-content>
-    <nb-dialog-header>
-      <nb-dialog-title>Send Message</nb-dialog-title>
-      <nb-dialog-description>Fill in the form below.</nb-dialog-description>
-    </nb-dialog-header>
-    <div class="flex flex-col gap-4 px-6 py-4">
+    <div class="flex flex-col gap-4">
       <div class="flex flex-col gap-2">
         <label nbLabel for="name">Name</label>
         <input nbInput id="name" placeholder="Your name" />
@@ -227,10 +201,10 @@ export default class DialogPageComponent {
         <textarea nbTextarea id="msg" placeholder="Your message..."></textarea>
       </div>
     </div>
-    <nb-dialog-footer>
-      <button nbButton variant="neutral" nbDialogClose>Cancel</button>
-      <button nbButton nbDialogClose>Send</button>
-    </nb-dialog-footer>
   </nb-dialog-content>
+  <nb-dialog-actions>
+    <button nbButton variant="neutral" nbDialogClose>Cancel</button>
+    <button nbButton nbDialogClose>Send</button>
+  </nb-dialog-actions>
 </nb-dialog>`;
 }
