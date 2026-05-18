@@ -18,6 +18,16 @@ export const appConfig: ApplicationConfig = {
     provideFileRouter(
       withExtraRoutes([
         {
+          path: '',
+          redirectTo: '/docs/introduction',
+          pathMatch: 'full',
+        },
+        {
+          path: 'docs',
+          redirectTo: '/docs/introduction',
+          pathMatch: 'full',
+        },
+        {
           path: 'src/app/pages/showcase/portfolio.page.ts',
           redirectTo: '/showcase/portfolio',
           pathMatch: 'full',

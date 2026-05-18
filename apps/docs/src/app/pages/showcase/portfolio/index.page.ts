@@ -47,7 +47,7 @@ export default class PortfolioShowcasePageComponent {
   protected readonly sent = signal(false);
   protected readonly activeJourney = signal(-1);
 
-  private readonly greetings = ['Hello!', 'Hola!', 'Bonjour!', 'Namaste!'];
+  private readonly greetings = ['Hello!', 'Hola!', 'Bonjour!', 'Xin chào!'];
   private greetingIndex = 0;
   protected readonly greeting = signal(this.greetings[0]);
 

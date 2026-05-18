@@ -28,7 +28,7 @@ import { docsNavGroups, findDocsNavItem } from './docs.navigation';
         >
           <div class="flex items-center gap-10">
             <a
-              routerLink="/"
+              routerLink="/docs/introduction"
               class="flex size-8 items-center justify-center border-[3px] border-(--nb-border) bg-nb-secondary text-[22px] font-bold leading-none text-nb-secondary-fg shadow-[2px_2px_0_0_var(--nb-shadow)]"
               aria-label="Ng Neo Brutalism home"
             >
@@ -39,12 +39,8 @@ import { docsNavGroups, findDocsNavItem } from './docs.navigation';
               aria-label="Main navigation"
               class="hidden items-center gap-10 text-base font-medium lg:flex"
             >
-              <a routerLink="/">Docs</a>
+              <a routerLink="/docs/introduction">Docs</a>
               <a routerLink="/components/accordion">Components</a>
-              <span>Styling</span>
-              <span>Charts</span>
-              <span>Stars</span>
-              <span>Templates</span>
               <a routerLink="/showcase/portfolio">Showcase</a>
             </nav>
           </div>

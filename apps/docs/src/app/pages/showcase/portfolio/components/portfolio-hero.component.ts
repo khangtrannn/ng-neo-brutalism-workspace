@@ -106,8 +106,8 @@ import type { Skill } from '../portfolio.types';
         >
           <img
             class="h-auto w-auto max-w-[180px] sm:max-w-[220px] md:max-w-[300px] lg:max-w-[400px] xl:max-w-[450px]"
-            [src]="assetPath() + '/ronit.png'"
-            alt="Ronit Jadhav"
+            [src]="assetPath() + '/khang.png'"
+            alt="Khang Tran"
           />
         </div>
       </div>

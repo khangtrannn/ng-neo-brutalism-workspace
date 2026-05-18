@@ -1,5 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'nb-docs-navbar',
@@ -12,7 +21,7 @@ import { RouterLink } from '@angular/router';
     >
       <div class="flex min-h-20 items-center justify-between gap-5 px-4 py-3 sm:px-6">
         <a
-          routerLink="/"
+          routerLink="/docs/introduction"
           class="brand group flex items-center gap-3 font-bold"
           aria-label="Ng Neo Brutalism home"
         >
@@ -30,12 +39,27 @@ import { RouterLink } from '@angular/router';
         <div
           class="hidden flex-1 items-center justify-center gap-3 text-base font-black tracking-normal uppercase lg:flex"
         >
-          <a class="nav-link nav-link-active" routerLink="/docs">Docs</a>
-          <a class="nav-link" routerLink="/docs/button">Components</a>
-          <a class="nav-link" routerLink="/docs/styling">Styling</a>
-          <a class="nav-link" routerLink="/docs/charts">Charts</a>
-          <a class="nav-link" routerLink="/docs/templates">Templates</a>
-          <a class="nav-link" routerLink="/docs/showcase">Showcase</a>
+          <a
+            class="nav-link"
+            routerLink="/docs/introduction"
+            [class.nav-link-active]="activeSection() === 'docs'"
+          >
+            Docs
+          </a>
+          <a
+            class="nav-link"
+            routerLink="/components/accordion"
+            [class.nav-link-active]="activeSection() === 'components'"
+          >
+            Components
+          </a>
+          <a
+            class="nav-link"
+            routerLink="/showcase/portfolio"
+            [class.nav-link-active]="activeSection() === 'showcase'"
+          >
+            Showcase
+          </a>
         </div>
 
         <div class="flex items-center gap-3">
@@ -122,4 +146,39 @@ import { RouterLink } from '@angular/router';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NbDocsNavbarComponent {}
+export class NbDocsNavbarComponent {
+  private readonly router = inject(Router);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly currentPath = signal(this.normalizePath(this.router.url));
+
+  protected readonly activeSection = computed(() => {
+    const path = this.currentPath();
+
+    if (path.startsWith('/components')) {
+      return 'components';
+    }
+
+    if (path.startsWith('/showcase')) {
+      return 'showcase';
+    }
+
+    return 'docs';
+  });
+
+  constructor() {
+    this.router.events
+      .pipe(
+        filter(
+          (event): event is NavigationEnd => event instanceof NavigationEnd
+        ),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe((event) =>
+        this.currentPath.set(this.normalizePath(event.urlAfterRedirects))
+      );
+  }
+
+  private normalizePath(url: string): string {
+    return url.split(/[?#]/, 1)[0] || '/';
+  }
+}

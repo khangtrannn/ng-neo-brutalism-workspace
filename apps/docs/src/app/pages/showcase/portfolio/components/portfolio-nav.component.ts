@@ -27,8 +27,8 @@ import { PortfolioContactDialogComponent } from './portfolio-contact-dialog.comp
         >
           <img
             class="h-[52px] w-[52px] object-contain sm:h-[64px] sm:w-[64px] md:h-[70px] md:w-[70px]"
-            [src]="assetPath() + '/ronitLogo.png'"
-            alt="Ronit Logo"
+            [src]="assetPath() + '/logo.png'"
+            alt="MK Logo"
           />
         </a>
 

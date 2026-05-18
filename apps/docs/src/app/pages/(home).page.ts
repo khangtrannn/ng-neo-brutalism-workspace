@@ -30,10 +30,6 @@ import JobListingCardExampleComponent from './components/examples/job-listing-ca
         </a>
       </div>
     </article>
-
-    <div class="mt-8 flex justify-center">
-      <docs-job-listing-card-example />
-    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

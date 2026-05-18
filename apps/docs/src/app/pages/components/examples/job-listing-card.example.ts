@@ -300,8 +300,6 @@ import {
   `,
   styles: [
     `
-      @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Patrick+Hand&display=swap');
-
       :host {
         display: block;
         width: min(100%, 500px);
@@ -331,8 +329,7 @@ import {
         background: var(--job-paper);
         box-shadow: 8px 10px 0 0 var(--job-shadow);
         color: var(--job-ink);
-        font-family: 'Patrick Hand', 'Comic Sans MS', 'Bradley Hand',
-          'Segoe Print', cursive;
+        font-family: 'Patrick Hand', 'Comic Sans MS', 'Bradley Hand', 'Segoe Print', cursive;
       }
 
       .job-card-shell {
