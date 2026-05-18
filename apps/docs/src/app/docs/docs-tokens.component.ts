@@ -92,24 +92,44 @@ const componentTokens: Record<DocsTokenComponent, DocsToken[]> = {
   ],
   badge: [
     {
-      name: '--nb-secondary-background',
-      defaultValue: 'oklch(96% 0 0)',
+      name: '--nb-accent',
+      defaultValue: '#8ae9ff',
       usage: 'Secondary variant background',
     },
     {
+      name: '--nb-accent-foreground',
+      defaultValue: '#000000',
+      usage: 'Secondary variant text color',
+    },
+    {
       name: '--nb-success',
-      defaultValue: '#a8ff78',
+      defaultValue: '#63e6be',
       usage: 'Success variant background',
     },
     {
+      name: '--nb-success-foreground',
+      defaultValue: '#000000',
+      usage: 'Success variant text color',
+    },
+    {
       name: '--nb-warning',
-      defaultValue: '#ffda6a',
+      defaultValue: '#ffd24a',
       usage: 'Warning variant background',
     },
     {
+      name: '--nb-warning-foreground',
+      defaultValue: '#000000',
+      usage: 'Warning variant text color',
+    },
+    {
       name: '--nb-danger',
-      defaultValue: '#ff6b6b',
+      defaultValue: '#ff4f8a',
       usage: 'Destructive variant background',
+    },
+    {
+      name: '--nb-danger-foreground',
+      defaultValue: '#000000',
+      usage: 'Destructive variant text color',
     },
   ],
   button: [
