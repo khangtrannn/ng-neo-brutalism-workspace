@@ -1,0 +1,309 @@
+:host {
+  display: block;
+}
+
+.portfolio-shell {
+  --portfolio-dark-bg: #212121;
+  --portfolio-dark-text: #eeefe9;
+  --font-heading: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.portfolio-grid-bg {
+  background-size: 20px 20px;
+  background-image: linear-gradient(to right, #e4e4e7 1px, transparent 1px),
+    linear-gradient(to bottom, #e4e4e7 1px, transparent 1px);
+
+  .dark & {
+    background-image: linear-gradient(to right, #262626 1px, transparent 1px),
+      linear-gradient(to bottom, #262626 1px, transparent 1px);
+  }
+}
+
+.portfolio-radial {
+  pointer-events: none;
+  background: white;
+  mask-image: radial-gradient(ellipse at center, transparent 20%, black);
+}
+
+@keyframes portfolio-social-wiggle {
+  0%, 100% { rotate: 0deg; }
+  25%       { rotate: -10deg; }
+  50%       { rotate: 10deg; }
+  75%       { rotate: -10deg; }
+}
+
+.portfolio-social {
+  display: grid;
+  width: clamp(2rem, 5vw, 3rem);
+  height: clamp(2rem, 5vw, 3rem);
+  place-items: center;
+  color: #1f2937;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  transition: scale 200ms ease;
+
+  &:hover {
+    scale: 1.1;
+    animation: portfolio-social-wiggle 0.4s ease;
+  }
+
+  .dark & {
+    color: white;
+  }
+}
+
+.portfolio-skill-icon {
+  width: clamp(1.5rem, 4vw, 2.5rem);
+  height: clamp(1.5rem, 4vw, 2.5rem);
+  object-fit: contain;
+}
+
+.portfolio-info-card {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  width: 100%;
+  min-height: 200px;
+  max-width: 720px;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 1rem;
+  border: 2px solid #0f172a;
+  border-radius: 0.5rem;
+  background: white;
+  padding: 1.25rem 1rem;
+  box-shadow: 4px 4px 0 0 #000;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  .dark & {
+    border-color: #6b7280;
+    background: #212121;
+    box-shadow: 4px 4px 0 0 #6b7280;
+  }
+
+  @media (min-width: 640px) {
+    min-height: 250px;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    min-height: 300px;
+    flex-direction: row;
+    gap: 3rem;
+    padding: 2rem 1.5rem;
+  }
+}
+
+.portfolio-section-title {
+  width: 100%;
+  border: 2px solid #000;
+  background: white;
+  padding: 0.75rem;
+  box-shadow: 4px 4px 0 0 #000;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+
+  &:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 12px 12px 0 0 #000;
+  }
+
+  .dark & {
+    background: #212121;
+    box-shadow: 4px 4px 0 0 #555;
+
+    &:hover {
+      box-shadow: 12px 12px 0 0 #555;
+    }
+  }
+
+  @media (min-width: 640px) {
+    border-width: 4px;
+    padding: 1rem;
+    box-shadow: 8px 8px 0 0 #000;
+
+    .dark & {
+      box-shadow: 8px 8px 0 0 #555;
+    }
+  }
+}
+
+.portfolio-map-canvas {
+  background-color: #dbeafe;
+
+  .dark & {
+    background-color: #1f2937;
+  }
+
+  .ol-viewport canvas {
+    outline: none;
+  }
+}
+
+.portfolio-map-popup {
+  position: relative;
+  z-index: 15;
+  min-width: 180px;
+  max-width: 250px;
+  border: 2px solid #000;
+  border-radius: 0.5rem;
+  background: white;
+  padding: 0.5rem;
+  box-shadow: 4px 4px 0 0 #000;
+  pointer-events: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 14px;
+    height: 14px;
+    bottom: -22px;
+    background: transparent;
+    border-bottom: 2px solid #000;
+    border-right: 2px solid #000;
+    z-index: 14;
+  }
+
+  h3 {
+    margin-bottom: 0.25rem;
+    border-bottom: 2px solid #000;
+    padding-bottom: 0.25rem;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #000;
+  }
+
+  p {
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: #374151;
+  }
+
+  .dark & {
+    background: #212121;
+    box-shadow: 4px 4px 0 0 rgba(255, 255, 255, 0.3);
+
+    &::after {
+      background: transparent;
+      border-bottom-color: rgba(255, 255, 255, 0.3);
+      border-right-color: rgba(255, 255, 255, 0.3);
+    }
+
+    h3,
+    p {
+      color: white;
+    }
+  }
+
+  @media (min-width: 640px) {
+    min-width: 250px;
+    max-width: 350px;
+    border-width: 4px;
+    padding: 1rem;
+
+    &::after {
+      bottom: -22px;
+      width: 18px;
+      height: 18px;
+      border-bottom-width: 4px;
+      border-right-width: 4px;
+    }
+
+    h3 {
+      margin-bottom: 0.5rem;
+      border-bottom-width: 4px;
+      padding-bottom: 0.5rem;
+      font-size: 1.25rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+
+.portfolio-map-control {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border: 2px solid #000;
+  border-radius: 0.5rem;
+  background: white;
+  color: #000;
+  font-size: 1.125rem;
+  font-weight: 900;
+  box-shadow: 2px 2px 0 0 #000;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+
+  &:hover {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+  }
+
+  .dark & {
+    background: #212121;
+    color: #eeefe9;
+    border-color: white;
+    box-shadow: 2px 2px 0 0 rgba(255, 255, 255, 0.3);
+  }
+
+  @media (min-width: 640px) {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-width: 4px;
+    font-size: 1.25rem;
+    box-shadow: 4px 4px 0 0 #000;
+  }
+}
+
+.portfolio-project-card {
+  border: 3px solid #000;
+  border-radius: 0.5rem;
+  background: white;
+  padding: 0.75rem;
+  color: #000;
+  box-shadow: 8px 8px 0 0 #000;
+  transition: transform 220ms ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  .dark & {
+    background: #212121;
+    color: #eeefe9;
+    box-shadow: 8px 8px 0 0 #555;
+  }
+
+  @media (min-width: 768px) {
+    padding: 1.5rem;
+  }
+}
+
+.portfolio-project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  border: 2px solid #000;
+  padding: 0.375rem 0.75rem;
+  color: #000;
+  font-size: 0.875rem;
+  font-weight: 700;
+  box-shadow: 4px 4px 0 0 #000;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+
+  &:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 4px 8px 0 0 #000;
+  }
+}

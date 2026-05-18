@@ -16,23 +16,23 @@ export class NbTextarea {
 
   protected readonly classes = computed(() =>
     nbClass(
-      'flex w-full min-h-20 rounded-nb border-2 border-(--nb-border)',
-      'bg-(--nb-secondary-background) text-(--nb-foreground)',
+      'flex rounded-nb border-2 border-(--nb-border)',
+      'bg-white text-(--nb-foreground)',
       'font-medium',
       'shadow-nb',
       'placeholder:text-gray-400',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--nb-border) focus-visible:ring-offset-2 focus-visible:shadow-none',
       'disabled:opacity-50 disabled:cursor-not-allowed',
-      'resize-y',
+      'resize-none',
       this.sizeClass()
     )
   );
 
   private sizeClass(): string {
     const map: Record<NbTextareaSize, string> = {
-      default: 'px-3 py-2 text-sm',
-      sm: 'px-3 py-1.5 text-sm',
-      lg: 'px-4 py-3 text-base',
+      default: 'min-h-20 px-3 py-2 text-sm',
+      sm: 'min-h-16 px-3 py-1.5 text-sm',
+      lg: 'min-h-24 px-4 py-3 text-base',
     };
 
     return map[this.size()];

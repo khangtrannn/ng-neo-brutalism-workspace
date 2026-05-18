@@ -87,3 +87,9 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+
+## 5. Portfolio showcase reference
+Website: https://ronit.io/
+Repo: https://github.com/ronitjadhav/ronit.io
+
+Always fetch the actual source file from that repo before implementing any visual task (UI, animation, color, spacing, layout). One deep read up front eliminates multiple correction rounds. Do not guess from a description alone.

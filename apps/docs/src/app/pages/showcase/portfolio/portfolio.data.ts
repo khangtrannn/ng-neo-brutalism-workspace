@@ -79,12 +79,11 @@ export const TIMELINE: TimelineEntry[] = [
     date: 'Oct 2023 - Present',
     description:
       'Kicked off my journey into the open-source geospatial realm at Camptocamp, working with QGIS, Geonetwork-UI, developing custom GIS dashboards, and contributing to QGIS plugins. Diving into Docker, web GIS, and everything open-source!',
+    location: [13.427683548268714, 52.499819181584776],
     locationName: 'Berlin, Germany (Hybrid)',
     popupTitle: 'Camptocamp',
     popupDescription:
       'Became part of the open-source geospatial world, building geospatial solutions and exploring the power of QGIS.',
-    x: 56,
-    y: 35,
   },
   {
     id: 2,
@@ -92,12 +91,11 @@ export const TIMELINE: TimelineEntry[] = [
     date: '2022 - 2024',
     description:
       'Diving deep into advanced programming, software engineering, and IoT, while focusing on Industry 4.0. Gaining expertise in applied cloud computing, non-relational databases, and spatial technologies to bridge software and the real world.',
+    location: [11.941048555260455, 50.325469419408954],
     locationName: 'Hof, Germany',
     popupTitle: 'Hochschule Hof',
     popupDescription:
       'Expanding my skillset in software engineering, focusing on Industry 4.0, cloud computing, and real-world applications.',
-    x: 54,
-    y: 42,
   },
   {
     id: 3,
@@ -105,12 +103,11 @@ export const TIMELINE: TimelineEntry[] = [
     date: '2019 - 2022',
     description:
       'Joined Gistec to create custom geoprocessing tools, work with ArcGIS Enterprise, and develop web mapping apps with Esri tech. Basically, a geospatial problem-solver.',
+    location: [78.39265742273773, 17.489373568497363],
     locationName: 'Hyderabad, India',
     popupTitle: 'Gistec',
     popupDescription:
       'Built mapping tools and apps while mastering Python (ArcPy), ArcGIS Server, and the Esri stack.',
-    x: 72,
-    y: 62,
   },
   {
     id: 4,
@@ -118,12 +115,11 @@ export const TIMELINE: TimelineEntry[] = [
     date: '2019 - 2019',
     description:
       'Interned at the University of Cologne, applying GIS and spatial analysis to hydrological modeling with ArcSWAT for the Mula-Mutha river. Automated tasks using Python and supported geospatial research for water resources.',
+    location: [6.936245553273681, 50.92747527039799],
     locationName: 'Cologne, Germany',
     popupTitle: 'University of Cologne',
     popupDescription:
       "Leveraged GIS and spatial data to contribute to water flux modeling and the SWAT tool's application in India.",
-    x: 52,
-    y: 40,
   },
   {
     id: 5,
@@ -131,12 +127,11 @@ export const TIMELINE: TimelineEntry[] = [
     date: '2017 - 2019',
     description:
       'Learned to wield GIS, remote sensing, and code like a spatial wizard. Maps and code - what could go wrong?',
+    location: [73.85215058309475, 18.460275536163216],
     locationName: 'Pune, India',
     popupTitle: 'BVIEER',
     popupDescription:
       'Where I discovered that geography is more than just knowing where places are.',
-    x: 70,
-    y: 66,
   },
 ];
 

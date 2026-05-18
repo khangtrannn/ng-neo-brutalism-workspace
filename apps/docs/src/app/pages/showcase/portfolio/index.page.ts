@@ -35,7 +35,7 @@ import { PortfolioProjectsComponent } from './components/portfolio-projects.comp
     PortfolioProjectsComponent,
   ],
   templateUrl: './portfolio.page.html',
-  styleUrl: './portfolio.page.css',
+  styleUrl: './portfolio.page.scss',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -45,7 +45,7 @@ export default class PortfolioShowcasePageComponent {
   protected readonly assetPath = ASSET_PATH;
   protected readonly menuOpen = signal(false);
   protected readonly sent = signal(false);
-  protected readonly activeJourney = signal(0);
+  protected readonly activeJourney = signal(-1);
 
   private readonly greetings = ['Hello!', 'Hola!', 'Bonjour!', 'Namaste!'];
   private greetingIndex = 0;

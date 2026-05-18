@@ -23,11 +23,10 @@ export interface TimelineEntry {
   title: string;
   date: string;
   description: string;
+  location: [number, number];
   locationName: string;
   popupTitle: string;
   popupDescription: string;
-  x: number;
-  y: number;
 }
 
 export interface Project {
