@@ -14,6 +14,7 @@ import {
 
 import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
 import { DocsExampleComponent } from '../../docs/docs-example.component';
+import { DocsTokensComponent } from '../../docs/docs-tokens.component';
 
 @Component({
   selector: 'docs-dialog-page',
@@ -21,6 +22,7 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
   imports: [
     DocsCodeBlockComponent,
     DocsExampleComponent,
+    DocsTokensComponent,
     NbButton,
     NbDialog,
     NbDialogActions,
@@ -204,6 +206,8 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
           </nb-dialog>
         </docs-example>
       </section>
+
+      <docs-tokens component="dialog" />
 
       <section id="api">
         <h2 class="mt-10 mb-4 text-2xl font-bold">API</h2>

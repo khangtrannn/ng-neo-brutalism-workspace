@@ -9,6 +9,7 @@ import {
 
 import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
 import { DocsExampleComponent } from '../../docs/docs-example.component';
+import { DocsTokensComponent } from '../../docs/docs-tokens.component';
 
 @Component({
   selector: 'docs-accordion-page',
@@ -16,6 +17,7 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
   imports: [
     DocsCodeBlockComponent,
     DocsExampleComponent,
+    DocsTokensComponent,
     NbAccordion,
     NbAccordionContent,
     NbAccordionItem,
@@ -202,6 +204,8 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
           </nb-accordion>
         </docs-example>
       </section>
+
+      <docs-tokens component="accordion" />
 
       <section id="api">
         <h2 class="mt-10 mb-4 text-2xl font-bold">API</h2>

@@ -11,6 +11,7 @@ import {
 
 import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
 import { DocsExampleComponent } from '../../docs/docs-example.component';
+import { DocsTokensComponent } from '../../docs/docs-tokens.component';
 
 @Component({
   selector: 'docs-input-group-page',
@@ -18,6 +19,7 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
   imports: [
     DocsCodeBlockComponent,
     DocsExampleComponent,
+    DocsTokensComponent,
     NbButton,
     NbInput,
     NbInputGroup,
@@ -124,6 +126,8 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
           </nb-input-group>
         </docs-example>
       </section>
+
+      <docs-tokens component="input-group" />
 
       <section id="api">
         <h2 class="mt-10 mb-4 text-2xl font-bold">API</h2>

@@ -3,6 +3,7 @@ import { NbButton, NbImageCard } from '@ng-brutalism/ui';
 
 import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
 import { DocsExampleComponent } from '../../docs/docs-example.component';
+import { DocsTokensComponent } from '../../docs/docs-tokens.component';
 
 @Component({
   selector: 'docs-image-card-page',
@@ -10,6 +11,7 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
   imports: [
     DocsCodeBlockComponent,
     DocsExampleComponent,
+    DocsTokensComponent,
     NbButton,
     NbImageCard,
   ],
@@ -83,6 +85,8 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
           />
         </docs-example>
       </section>
+
+      <docs-tokens component="image-card" />
 
       <section id="api">
         <h2 class="mt-10 mb-4 text-2xl font-bold">API</h2>

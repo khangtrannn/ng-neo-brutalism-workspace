@@ -13,6 +13,7 @@ import {
 
 import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
 import { DocsExampleComponent } from '../../docs/docs-example.component';
+import { DocsTokensComponent } from '../../docs/docs-tokens.component';
 import JobListingCardExampleComponent from './examples/job-listing-card.example';
 
 @Component({
@@ -21,6 +22,7 @@ import JobListingCardExampleComponent from './examples/job-listing-card.example'
   imports: [
     DocsCodeBlockComponent,
     DocsExampleComponent,
+    DocsTokensComponent,
     JobListingCardExampleComponent,
     NbButton,
     NbCard,
@@ -273,6 +275,8 @@ import JobListingCardExampleComponent from './examples/job-listing-card.example'
           </table>
         </div>
       </section>
+
+      <docs-tokens component="card" />
     </article>
   `,
   styles: [

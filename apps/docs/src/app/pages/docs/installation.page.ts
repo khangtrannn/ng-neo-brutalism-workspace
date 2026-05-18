@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
+import { DocsTokensComponent } from '../../docs/docs-tokens.component';
 
 @Component({
   selector: 'docs-installation-page',
   standalone: true,
-  imports: [DocsCodeBlockComponent],
+  imports: [DocsCodeBlockComponent, DocsTokensComponent],
   template: `
     <article>
       <header id="overview" class="relative mb-10 scroll-mt-32">
@@ -32,6 +33,8 @@ import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
         </p>
         <docs-code-block title="app.config.ts" [code]="providerCode" />
       </section>
+
+      <docs-tokens component="theme" />
 
       <section id="usage">
         <h2 class="mt-10 mb-4 text-2xl font-bold">Usage</h2>

@@ -3,6 +3,7 @@ import { NbButton, NbCheckbox, NbInput, NbLabel } from '@ng-brutalism/ui';
 
 import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
 import { DocsExampleComponent } from '../../docs/docs-example.component';
+import { DocsTokensComponent } from '../../docs/docs-tokens.component';
 
 @Component({
   selector: 'docs-label-page',
@@ -10,6 +11,7 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
   imports: [
     DocsCodeBlockComponent,
     DocsExampleComponent,
+    DocsTokensComponent,
     NbButton,
     NbCheckbox,
     NbInput,
@@ -94,6 +96,8 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
           </div>
         </docs-example>
       </section>
+
+      <docs-tokens component="label" />
 
       <section id="api">
         <h2 class="mt-10 mb-4 text-2xl font-bold">API</h2>

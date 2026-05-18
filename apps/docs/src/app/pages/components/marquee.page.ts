@@ -3,6 +3,7 @@ import { NbButton, NbMarquee, NbMarqueeItem } from '@ng-brutalism/ui';
 
 import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
 import { DocsExampleComponent } from '../../docs/docs-example.component';
+import { DocsTokensComponent } from '../../docs/docs-tokens.component';
 
 interface MarqueeSkill {
   text: string;
@@ -16,6 +17,7 @@ interface MarqueeSkill {
   imports: [
     DocsCodeBlockComponent,
     DocsExampleComponent,
+    DocsTokensComponent,
     NbButton,
     NbMarquee,
     NbMarqueeItem,
@@ -178,6 +180,8 @@ interface MarqueeSkill {
           </nb-marquee>
         </docs-example>
       </section>
+
+      <docs-tokens component="marquee" />
 
       <section id="api">
         <h2 class="mt-10 mb-4 text-2xl font-bold">API</h2>

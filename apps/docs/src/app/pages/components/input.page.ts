@@ -3,11 +3,19 @@ import { NbButton, NbInput, NbLabel } from '@ng-brutalism/ui';
 
 import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
 import { DocsExampleComponent } from '../../docs/docs-example.component';
+import { DocsTokensComponent } from '../../docs/docs-tokens.component';
 
 @Component({
   selector: 'docs-input-page',
   standalone: true,
-  imports: [DocsCodeBlockComponent, DocsExampleComponent, NbButton, NbInput, NbLabel],
+  imports: [
+    DocsCodeBlockComponent,
+    DocsExampleComponent,
+    DocsTokensComponent,
+    NbButton,
+    NbInput,
+    NbLabel,
+  ],
   template: `
     <article>
       <header id="overview" class="relative mb-10 scroll-mt-32">
@@ -104,6 +112,8 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
           <input nbInput type="file" class="w-[250px]" />
         </docs-example>
       </section>
+
+      <docs-tokens component="input" />
 
       <section id="api">
         <h2 class="mt-10 mb-4 text-2xl font-bold">API</h2>

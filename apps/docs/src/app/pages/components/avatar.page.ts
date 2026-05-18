@@ -3,11 +3,18 @@ import { NbAvatar, NbButton } from '@ng-brutalism/ui';
 
 import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
 import { DocsExampleComponent } from '../../docs/docs-example.component';
+import { DocsTokensComponent } from '../../docs/docs-tokens.component';
 
 @Component({
   selector: 'docs-avatar-page',
   standalone: true,
-  imports: [DocsCodeBlockComponent, DocsExampleComponent, NbAvatar, NbButton],
+  imports: [
+    DocsCodeBlockComponent,
+    DocsExampleComponent,
+    DocsTokensComponent,
+    NbAvatar,
+    NbButton,
+  ],
   template: `
     <article>
       <header id="overview" class="relative mb-10 scroll-mt-32">
@@ -69,6 +76,8 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
           </div>
         </docs-example>
       </section>
+
+      <docs-tokens component="avatar" />
 
       <section id="api">
         <h2 class="mt-10 mb-4 text-2xl font-bold">API</h2>
