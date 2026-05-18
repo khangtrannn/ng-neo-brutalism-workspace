@@ -11,7 +11,7 @@ import { nbClass } from '../core/class';
 })
 export class NbLabel {
   protected readonly classes = nbClass(
-    'text-sm font-bold leading-none',
+    'font-bold leading-none',
     'peer-disabled:cursor-not-allowed peer-disabled:opacity-50'
   );
 }
