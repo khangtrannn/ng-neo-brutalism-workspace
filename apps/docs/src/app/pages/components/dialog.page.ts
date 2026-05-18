@@ -120,23 +120,86 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
         <docs-example [code]="withFormExampleCode">
           <button nbButton (click)="withFormDialog.open()">Contact Us</button>
           <nb-dialog #withFormDialog>
-            <h2 nbDialogTitle>Send Message</h2>
-            <p nbDialogDescription>Fill in the form below and we'll get back to you.</p>
-            <nb-dialog-content>
-              <div class="flex flex-col gap-4">
-                <div class="flex flex-col gap-2">
-                  <label nbLabel for="name">Name</label>
-                  <input nbInput id="name" placeholder="Your name" />
-                </div>
-                <div class="flex flex-col gap-2">
-                  <label nbLabel for="msg">Message</label>
-                  <textarea nbTextarea id="msg" placeholder="Your message..."></textarea>
-                </div>
+            <div class="relative bg-[#faf3d6] px-6 pt-7 pb-5 sm:px-10 sm:pt-9 sm:pb-6">
+              <button
+                nbButton
+                nbDialogClose
+                size="icon"
+                variant="neutral"
+                aria-label="Close dialog"
+                class="absolute right-6 top-6 text-xl leading-none sm:right-10 sm:top-9"
+              >
+                &times;
+              </button>
+
+              <div class="pointer-events-none absolute right-24 top-12 hidden items-center gap-2 sm:flex">
+                <span class="font-mono text-3xl font-black leading-none">&#42;</span>
+                <svg width="68" height="22" viewBox="0 0 68 22" fill="none" stroke="#ff2f68" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="2,17 13,5 24,17 35,5 46,17 57,5 66,17" />
+                </svg>
               </div>
+
+              <div class="flex flex-wrap items-center gap-4">
+                <span class="inline-block border-2 border-(--nb-border) bg-[#c4a8ff] px-4 py-1.5 font-mono text-sm font-black uppercase tracking-wider text-black shadow-[3px_3px_0_0_var(--nb-shadow)]">
+                  Let's Talk
+                </span>
+                <h2 nbDialogTitle class="block! p-0! font-mono text-3xl! font-black! leading-none!">Send Message</h2>
+              </div>
+
+              <p nbDialogDescription class="mt-3! inline-block! border-b-2! border-[#ff2f68]! p-0! pb-2! pr-6! font-mono text-base! font-medium! text-black!">
+                Fill in the form below and we'll get back to you.
+              </p>
+            </div>
+
+            <nb-dialog-content class="border-y-0! bg-[#faf3d6]! px-6! pb-6! pt-2! sm:px-10!">
+              <form class="grid gap-5">
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <div class="grid gap-2">
+                    <label nbLabel for="contact-name" class="font-mono text-base!">Name</label>
+                    <input
+                      nbInput
+                      id="contact-name"
+                      placeholder="Your name"
+                      class="h-12! bg-[#fbf1bf]! font-mono"
+                    />
+                  </div>
+                  <div class="grid gap-2">
+                    <label nbLabel for="contact-email" class="font-mono text-base!">Email</label>
+                    <input
+                      nbInput
+                      id="contact-email"
+                      type="email"
+                      placeholder="you@company.com"
+                      class="h-12! bg-[#fbf1bf]! font-mono"
+                    />
+                  </div>
+                </div>
+
+                <div class="grid gap-2">
+                  <label nbLabel for="contact-subject" class="font-mono text-base!">Subject</label>
+                  <input
+                    nbInput
+                    id="contact-subject"
+                    placeholder="What is this regarding?"
+                    class="h-12! bg-[#fbf1bf]! font-mono"
+                  />
+                </div>
+
+                <div class="grid gap-2">
+                  <label nbLabel for="contact-message" class="font-mono text-base!">Message</label>
+                  <textarea
+                    nbTextarea
+                    id="contact-message"
+                    placeholder="Type your message here..."
+                    class="min-h-40! bg-[#fbf1bf]! font-mono"
+                  ></textarea>
+                </div>
+              </form>
             </nb-dialog-content>
-            <nb-dialog-actions>
-              <button nbButton variant="neutral" nbDialogClose>Cancel</button>
-              <button nbButton nbDialogClose>Send</button>
+
+            <nb-dialog-actions class="gap-4! border-t-2 border-(--nb-border) bg-[#faf3d6]! px-6! py-5! sm:px-10!">
+              <button nbButton variant="neutral" nbDialogClose class="min-w-28 font-mono">Cancel</button>
+              <button nbButton nbDialogClose class="min-w-28 font-mono" style="--nb-button-bg: #ffd92e; --nb-button-fg: #000;">Send</button>
             </nb-dialog-actions>
           </nb-dialog>
         </docs-example>
@@ -232,23 +295,65 @@ export default class DialogPageComponent {
 
   protected readonly withFormExampleCode = `<button nbButton (click)="dialog.open()">Contact Us</button>
 <nb-dialog #dialog>
-  <h2 nbDialogTitle>Send Message</h2>
-  <p nbDialogDescription>Fill in the form below.</p>
-  <nb-dialog-content>
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-col gap-2">
-        <label nbLabel for="name">Name</label>
-        <input nbInput id="name" placeholder="Your name" />
-      </div>
-      <div class="flex flex-col gap-2">
-        <label nbLabel for="msg">Message</label>
-        <textarea nbTextarea id="msg" placeholder="Your message..."></textarea>
-      </div>
+  <div class="relative bg-[#faf3d6] px-6 pt-7 pb-5 sm:px-10 sm:pt-9 sm:pb-6">
+    <button
+      nbButton
+      nbDialogClose
+      size="icon"
+      variant="neutral"
+      aria-label="Close dialog"
+      class="absolute right-6 top-6 text-xl leading-none sm:right-10 sm:top-9"
+    >
+      &times;
+    </button>
+
+    <div class="pointer-events-none absolute right-24 top-12 hidden items-center gap-2 sm:flex">
+      <span class="font-mono text-3xl font-black leading-none">*</span>
+      <svg width="68" height="22" viewBox="0 0 68 22" fill="none" stroke="#ff2f68" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="2,17 13,5 24,17 35,5 46,17 57,5 66,17" />
+      </svg>
     </div>
+
+    <div class="flex flex-wrap items-center gap-4">
+      <span class="inline-block border-2 border-(--nb-border) bg-[#c4a8ff] px-4 py-1.5 font-mono text-sm font-black uppercase tracking-wider text-black shadow-[3px_3px_0_0_var(--nb-shadow)]">
+        Let's Talk
+      </span>
+      <h2 nbDialogTitle class="block! p-0! font-mono text-3xl! font-black! leading-none!">Send Message</h2>
+    </div>
+
+    <p nbDialogDescription class="mt-3! inline-block! border-b-2! border-[#ff2f68]! p-0! pb-2! pr-6! font-mono text-base! font-medium! text-black!">
+      Fill in the form below and we'll get back to you.
+    </p>
+  </div>
+
+  <nb-dialog-content class="border-y-0! bg-[#faf3d6]! px-6! pb-6! pt-2! sm:px-10!">
+    <form class="grid gap-5">
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div class="grid gap-2">
+          <label nbLabel for="contact-name" class="font-mono text-base!">Name</label>
+          <input nbInput id="contact-name" placeholder="Your name" class="h-12! bg-[#fbf1bf]! font-mono" />
+        </div>
+        <div class="grid gap-2">
+          <label nbLabel for="contact-email" class="font-mono text-base!">Email</label>
+          <input nbInput id="contact-email" type="email" placeholder="you@company.com" class="h-12! bg-[#fbf1bf]! font-mono" />
+        </div>
+      </div>
+
+      <div class="grid gap-2">
+        <label nbLabel for="contact-subject" class="font-mono text-base!">Subject</label>
+        <input nbInput id="contact-subject" placeholder="What is this regarding?" class="h-12! bg-[#fbf1bf]! font-mono" />
+      </div>
+
+      <div class="grid gap-2">
+        <label nbLabel for="contact-message" class="font-mono text-base!">Message</label>
+        <textarea nbTextarea id="contact-message" placeholder="Type your message here..." class="min-h-40! bg-[#fbf1bf]! font-mono"></textarea>
+      </div>
+    </form>
   </nb-dialog-content>
-  <nb-dialog-actions>
-    <button nbButton variant="neutral" nbDialogClose>Cancel</button>
-    <button nbButton nbDialogClose>Send</button>
+
+  <nb-dialog-actions class="gap-4! border-t-2 border-(--nb-border) bg-[#faf3d6]! px-6! py-5! sm:px-10!">
+    <button nbButton variant="neutral" nbDialogClose class="min-w-28 font-mono">Cancel</button>
+    <button nbButton nbDialogClose class="min-w-28 font-mono" style="--nb-button-bg: #ffd92e; --nb-button-fg: #000;">Send</button>
   </nb-dialog-actions>
 </nb-dialog>`;
 }
