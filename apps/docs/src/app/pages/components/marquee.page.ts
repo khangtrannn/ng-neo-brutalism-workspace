@@ -100,31 +100,6 @@ interface MarqueeSkill {
         <docs-code-block title="Template" [code]="defaultExampleTemplateCode" />
       </section>
 
-      <section id="portfolio-skills">
-        <h2 class="mt-10 mb-4 text-2xl font-bold">Portfolio skills</h2>
-        <docs-example [code]="portfolioSkillsExampleCode">
-          <nb-marquee class="w-full" duration="10s">
-            @for (skill of portfolioSkills; track skill.text) {
-              <nb-marquee-item>
-                <span class="mx-4 flex items-center sm:mx-6 lg:mx-8">
-                  <img
-                    class="mr-2 h-7 w-7 object-contain sm:mr-3 sm:h-9 sm:w-9"
-                    [src]="
-                      'https://cdn.simpleicons.org/' + skill.iconSlug + '/000000'
-                    "
-                    [alt]="skill.iconLabel + ' logo'"
-                    loading="lazy"
-                  />
-                  <span class="font-heading text-lg sm:text-xl lg:text-2xl">
-                    {{ skill.text }}
-                  </span>
-                </span>
-              </nb-marquee-item>
-            }
-          </nb-marquee>
-        </docs-example>
-      </section>
-
       <section id="reverse">
         <h2 class="mt-10 mb-4 text-2xl font-bold">Reverse</h2>
         <docs-example [code]="reverseExampleCode">
