@@ -103,6 +103,23 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
         </docs-example>
       </section>
 
+      <section id="pause-on-hover">
+        <h2 class="mt-10 mb-4 text-2xl font-bold">Pause on hover</h2>
+        <docs-example [code]="pauseOnHoverExampleCode">
+          <nb-marquee
+            class="w-full"
+            duration="10s"
+            [pauseOnHover]="false"
+          >
+            <nb-marquee-item>Angular</nb-marquee-item>
+            <nb-marquee-item>TypeScript</nb-marquee-item>
+            <nb-marquee-item>Tailwind CSS</nb-marquee-item>
+            <nb-marquee-item>Vite</nb-marquee-item>
+            <nb-marquee-item>Vitest</nb-marquee-item>
+          </nb-marquee>
+        </docs-example>
+      </section>
+
       <section id="api">
         <h2 class="mt-10 mb-4 text-2xl font-bold">API</h2>
 
@@ -201,6 +218,14 @@ export default class MarqueePageComponent {
 </nb-marquee>`;
 
   protected readonly customSpeedExampleCode = `<nb-marquee class="w-full" duration="18s">
+  <nb-marquee-item>Angular</nb-marquee-item>
+  <nb-marquee-item>TypeScript</nb-marquee-item>
+  <nb-marquee-item>Tailwind CSS</nb-marquee-item>
+  <nb-marquee-item>Vite</nb-marquee-item>
+  <nb-marquee-item>Vitest</nb-marquee-item>
+</nb-marquee>`;
+
+  protected readonly pauseOnHoverExampleCode = `<nb-marquee class="w-full" duration="10s" [pauseOnHover]="false">
   <nb-marquee-item>Angular</nb-marquee-item>
   <nb-marquee-item>TypeScript</nb-marquee-item>
   <nb-marquee-item>Tailwind CSS</nb-marquee-item>

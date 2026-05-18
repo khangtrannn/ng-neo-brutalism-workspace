@@ -10,6 +10,7 @@ import {
   computed,
   inject,
   input,
+  signal,
   viewChild,
 } from '@angular/core';
 
@@ -22,7 +23,7 @@ import { nbClass } from '../core/class';
     class: 'block',
   },
   template: `
-    <div [class]="wrapperClass()" [style]="wrapperStyle()">
+    <div #wrapper [class]="wrapperClass()" [style]="wrapperStyle()">
       <div #strip1 [class]="strip1Class()">
         <ng-content />
       </div>
@@ -90,25 +91,39 @@ export class NbMarqueeComponent {
   readonly reverse = input(false, { transform: booleanAttribute });
   readonly pauseOnHover = input(true, { transform: booleanAttribute });
 
+  private readonly wrapper =
+    viewChild.required<ElementRef<HTMLElement>>('wrapper');
   private readonly strip1 =
     viewChild.required<ElementRef<HTMLElement>>('strip1');
   private readonly strip2 =
     viewChild.required<ElementRef<HTMLElement>>('strip2');
   private readonly destroyRef = inject(DestroyRef);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  private readonly widthScale = signal(1);
 
   protected readonly wrapperClass = computed(() =>
     nbClass(
       'nb-marquee-wrapper relative flex w-full overflow-hidden',
       'border-t-2 border-b-2 border-(--nb-border)',
-      'bg-(--nb-secondary-background) text-(--nb-foreground) font-base',
+      'bg-white text-black font-base',
       this.pauseOnHover() && 'nb-pause-on-hover'
     )
   );
 
   protected readonly wrapperStyle = computed(() => ({
-    '--nb-marquee-duration': this.duration(),
+    '--nb-marquee-duration': this.scaledDuration(),
   }));
+
+  private readonly scaledDuration = computed(() => {
+    const duration = this.duration();
+    const durationMs = this.durationToMs(duration);
+
+    if (durationMs === null) {
+      return duration;
+    }
+
+    return `${durationMs * this.widthScale()}ms`;
+  });
 
   protected readonly strip1Class = computed(() =>
     nbClass(
@@ -131,16 +146,29 @@ export class NbMarqueeComponent {
 
     afterNextRender(() => {
       this.syncSecondStrip();
+      this.updateAnimationScale();
 
-      const observer = new MutationObserver(() => this.syncSecondStrip());
-      observer.observe(this.strip1().nativeElement, {
+      const mutationObserver = new MutationObserver(() => {
+        this.syncSecondStrip();
+        this.updateAnimationScale();
+      });
+      mutationObserver.observe(this.strip1().nativeElement, {
         attributes: true,
         childList: true,
         characterData: true,
         subtree: true,
       });
 
-      this.destroyRef.onDestroy(() => observer.disconnect());
+      const resizeObserver = new ResizeObserver(() =>
+        this.updateAnimationScale()
+      );
+      resizeObserver.observe(this.wrapper().nativeElement);
+      resizeObserver.observe(this.strip1().nativeElement);
+
+      this.destroyRef.onDestroy(() => {
+        mutationObserver.disconnect();
+        resizeObserver.disconnect();
+      });
     });
   }
 
@@ -152,5 +180,28 @@ export class NbMarqueeComponent {
     );
 
     cloneTarget.replaceChildren(...clones);
+  }
+
+  private updateAnimationScale(): void {
+    const wrapperWidth = this.wrapper().nativeElement.clientWidth;
+    const contentWidth = this.strip1().nativeElement.scrollWidth;
+
+    if (wrapperWidth <= 0 || contentWidth <= 0) {
+      this.widthScale.set(1);
+      return;
+    }
+
+    this.widthScale.set(Math.max(1, contentWidth / wrapperWidth));
+  }
+
+  private durationToMs(duration: string): number | null {
+    const match = duration.trim().match(/^(\d*\.?\d+)(ms|s)$/);
+
+    if (!match) {
+      return null;
+    }
+
+    const value = Number(match[1]);
+    return match[2] === 's' ? value * 1000 : value;
   }
 }
