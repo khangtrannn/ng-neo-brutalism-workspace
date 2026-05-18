@@ -15,7 +15,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p
           class="border-2 border-black bg-yellow-300 px-3 py-1 font-mono text-sm text-black shadow-[4px_4px_0px_0px_#000]"
         >
-          &lt;/&gt; with Next.js + Tailwind
+          &lt;/&gt; with Angular + ng-brutalism
         </p>
       </div>
     </footer>

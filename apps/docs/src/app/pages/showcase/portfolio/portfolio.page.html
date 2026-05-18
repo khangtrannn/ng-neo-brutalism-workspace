@@ -1,6 +1,5 @@
 <div
   class="portfolio-shell relative min-h-screen bg-white p-2 text-black sm:p-4 md:p-6 lg:p-8"
-  [class.dark]="isDark()"
 >
   <div
     class="pointer-events-none fixed inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-100"
@@ -13,11 +12,9 @@
   >
     <docs-portfolio-nav
       [assetPath]="assetPath"
-      [isDark]="isDark()"
       [menuOpen]="menuOpen()"
       [navLinks]="navLinks"
       [sent]="sent()"
-      (themeToggled)="toggleTheme()"
       (menuToggled)="toggleMenu()"
       (menuClosed)="closeMenu()"
       (contactSubmitted)="submitContact()"
@@ -27,7 +24,6 @@
       <docs-portfolio-hero
         [assetPath]="assetPath"
         [greeting]="greeting()"
-        [isDark]="isDark()"
         [skills]="skills"
       />
 

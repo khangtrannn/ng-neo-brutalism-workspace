@@ -41,7 +41,7 @@ import {
       <button
         nbButton
         nbDialogTrigger
-        class="h-10 font-heading text-base md:h-12 md:text-lg lg:h-14 lg:text-xl"
+        class="h-10 [--nb-button-bg:#76fbd9] font-heading text-base text-black transition-all hover:scale-[1.02] active:scale-[0.98] md:h-12 md:text-lg lg:h-14 lg:text-xl"
       >
         Get in Touch!
       </button>

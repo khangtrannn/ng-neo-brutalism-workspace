@@ -81,7 +81,7 @@ import type { Skill } from '../portfolio.types';
 
       <div class="absolute bottom-0 left-0 z-0 w-full">
         <nb-marquee
-          class="block border-y-2 border-black bg-white py-2 font-base dark:border-[#555] dark:bg-[#212121] sm:py-3 lg:py-5"
+          class="block bg-white py-2 font-base dark:bg-[#212121] sm:py-3 lg:py-5"
           duration="18s"
         >
           @for (skill of skills(); track skill.text) {

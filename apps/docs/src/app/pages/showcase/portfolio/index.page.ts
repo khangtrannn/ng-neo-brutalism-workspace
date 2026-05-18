@@ -43,7 +43,6 @@ export default class PortfolioShowcasePageComponent {
   private readonly destroyRef = inject(DestroyRef);
 
   protected readonly assetPath = ASSET_PATH;
-  protected readonly isDark = signal(false);
   protected readonly menuOpen = signal(false);
   protected readonly sent = signal(false);
   protected readonly activeJourney = signal(0);
@@ -68,10 +67,6 @@ export default class PortfolioShowcasePageComponent {
   protected readonly aboutCards = ABOUT_CARDS;
   protected readonly timeline = TIMELINE;
   protected readonly projects = PORTFOLIO_PROJECTS;
-
-  protected toggleTheme(): void {
-    this.isDark.update((value) => !value);
-  }
 
   protected toggleMenu(): void {
     this.menuOpen.update((value) => !value);
