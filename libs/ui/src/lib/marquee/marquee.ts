@@ -18,6 +18,9 @@ import { nbClass } from '../core/class';
 @Component({
   selector: 'nb-marquee',
   standalone: true,
+  host: {
+    class: 'block',
+  },
   template: `
     <div [class]="wrapperClass()" [style]="wrapperStyle()">
       <div #strip1 [class]="strip1Class()">
@@ -65,6 +68,15 @@ import { nbClass } from '../core/class';
         animation-name: nb-marquee-reverse-2;
       }
 
+      .nb-marquee-strip-1,
+      .nb-marquee-strip-2 {
+        display: flex;
+        width: max-content;
+        min-width: 100%;
+        align-items: center;
+        flex-shrink: 0;
+      }
+
       .nb-marquee-wrapper.nb-pause-on-hover:hover .nb-marquee-strip-1,
       .nb-marquee-wrapper.nb-pause-on-hover:hover .nb-marquee-strip-2 {
         animation-play-state: paused;
@@ -87,7 +99,7 @@ export class NbMarqueeComponent {
 
   protected readonly wrapperClass = computed(() =>
     nbClass(
-      'nb-marquee-wrapper relative flex w-full overflow-x-hidden',
+      'nb-marquee-wrapper relative flex w-full overflow-hidden',
       'border-t-2 border-b-2 border-(--nb-border)',
       'bg-(--nb-secondary-background) text-(--nb-foreground) font-base',
       this.pauseOnHover() && 'nb-pause-on-hover'
@@ -100,14 +112,14 @@ export class NbMarqueeComponent {
 
   protected readonly strip1Class = computed(() =>
     nbClass(
-      'nb-marquee-strip-1 whitespace-nowrap py-12',
+      'nb-marquee-strip-1 whitespace-nowrap py-4',
       this.reverse() && 'nb-marquee-reverse'
     )
   );
 
   protected readonly strip2Class = computed(() =>
     nbClass(
-      'nb-marquee-strip-2 absolute top-0 left-0 whitespace-nowrap py-12',
+      'nb-marquee-strip-2 absolute top-0 left-0 whitespace-nowrap py-4',
       this.reverse() && 'nb-marquee-reverse'
     )
   );

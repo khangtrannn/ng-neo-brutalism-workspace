@@ -7,7 +7,7 @@ import {
   selector: 'nb-marquee-item',
   standalone: true,
   host: {
-    class: 'mx-4 text-4xl whitespace-nowrap',
+    class: 'mx-4 inline-flex shrink-0 items-center text-4xl whitespace-nowrap',
   },
   template: `<ng-content />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
