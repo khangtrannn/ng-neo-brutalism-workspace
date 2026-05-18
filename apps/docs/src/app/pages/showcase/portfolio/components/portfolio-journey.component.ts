@@ -45,8 +45,8 @@ const MARKER_URL = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(
   MARKER_SVG
 )}`;
 
-const INITIAL_CENTER: [number, number] = [10, 45];
-const INITIAL_ZOOM = 3;
+const INITIAL_CENTER: [number, number] = [58, 30];
+const INITIAL_ZOOM = 2;
 
 @Component({
   selector: 'docs-portfolio-journey',
