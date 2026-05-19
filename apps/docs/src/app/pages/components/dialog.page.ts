@@ -136,17 +136,16 @@ import { DocsTokensComponent } from '../../docs/docs-tokens.component';
                 variant="neutral"
                 aria-label="Close dialog"
                 class="absolute right-6 top-6 text-xl leading-none sm:right-10 sm:top-9"
-                style="--nb-button-bg: #ffd92e; --nb-button-fg: #000;"
               >
                 &times;
               </button>
 
-              <div class="pointer-events-none absolute right-20 top-8 hidden items-center gap-3 sm:flex">
+              <div class="pointer-events-none absolute right-28 top-6 hidden items-center gap-3 sm:flex">
                 <span class="font-mono text-3xl font-black leading-none">&#42;</span>
-                <svg width="56" height="18" viewBox="0 0 68 22" fill="none" stroke="#ff2f68" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg width="48" height="16" viewBox="0 0 68 22" fill="none" stroke="#ff2f68" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polyline points="2,17 13,5 24,17 35,5 46,17 57,5 66,17" />
                 </svg>
-                <svg width="84" height="68" viewBox="0 0 100 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg width="76" height="60" viewBox="0 0 100 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <g stroke="#000" stroke-width="2.5">
                     <line x1="86" y1="10" x2="94" y2="6" />
                     <line x1="90" y1="20" x2="98" y2="22" />
@@ -156,8 +155,9 @@ import { DocsTokensComponent } from '../../docs/docs-tokens.component';
                   </g>
                   <path d="M52 10 C28 8 14 22 16 42 C18 58 38 68 58 64 C78 60 90 44 86 26 C82 12 68 8 52 10 Z" fill="#ff8a6c" stroke="#000" stroke-width="2.5" />
                   <path d="M28 22 H68 a4 4 0 0 1 4 4 v16 a4 4 0 0 1 -4 4 H44 l-6 8 -2 -8 H28 a4 4 0 0 1 -4 -4 V26 a4 4 0 0 1 4 -4 Z" fill="#fff" stroke="#000" stroke-width="2.5" />
-                  <line x1="32" y1="30" x2="60" y2="30" stroke="#000" stroke-width="2.5" />
-                  <line x1="32" y1="38" x2="52" y2="38" stroke="#000" stroke-width="2.5" />
+                  <circle cx="38" cy="34" r="2.5" fill="#000" />
+                  <circle cx="48" cy="34" r="2.5" fill="#000" />
+                  <circle cx="58" cy="34" r="2.5" fill="#000" />
                 </svg>
               </div>
 
@@ -168,7 +168,7 @@ import { DocsTokensComponent } from '../../docs/docs-tokens.component';
               <h2 nbDialogTitle class="mt-4 p-0 font-mono text-3xl font-black leading-tight">
                 Send us a message
               </h2>
-              <svg viewBox="0 0 220 12" preserveAspectRatio="none" width="220" height="10" class="mt-1 block h-2.5 w-48 max-w-full" aria-hidden="true">
+              <svg viewBox="0 0 220 12" preserveAspectRatio="none" width="220" height="10" class="mt-1 block h-2.5 w-72 max-w-full" aria-hidden="true">
                 <path d="M0,6 Q10,0 20,6 T40,6 T60,6 T80,6 T100,6 T120,6 T140,6 T160,6 T180,6 T200,6 T220,6" fill="none" stroke="#a78bfa" stroke-width="4" stroke-linecap="round" />
               </svg>
 
@@ -206,12 +206,15 @@ import { DocsTokensComponent } from '../../docs/docs-tokens.component';
                   </div>
                 </div>
 
-                <div class="grid w-75 gap-2">
+                <div class="grid gap-2">
                   <label nbLabel for="contact-subject" class="font-mono text-base">Subject</label>
                   <nb-input-group>
                     <span nbInputPrefix>
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        <circle cx="8" cy="10" r="1" fill="currentColor" stroke="none" />
+                        <circle cx="12" cy="10" r="1" fill="currentColor" stroke="none" />
+                        <circle cx="16" cy="10" r="1" fill="currentColor" stroke="none" />
                       </svg>
                     </span>
                     <select nbSelect id="contact-subject" class="h-12 font-mono">
@@ -376,17 +379,16 @@ export default class DialogPageComponent {
       variant="neutral"
       aria-label="Close dialog"
       class="absolute right-6 top-6 text-xl leading-none sm:right-10 sm:top-9"
-      style="--nb-button-bg: #ffd92e; --nb-button-fg: #000;"
     >
       &times;
     </button>
 
-    <div class="pointer-events-none absolute right-20 top-8 hidden items-center gap-3 sm:flex">
+    <div class="pointer-events-none absolute right-28 top-6 hidden items-center gap-3 sm:flex">
       <span class="font-mono text-3xl font-black leading-none">*</span>
-      <svg width="56" height="18" viewBox="0 0 68 22" fill="none" stroke="#ff2f68" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <svg width="48" height="16" viewBox="0 0 68 22" fill="none" stroke="#ff2f68" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <polyline points="2,17 13,5 24,17 35,5 46,17 57,5 66,17" />
       </svg>
-      <svg width="84" height="68" viewBox="0 0 100 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <svg width="76" height="60" viewBox="0 0 100 80" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <g stroke="#000" stroke-width="2.5">
           <line x1="86" y1="10" x2="94" y2="6" />
           <line x1="90" y1="20" x2="98" y2="22" />
@@ -396,8 +398,9 @@ export default class DialogPageComponent {
         </g>
         <path d="M52 10 C28 8 14 22 16 42 C18 58 38 68 58 64 C78 60 90 44 86 26 C82 12 68 8 52 10 Z" fill="#ff8a6c" stroke="#000" stroke-width="2.5" />
         <path d="M28 22 H68 a4 4 0 0 1 4 4 v16 a4 4 0 0 1 -4 4 H44 l-6 8 -2 -8 H28 a4 4 0 0 1 -4 -4 V26 a4 4 0 0 1 4 -4 Z" fill="#fff" stroke="#000" stroke-width="2.5" />
-        <line x1="32" y1="30" x2="60" y2="30" stroke="#000" stroke-width="2.5" />
-        <line x1="32" y1="38" x2="52" y2="38" stroke="#000" stroke-width="2.5" />
+        <circle cx="38" cy="34" r="2.5" fill="#000" />
+        <circle cx="48" cy="34" r="2.5" fill="#000" />
+        <circle cx="58" cy="34" r="2.5" fill="#000" />
       </svg>
     </div>
 
@@ -408,7 +411,7 @@ export default class DialogPageComponent {
     <h2 nbDialogTitle class="mt-4 p-0 font-mono text-3xl font-black leading-tight">
       Send us a message
     </h2>
-    <svg viewBox="0 0 220 12" preserveAspectRatio="none" width="220" height="10" class="mt-1 block h-2.5 w-48 max-w-full" aria-hidden="true">
+    <svg viewBox="0 0 220 12" preserveAspectRatio="none" width="220" height="10" class="mt-1 block h-2.5 w-72 max-w-full" aria-hidden="true">
       <path d="M0,6 Q10,0 20,6 T40,6 T60,6 T80,6 T100,6 T120,6 T140,6 T160,6 T180,6 T200,6 T220,6" fill="none" stroke="#a78bfa" stroke-width="4" stroke-linecap="round" />
     </svg>
 
@@ -446,12 +449,15 @@ export default class DialogPageComponent {
         </div>
       </div>
 
-      <div class="grid w-75 gap-2">
+      <div class="grid gap-2">
         <label nbLabel for="contact-subject" class="font-mono text-base">Subject</label>
         <nb-input-group>
           <span nbInputPrefix>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              <circle cx="8" cy="10" r="1" fill="currentColor" stroke="none" />
+              <circle cx="12" cy="10" r="1" fill="currentColor" stroke="none" />
+              <circle cx="16" cy="10" r="1" fill="currentColor" stroke="none" />
             </svg>
           </span>
           <select nbSelect id="contact-subject" class="h-12 font-mono">
