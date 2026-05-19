@@ -119,7 +119,7 @@ import { docsNavGroups, findDocsNavItem } from './docs.navigation';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DocsShellComponent {
+export class DocsShell {
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
 

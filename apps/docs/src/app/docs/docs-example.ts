@@ -5,14 +5,14 @@ import {
   signal,
 } from '@angular/core';
 
-import { DocsCodeBlockComponent } from './docs-code-block.component';
+import { DocsCodeBlock } from './docs-code-block';
 
 type DocsExampleTab = 'preview' | 'code';
 
 @Component({
   selector: 'docs-example',
   standalone: true,
-  imports: [DocsCodeBlockComponent],
+  imports: [DocsCodeBlock],
   template: `
     <div class="docs-example border-4 border-(--nb-border) bg-white shadow-[8px_8px_0_0_var(--nb-shadow)]">
       <div
@@ -106,7 +106,7 @@ type DocsExampleTab = 'preview' | 'code';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DocsExampleComponent {
+export class DocsExample {
   readonly code = input.required<string>();
   protected readonly activeTab = signal<DocsExampleTab>('preview');
 }

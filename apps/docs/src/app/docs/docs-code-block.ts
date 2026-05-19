@@ -56,7 +56,7 @@ type DocsCodeBlockVariant = 'standalone' | 'embedded';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DocsCodeBlockComponent {
+export class DocsCodeBlock {
   readonly title = input('Code');
   readonly code = input.required<string>();
   readonly variant = input<DocsCodeBlockVariant>('standalone');

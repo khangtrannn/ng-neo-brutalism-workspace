@@ -8,7 +8,7 @@ import {
   output,
 } from '@angular/core';
 import { NbMarquee, NbMarqueeItem } from '@ng-brutalism/ui';
-import { PortfolioContactDialogComponent } from './portfolio-contact-dialog.component';
+import { PortfolioContactDialogComponent } from './portfolio-contact-dialog';
 
 import type { Skill } from '../portfolio.types';
 

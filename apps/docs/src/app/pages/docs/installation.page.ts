@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
-import { DocsTokensComponent } from '../../docs/docs-tokens.component';
+import { DocsCodeBlock } from '../../docs/docs-code-block';
+import { DocsTokens } from '../../docs/docs-tokens';
 
 @Component({
   selector: 'docs-installation-page',
   standalone: true,
-  imports: [DocsCodeBlockComponent, DocsTokensComponent],
+  imports: [DocsCodeBlock, DocsTokens],
   template: `
     <article>
       <header id="overview" class="relative mb-10 scroll-mt-32">

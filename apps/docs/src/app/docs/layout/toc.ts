@@ -117,7 +117,7 @@ interface TocHeading {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NbDocsTocComponent implements AfterViewInit {
+export class NbDocsToc implements AfterViewInit {
   private readonly document = inject(DOCUMENT);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private readonly router = inject(Router);

@@ -95,7 +95,7 @@ import { DOC_NAV } from '../nav';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NbDocsPaginationComponent {
+export class NbDocsPagination {
   private readonly router = inject(Router);
   private readonly allItems = DOC_NAV.flatMap((group) => group.items);
 

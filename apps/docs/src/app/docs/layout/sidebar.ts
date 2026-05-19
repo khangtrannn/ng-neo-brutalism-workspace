@@ -188,7 +188,7 @@ const GROUP_COLORS = ['yellow', 'pink', 'mint', 'lavender'] as const;
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NbDocsSidebarComponent {
+export class NbDocsSidebar {
   protected readonly nav = DOC_NAV;
 
   protected groupColor(index: number): (typeof GROUP_COLORS)[number] {

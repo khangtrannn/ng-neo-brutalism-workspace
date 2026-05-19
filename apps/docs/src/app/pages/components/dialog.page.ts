@@ -9,18 +9,18 @@ import {
   NbDialogTitle,
 } from '@ng-brutalism/ui';
 
-import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
-import { DocsExampleComponent } from '../../docs/docs-example.component';
-import { DocsTokensComponent } from '../../docs/docs-tokens.component';
+import { DocsCodeBlock } from '../../docs/docs-code-block';
+import { DocsExample } from '../../docs/docs-example';
+import { DocsTokens } from '../../docs/docs-tokens';
 import { ContactUsDialog } from './examples/contact-us-dialog';
 
 @Component({
   selector: 'docs-dialog-page',
   standalone: true,
   imports: [
-    DocsCodeBlockComponent,
-    DocsExampleComponent,
-    DocsTokensComponent,
+    DocsCodeBlock,
+    DocsExample,
+    DocsTokens,
     NbButton,
     NbDialog,
     NbDialogActions,

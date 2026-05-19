@@ -11,18 +11,18 @@ import {
   NbLabel,
 } from '@ng-brutalism/ui';
 
-import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
-import { DocsExampleComponent } from '../../docs/docs-example.component';
-import { DocsTokensComponent } from '../../docs/docs-tokens.component';
-import JobListingCardExampleComponent from './examples/job-listing-card.example';
+import { DocsCodeBlock } from '../../docs/docs-code-block';
+import { DocsExample } from '../../docs/docs-example';
+import { DocsTokens } from '../../docs/docs-tokens';
+import JobListingCardExampleComponent from './examples/job-listing-card';
 
 @Component({
   selector: 'docs-card-page',
   standalone: true,
   imports: [
-    DocsCodeBlockComponent,
-    DocsExampleComponent,
-    DocsTokensComponent,
+    DocsCodeBlock,
+    DocsExample,
+    DocsTokens,
     JobListingCardExampleComponent,
     NbButton,
     NbCard,
@@ -347,7 +347,7 @@ export default class CardPageComponent {
   </nb-card-footer>
 </nb-card>`;
 
-  protected readonly jobListingExampleCode = `import JobListingCardExampleComponent from './examples/job-listing-card.example';
+  protected readonly jobListingExampleCode = `import JobListingCardExampleComponent from './examples/job-listing-card';
 
 @Component({
   imports: [JobListingCardExampleComponent],

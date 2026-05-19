@@ -146,7 +146,7 @@ import { filter } from 'rxjs';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NbDocsNavbarComponent {
+export class NbDocsNavbar {
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
   private readonly currentPath = signal(this.normalizePath(this.router.url));

@@ -447,7 +447,7 @@ const componentTokens: Record<DocsTokenComponent, DocsToken[]> = {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DocsTokensComponent {
+export class DocsTokens {
   readonly component = input.required<DocsTokenComponent>();
 
   protected tokens(): DocsToken[] {

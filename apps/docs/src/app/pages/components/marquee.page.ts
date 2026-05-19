@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NbButton, NbMarquee, NbMarqueeItem } from '@ng-brutalism/ui';
 
-import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
-import { DocsExampleComponent } from '../../docs/docs-example.component';
-import { DocsTokensComponent } from '../../docs/docs-tokens.component';
+import { DocsCodeBlock } from '../../docs/docs-code-block';
+import { DocsExample } from '../../docs/docs-example';
+import { DocsTokens } from '../../docs/docs-tokens';
 
 interface MarqueeSkill {
   text: string;
@@ -15,9 +15,9 @@ interface MarqueeSkill {
   selector: 'docs-marquee-page',
   standalone: true,
   imports: [
-    DocsCodeBlockComponent,
-    DocsExampleComponent,
-    DocsTokensComponent,
+    DocsCodeBlock,
+    DocsExample,
+    DocsTokens,
     NbButton,
     NbMarquee,
     NbMarqueeItem,

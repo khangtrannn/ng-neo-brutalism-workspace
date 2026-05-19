@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, viewChild } from '@angular/core';
 import {
   NbButton,
   NbDialog,
@@ -34,8 +34,8 @@ import {
     NbTextarea,
   ],
   template: `
-    <button nbButton (click)="dialog.open()">Contact Us</button>
-    <nb-dialog #dialog>
+    <button nbButton (click)="dialog().open()">Contact Us</button>
+    <nb-dialog #dialogRef>
       <div class="relative bg-[#faf3d6] px-6 pt-7 pb-5 sm:px-10 sm:pt-9 sm:pb-6">
         <button
           nbButton
@@ -182,5 +182,5 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactUsDialog {
-  @ViewChild('dialog') dialog!: NbDialog;
+  dialog = viewChild.required<NbDialog>('dialogRef');
 }

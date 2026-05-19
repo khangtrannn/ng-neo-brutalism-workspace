@@ -1,20 +1,20 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { NbDocsNavbarComponent } from './navbar.component';
-import { NbDocsPaginationComponent } from './pagination.component';
-import { NbDocsSidebarComponent } from './sidebar.component';
-import { NbDocsTocComponent } from './toc.component';
+import { NbDocsNavbar } from './navbar';
+import { NbDocsPagination } from './pagination';
+import { NbDocsSidebar } from './sidebar';
+import { NbDocsToc } from './toc';
 
 @Component({
   selector: 'nb-docs-layout',
   standalone: true,
   imports: [
     RouterOutlet,
-    NbDocsNavbarComponent,
-    NbDocsSidebarComponent,
-    NbDocsTocComponent,
-    NbDocsPaginationComponent,
+    NbDocsNavbar,
+    NbDocsSidebar,
+    NbDocsToc,
+    NbDocsPagination,
   ],
   template: `
     <div class="relative min-h-screen overflow-x-clip">
@@ -53,4 +53,4 @@ import { NbDocsTocComponent } from './toc.component';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NbDocsLayoutComponent {}
+export class NbDocsLayout {}

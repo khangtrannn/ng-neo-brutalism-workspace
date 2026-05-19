@@ -1,14 +1,13 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  HostListener,
   input,
   output,
   signal,
 } from '@angular/core';
 
 import type { NavLink } from '../portfolio.types';
-import { PortfolioContactDialogComponent } from './portfolio-contact-dialog.component';
+import { PortfolioContactDialogComponent } from './portfolio-contact-dialog';
 
 @Component({
   selector: 'docs-portfolio-nav',
@@ -100,6 +99,7 @@ import { PortfolioContactDialogComponent } from './portfolio-contact-dialog.comp
       }
     </header>
   `,
+  host: { '(window:scroll)': 'onWindowScroll()' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PortfolioNavComponent {
@@ -115,7 +115,6 @@ export class PortfolioNavComponent {
   protected readonly showNav = signal(true);
   private lastScrollY = 0;
 
-  @HostListener('window:scroll')
   protected onWindowScroll(): void {
     const currentScrollY = window.scrollY;
     if (currentScrollY > this.lastScrollY && currentScrollY > 100) {

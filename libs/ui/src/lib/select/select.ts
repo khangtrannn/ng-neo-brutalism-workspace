@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  HostListener,
   OnInit,
   booleanAttribute,
   computed,
@@ -72,6 +71,7 @@ let nextSelectId = 0;
     class: 'relative block w-full',
     '[attr.data-state]': 'open() ? "open" : "closed"',
     '[attr.data-disabled]': 'disabled() ? "" : null',
+    '(document:click)': 'onDocumentClick($event)',
   },
   providers: [{ provide: NB_SELECT, useExisting: NbSelectComponent }],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -184,7 +184,6 @@ export class NbSelectComponent implements NbSelectController, OnInit {
     }
   }
 
-  @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
     if (!this.element.nativeElement.contains(event.target as Node)) {
       this.open.set(false);
