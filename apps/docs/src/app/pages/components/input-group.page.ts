@@ -4,13 +4,13 @@ import {
   NbInputGroup,
   NbInputPrefix,
   NbInputSuffix,
-  NbButton,
   NbLabel,
   NbTextarea,
 } from '@ng-brutalism/ui';
 
 import { DocsCodeBlock } from '../../docs/docs-code-block';
 import { DocsExample } from '../../docs/docs-example';
+import { DocsSourceTile } from '../../docs/docs-source-tile';
 import { DocsTokens } from '../../docs/docs-tokens';
 
 @Component({
@@ -19,8 +19,8 @@ import { DocsTokens } from '../../docs/docs-tokens';
   imports: [
     DocsCodeBlock,
     DocsExample,
+    DocsSourceTile,
     DocsTokens,
-    NbButton,
     NbInput,
     NbInputGroup,
     NbInputPrefix,
@@ -54,16 +54,9 @@ import { DocsTokens } from '../../docs/docs-tokens';
             <span class="nb-stat-tile__label">Slots</span>
           </div>
 
-          <a
-            nbButton
-            size="sm"
-            variant="neutral"
+          <docs-source-tile
             href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/input-group"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Source ↗
-          </a>
+          />
         </div>
       </header>
 

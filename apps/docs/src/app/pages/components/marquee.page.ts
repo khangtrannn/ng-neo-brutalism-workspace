@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NbButton, NbMarquee, NbMarqueeItem } from '@ng-brutalism/ui';
+import { NbMarquee, NbMarqueeItem } from '@ng-brutalism/ui';
 
 import { DocsCodeBlock } from '../../docs/docs-code-block';
 import { DocsExample } from '../../docs/docs-example';
+import { DocsSourceTile } from '../../docs/docs-source-tile';
 import { DocsTokens } from '../../docs/docs-tokens';
 
 interface MarqueeSkill {
@@ -17,8 +18,8 @@ interface MarqueeSkill {
   imports: [
     DocsCodeBlock,
     DocsExample,
+    DocsSourceTile,
     DocsTokens,
-    NbButton,
     NbMarquee,
     NbMarqueeItem,
   ],
@@ -49,16 +50,9 @@ interface MarqueeSkill {
             <span class="nb-stat-tile__label">Pure</span>
           </div>
 
-          <a
-            nbButton
-            size="sm"
-            variant="neutral"
+          <docs-source-tile
             href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/marquee"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Source ↗
-          </a>
+          />
         </div>
       </header>
 

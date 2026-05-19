@@ -260,6 +260,32 @@ nb-docs-sidebar::-webkit-scrollbar-thumb {
 .nb-stat-tile--mint   { background: var(--nb-mint); }
 .nb-stat-tile--lavender { background: var(--nb-lavender); }
 
+a.nb-stat-tile,
+.nb-stat-tile--interactive {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+a.nb-stat-tile:hover,
+.nb-stat-tile--interactive:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--nb-shadow);
+}
+
+a.nb-stat-tile:active,
+.nb-stat-tile--interactive:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 var(--nb-shadow);
+}
+
+a.nb-stat-tile:focus-visible,
+.nb-stat-tile--interactive:focus-visible {
+  outline: 3px solid var(--nb-hot);
+  outline-offset: 3px;
+}
+
 /* === Sticker shape: rotated colored block === */
 .nb-sticker {
   display: inline-flex;

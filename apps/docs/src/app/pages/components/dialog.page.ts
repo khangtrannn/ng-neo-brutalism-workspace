@@ -12,6 +12,7 @@ import {
 
 import { DocsCodeBlock } from '../../docs/docs-code-block';
 import { DocsExample } from '../../docs/docs-example';
+import { DocsSourceTile } from '../../docs/docs-source-tile';
 import { DocsTokens } from '../../docs/docs-tokens';
 import { ContactUsDialog } from './examples/contact-us-dialog';
 
@@ -21,6 +22,7 @@ import { ContactUsDialog } from './examples/contact-us-dialog';
   imports: [
     DocsCodeBlock,
     DocsExample,
+    DocsSourceTile,
     DocsTokens,
     NbButton,
     NbDialog,
@@ -59,16 +61,9 @@ import { ContactUsDialog } from './examples/contact-us-dialog';
             <span class="nb-stat-tile__label">Native</span>
           </div>
 
-          <a
-            nbButton
-            size="sm"
-            variant="neutral"
+          <docs-source-tile
             href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/dialog"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Source ↗
-          </a>
+          />
         </div>
       </header>
 

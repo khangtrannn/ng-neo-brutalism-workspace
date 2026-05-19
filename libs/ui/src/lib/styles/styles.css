@@ -93,6 +93,9 @@ body {
     padding-inline-start: 0;
     align-items: center;
   }
+  :where(input[nbInput][type="file"])::file-selector-button {
+    font-family: inherit;
+  }
 
   :where(select[nbSelect]) {
     height: 3.5rem;

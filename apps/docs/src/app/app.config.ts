@@ -5,12 +5,15 @@ import {
   withInterceptors,
 } from '@angular/common/http';
 import { provideClientHydration } from '@angular/platform-browser';
+import { TitleStrategy } from '@angular/router';
 import {
   provideFileRouter,
   requestContextInterceptor,
   withExtraRoutes,
 } from '@analogjs/router';
 import { provideNgBrutalism } from '@ng-brutalism/ui';
+
+import { DocsTitleStrategy } from './docs/docs-title-strategy';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -34,6 +37,7 @@ export const appConfig: ApplicationConfig = {
         },
       ])
     ),
+    { provide: TitleStrategy, useClass: DocsTitleStrategy },
     provideNgBrutalism(),
     provideClientHydration(),
     provideHttpClient(
