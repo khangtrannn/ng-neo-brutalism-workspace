@@ -61,7 +61,7 @@ import { docsNavGroups, findDocsNavItem } from './docs.navigation';
 
             <a
               class="flex h-10 items-center justify-center border-[3px] border-(--nb-border) bg-nb-surface px-3 text-base font-bold shadow-[5px_5px_0_0_var(--nb-shadow)] transition-transform hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
-              href="https://github.com/khangtrannn/ng-neo-brutalism-workspace"
+              href="https://github.com/khangtrannn/ng-brutalism"
               target="_blank"
               rel="noreferrer"
             >

@@ -51,7 +51,7 @@ interface MarqueeSkill {
           </div>
 
           <docs-source-tile
-            href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/marquee"
+            href="https://github.com/khangtrannn/ng-brutalism/tree/main/libs/ui/src/lib/marquee"
           />
         </div>
       </header>

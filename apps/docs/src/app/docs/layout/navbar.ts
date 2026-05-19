@@ -72,7 +72,7 @@ import { filter } from 'rxjs';
 
           <a
             class="cta inline-flex h-12 items-center gap-2 border-4 border-(--nb-border) bg-(--nb-hot) px-5 text-base font-black tracking-normal text-white uppercase shadow-[5px_5px_0_0_var(--nb-shadow)] transition-transform hover:-translate-y-0.5 hover:-rotate-1"
-            href="https://github.com/khangtrannn/ng-neo-brutalism-workspace"
+            href="https://github.com/khangtrannn/ng-brutalism"
             target="_blank"
             rel="noreferrer"
           >

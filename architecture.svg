@@ -56,7 +56,7 @@
   <!-- Root container -->
   <g class="c-gray">
     <rect x="40" y="270" width="600" height="460" rx="12" stroke-width="0.5"></rect>
-    <text class="th" x="60" y="294">ng-neo-brutalism-workspace/</text>
+    <text class="th" x="60" y="294">ng-brutalism/</text>
   </g>
 
   <!-- apps/ container -->

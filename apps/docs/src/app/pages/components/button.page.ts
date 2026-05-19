@@ -47,7 +47,7 @@ import { DocsTokens } from '../../docs/docs-tokens';
           </div>
 
           <docs-source-tile
-            href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/button"
+            href="https://github.com/khangtrannn/ng-brutalism/tree/main/libs/ui/src/lib/button"
           />
         </div>
       </header>
@@ -128,7 +128,7 @@ import { DocsTokens } from '../../docs/docs-tokens';
             <a
               nbButton
               variant="neutral"
-              href="https://github.com/khangtrannn/ng-neo-brutalism-workspace"
+              href="https://github.com/khangtrannn/ng-brutalism"
               target="_blank"
               rel="noreferrer"
               style="--nb-button-bg: var(--nb-yellow)"
@@ -257,7 +257,7 @@ export const appConfig: ApplicationConfig = {
 <a
   nbButton
   variant="neutral"
-  href="https://github.com/khangtrannn/ng-neo-brutalism-workspace"
+  href="https://github.com/khangtrannn/ng-brutalism"
   target="_blank"
   rel="noreferrer"
   style="--nb-button-bg: var(--nb-yellow)"

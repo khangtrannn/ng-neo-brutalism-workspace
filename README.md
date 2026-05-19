@@ -1,4 +1,4 @@
-# ng-neo-brutalism-workspace
+# ng-brutalism
 
 Nx 20 integrated monorepo for the Angular 18 `@ng-neo-brutalism/ui` library
 and its Analog docs app.

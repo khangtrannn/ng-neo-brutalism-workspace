@@ -62,7 +62,7 @@ import { ContactUsDialog } from './examples/contact-us-dialog';
           </div>
 
           <docs-source-tile
-            href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/dialog"
+            href="https://github.com/khangtrannn/ng-brutalism/tree/main/libs/ui/src/lib/dialog"
           />
         </div>
       </header>

@@ -35,7 +35,7 @@ import { DocsTokens } from '../../docs/docs-tokens';
           </div>
 
           <docs-source-tile
-            href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/avatar"
+            href="https://github.com/khangtrannn/ng-brutalism/tree/main/libs/ui/src/lib/avatar"
           />
         </div>
       </header>
@@ -43,7 +43,7 @@ import { DocsTokens } from '../../docs/docs-tokens';
       <section id="preview">
         <h2 class="mt-10 mb-4 text-2xl font-bold">Preview</h2>
         <docs-example [code]="defaultExampleCode">
-          <nb-avatar src="https://github.com/shadcn.png" alt="shadcn" />
+          <nb-avatar class="h-20 w-20" src="https://github.com/khangtrannn.png" alt="khangtrannn" />
         </docs-example>
       </section>
 
@@ -57,17 +57,6 @@ import { DocsTokens } from '../../docs/docs-tokens';
         <h2 class="mt-10 mb-4 text-2xl font-bold">Fallback (Initials)</h2>
         <docs-example [code]="fallbackExampleCode">
           <nb-avatar alt="John Doe">JD</nb-avatar>
-        </docs-example>
-      </section>
-
-      <section id="sizes">
-        <h2 class="mt-10 mb-4 text-2xl font-bold">Custom Sizes</h2>
-        <docs-example [code]="sizesExampleCode">
-          <div class="flex items-center gap-4">
-            <nb-avatar alt="SM" class="h-8 w-8 text-xs">SM</nb-avatar>
-            <nb-avatar alt="MD">MD</nb-avatar>
-            <nb-avatar alt="LG" class="h-14 w-14 text-base">LG</nb-avatar>
-          </div>
         </docs-example>
       </section>
 
@@ -107,7 +96,7 @@ import { DocsTokens } from '../../docs/docs-tokens';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class AvatarPageComponent {
-  protected readonly defaultExampleCode = `<nb-avatar src="https://github.com/shadcn.png" alt="shadcn" />`;
+  protected readonly defaultExampleCode = `<nb-avatar src="https://github.com/khangtrannn.png" alt="khangtrannn" />`;
 
   protected readonly importCode = `import { NbAvatar } from '@ng-brutalism/ui';`;
 

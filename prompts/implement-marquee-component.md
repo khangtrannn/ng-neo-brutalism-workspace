@@ -270,7 +270,7 @@ import { DocsExampleComponent } from '../../docs/docs-example.component';
           nbButton
           size="sm"
           variant="neutral"
-          href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/marquee"
+          href="https://github.com/khangtrannn/ng-brutalism/tree/main/libs/ui/src/lib/marquee"
           target="_blank"
           rel="noreferrer"
         >

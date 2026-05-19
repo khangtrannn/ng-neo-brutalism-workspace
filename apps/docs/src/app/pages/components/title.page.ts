@@ -39,7 +39,7 @@ import { DocsTokens } from '../../docs/docs-tokens';
             nbButton
             size="sm"
             variant="neutral"
-            href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/title"
+            href="https://github.com/khangtrannn/ng-brutalism/tree/main/libs/ui/src/lib/title"
             target="_blank"
             rel="noreferrer"
           >

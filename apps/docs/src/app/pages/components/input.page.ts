@@ -45,7 +45,7 @@ import { DocsTokens } from '../../docs/docs-tokens';
           </div>
 
           <docs-source-tile
-            href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/input"
+            href="https://github.com/khangtrannn/ng-brutalism/tree/main/libs/ui/src/lib/input"
           />
         </div>
       </header>
