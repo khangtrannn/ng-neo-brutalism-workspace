@@ -19,10 +19,10 @@ export class NbInputPrefix {
 
   protected readonly classes = computed(() =>
     nbClass(
-      'flex w-12 shrink-0 items-center justify-center',
+      'flex w-12 shrink-0 justify-center',
       'border-r-2 border-(--nb-border)',
       'bg-(--nb-input-addon-bg)',
-      this.align() === 'stretch' ? 'self-stretch' : ''
+      this.align() === 'stretch' ? 'self-stretch items-start pt-3' : 'items-center'
     )
   );
 }
