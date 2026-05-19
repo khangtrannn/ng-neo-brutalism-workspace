@@ -1,14 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import {
-  NbButton,
-  NbDialog,
-  NbDialogActions,
-  NbDialogClose,
-  NbDialogContent,
-  NbDialogDescription,
-  NbDialogTitle,
-  NbTitle,
-} from '@ng-brutalism/ui';
 
 import { DocsCodeBlock } from '../../docs/docs-code-block';
 import { DocsExample } from '../../docs/docs-example';
@@ -24,14 +14,6 @@ import { ContactUsDialog } from './examples/contact-us-dialog';
     DocsExample,
     DocsSourceTile,
     DocsTokens,
-    NbButton,
-    NbDialog,
-    NbDialogActions,
-    NbDialogClose,
-    NbDialogContent,
-    NbDialogDescription,
-    NbDialogTitle,
-    NbTitle,
     ContactUsDialog,
   ],
   template: `
@@ -69,52 +51,15 @@ import { ContactUsDialog } from './examples/contact-us-dialog';
 
       <section id="preview">
         <h2 class="mt-10 mb-4 text-2xl font-bold">Preview</h2>
-        <docs-example [code]="defaultExampleCode">
-          <button nbButton (click)="confirmDialog.open()">Open Dialog</button>
-          <nb-dialog #confirmDialog>
-            <div class="flex items-start justify-between gap-4 px-8 pt-8 pb-6">
-              <span
-                class="inline-block border-2 border-(--nb-border) bg-[#ff5d8f] px-4 py-1.5 font-mono text-sm font-black uppercase tracking-wider text-black"
-              >
-                Warning
-              </span>
-              <button
-                nbButton
-                nbDialogClose
-                size="icon"
-                variant="neutral"
-                aria-label="Close dialog"
-                class="text-xl leading-none"
-              >
-                &times;
-              </button>
-            </div>
-            <h2 nbDialogTitle class="px-8 pt-0 pb-6 font-mono text-4xl font-black leading-none">Confirm Action</h2>
-            <nb-dialog-content class="px-8 py-6">
-              <p nbDialogDescription class="px-0 pb-0 font-mono text-base font-medium text-black">
-                Are you sure you want to continue?<br />
-                This action cannot be undone.
-              </p>
-            </nb-dialog-content>
-            <nb-dialog-actions class="gap-4 px-8 py-6">
-              <button nbButton variant="neutral" nbDialogClose class="font-mono min-w-32">Cancel</button>
-              <button nbButton nbDialogClose class="font-mono min-w-32" style="--nb-button-bg: #ff2f68; --nb-button-fg: #000;">Confirm</button>
-            </nb-dialog-actions>
-          </nb-dialog>
+        <docs-example [code]="contactUsExampleCode">
+          <contact-us-dialog />
         </docs-example>
       </section>
 
       <section id="usage">
         <h2 class="mt-10 mb-4 text-2xl font-bold">Usage</h2>
         <docs-code-block class="block mb-5" title="Import" [code]="importCode" />
-        <docs-code-block title="Template" [code]="defaultExampleCode" />
-      </section>
-
-      <section id="with-form">
-        <h2 class="mt-10 mb-4 text-2xl font-bold">With Form</h2>
-        <docs-example [code]="withFormExampleCode">
-          <contact-us-dialog />
-        </docs-example>
+        <docs-code-block title="Template" [code]="contactUsExampleCode" />
       </section>
 
       <docs-tokens component="dialog" />
@@ -166,38 +111,6 @@ import { ContactUsDialog } from './examples/contact-us-dialog';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class DialogPageComponent {
-  protected readonly defaultExampleCode = `<button nbButton (click)="dialog.open()">Open Dialog</button>
-<nb-dialog #dialog>
-  <div class="flex items-start justify-between gap-4 px-8 pt-8 pb-6">
-    <span
-      class="inline-block border-2 border-(--nb-border) bg-[#ff5d8f] px-4 py-1.5 font-mono text-sm font-black uppercase tracking-wider text-black"
-    >
-      Warning
-    </span>
-    <button
-      nbButton
-      nbDialogClose
-      size="icon"
-      variant="neutral"
-      aria-label="Close dialog"
-      class="text-xl leading-none"
-    >
-      &times;
-    </button>
-  </div>
-  <h2 nbDialogTitle class="px-8 pt-0 pb-6 font-mono text-4xl font-black leading-none">Confirm Action</h2>
-  <nb-dialog-content class="px-8 py-6">
-    <p nbDialogDescription class="px-0 pb-0 font-mono text-base font-medium text-black">
-      Are you sure you want to continue?<br />
-      This action cannot be undone.
-    </p>
-  </nb-dialog-content>
-  <nb-dialog-actions class="gap-4 px-8 py-6">
-    <button nbButton variant="neutral" nbDialogClose class="font-mono min-w-32">Cancel</button>
-    <button nbButton nbDialogClose class="font-mono min-w-32" style="--nb-button-bg: #ff2f68; --nb-button-fg: #000;">Confirm</button>
-  </nb-dialog-actions>
-</nb-dialog>`;
-
   protected readonly importCode = `import {
   NbDialog,
   NbDialogTitle,
@@ -210,11 +123,12 @@ export default class DialogPageComponent {
   NbInputGroup,
   NbInputPrefix,
   NbLabel,
-  NbSelect,
+  NbSelectComponent,
+  NbSelectOption,
   NbTextarea,
 } from '@ng-brutalism/ui';`;
 
-  protected readonly withFormExampleCode = `<button nbButton (click)="dialog.open()">Contact Us</button>
+  protected readonly contactUsExampleCode = `<button nbButton (click)="dialog.open()">Contact Us</button>
 <nb-dialog #dialog>
   <div class="relative bg-[#faf3d6] px-6 pt-7 pb-5 sm:px-10 sm:pt-9 sm:pb-6">
     <button
@@ -292,23 +206,31 @@ export default class DialogPageComponent {
       </div>
 
       <div class="grid gap-2">
-        <label nbLabel for="contact-subject" class="font-mono text-base">Subject</label>
+        <label nbLabel id="contact-subject-label" class="font-mono text-base">Subject</label>
         <nb-input-group>
           <span nbInputPrefix>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-              <circle cx="8" cy="10" r="1" fill="currentColor" stroke="none" />
-              <circle cx="12" cy="10" r="1" fill="currentColor" stroke="none" />
-              <circle cx="16" cy="10" r="1" fill="currentColor" stroke="none" />
+              <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" />
+              <path d="M7 7h.01" />
             </svg>
           </span>
-          <select nbSelect id="contact-subject" class="h-12 font-mono">
-            <option value="" disabled selected>What is this regarding?</option>
-            <option value="general">General Inquiry</option>
-            <option value="project">Project Proposal</option>
-            <option value="bug">Bug Report</option>
-            <option value="other">Other</option>
-          </select>
+          <nb-select
+            placeholder="What is this regarding?"
+            aria-labelledby="contact-subject-label"
+          >
+            <nb-select-option value="general" label="General Inquiry">
+              General Inquiry
+            </nb-select-option>
+            <nb-select-option value="project" label="Project Proposal">
+              Project Proposal
+            </nb-select-option>
+            <nb-select-option value="bug" label="Bug Report">
+              Bug Report
+            </nb-select-option>
+            <nb-select-option value="other" label="Other">
+              Other
+            </nb-select-option>
+          </nb-select>
         </nb-input-group>
       </div>
 

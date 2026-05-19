@@ -5,6 +5,7 @@ import { describe, expect, it } from 'vitest';
 import { NbInputGroup } from '../input-group/input-group';
 import { NbInputPrefix } from '../input-group/input-group-prefix';
 import { NbSelectComponent } from './select';
+import { NbSelect } from './select.directive';
 import { NbSelectOption } from './select-option';
 
 @Component({
@@ -39,6 +40,32 @@ class SelectTestComponent {}
 class SelectWithResetOptionTestComponent {}
 
 describe('NbSelectComponent', () => {
+  it('uses the same focus treatment as inputs and textareas', async () => {
+    const fixture = await createFixture(SelectTestComponent);
+    const trigger = fixture.nativeElement.querySelector(
+      'button[aria-haspopup="listbox"]'
+    ) as HTMLButtonElement;
+
+    expect(trigger.className).toContain('focus-visible:ring-2');
+    expect(trigger.className).toContain('focus-visible:ring-(--nb-border)');
+    expect(trigger.className).toContain('focus-visible:ring-offset-2');
+    expect(trigger.className).toContain('focus-visible:shadow-none');
+    expect(trigger.className).not.toContain('focus-visible:ring-(--nb-focus');
+  });
+
+  it('keeps the border token consistent while open', async () => {
+    const fixture = await createFixture(SelectTestComponent);
+    const trigger = fixture.nativeElement.querySelector(
+      'button[aria-haspopup="listbox"]'
+    ) as HTMLButtonElement;
+
+    trigger.click();
+    fixture.detectChanges();
+
+    expect(trigger.className).toContain('border-(--nb-border)');
+    expect(trigger.className).not.toContain('--nb-select-active-border');
+  });
+
   it('opens on trigger click and selects an option', async () => {
     const fixture = await createFixture(SelectTestComponent);
     const trigger = fixture.nativeElement.querySelector(
@@ -125,6 +152,24 @@ describe('NbSelectComponent', () => {
 })
 class SelectInGroupTestComponent {}
 
+@Component({
+  standalone: true,
+  imports: [NbInputGroup, NbInputPrefix, NbSelect],
+  template: `
+    <nb-input-group>
+      <span nbInputPrefix>
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"></svg>
+      </span>
+      <select nbSelect aria-label="Plan">
+        <option value="" disabled selected>Pick one</option>
+        <option value="starter">Starter</option>
+        <option value="team">Team</option>
+      </select>
+    </nb-input-group>
+  `,
+})
+class NativeSelectInGroupTestComponent {}
+
 describe('NbSelectComponent inside NbInputGroup', () => {
   it('strips its own border and shadow when inside a group', async () => {
     const fixture = await createFixture(SelectInGroupTestComponent);
@@ -148,6 +193,18 @@ describe('NbSelectComponent inside NbInputGroup', () => {
     expect(trigger.className).toContain('bg-transparent');
   });
 
+  it('uses the same focus-within treatment as grouped inputs', async () => {
+    const fixture = await createFixture(SelectInGroupTestComponent);
+    const group = fixture.nativeElement.querySelector(
+      'nb-input-group'
+    ) as HTMLElement;
+
+    expect(group.className).toContain('focus-within:ring-2');
+    expect(group.className).toContain('focus-within:ring-(--nb-border)');
+    expect(group.className).toContain('focus-within:shadow-none');
+    expect(group.className).not.toContain('focus-within:border-(--nb-focus');
+  });
+
   it('still opens and selects an option when inside a group', async () => {
     const fixture = await createFixture(SelectInGroupTestComponent);
     const trigger = fixture.nativeElement.querySelector(
@@ -168,6 +225,42 @@ describe('NbSelectComponent inside NbInputGroup', () => {
 
     expect(trigger.getAttribute('aria-expanded')).toBe('false');
     expect(trigger.textContent?.replace(/\s+/g, ' ').trim()).toBe('Option A');
+  });
+});
+
+describe('NbSelect directive inside NbInputGroup', () => {
+  it('strips its own border and shadow when inside a group', async () => {
+    const fixture = await createFixture(NativeSelectInGroupTestComponent);
+    const select = fixture.nativeElement.querySelector(
+      'select[nbSelect]'
+    ) as HTMLSelectElement;
+
+    expect(select.className).not.toContain('border-2');
+    expect(select.className).not.toContain('shadow-nb');
+    expect(select.className).not.toContain('rounded-nb');
+  });
+
+  it('adopts flex-fill and transparent background when inside a group', async () => {
+    const fixture = await createFixture(NativeSelectInGroupTestComponent);
+    const select = fixture.nativeElement.querySelector(
+      'select[nbSelect]'
+    ) as HTMLSelectElement;
+
+    expect(select.className).toContain('flex-1');
+    expect(select.className).toContain('min-w-0');
+    expect(select.className).toContain('bg-transparent');
+  });
+
+  it('uses the same focus-within treatment as grouped inputs', async () => {
+    const fixture = await createFixture(NativeSelectInGroupTestComponent);
+    const group = fixture.nativeElement.querySelector(
+      'nb-input-group'
+    ) as HTMLElement;
+
+    expect(group.className).toContain('focus-within:ring-2');
+    expect(group.className).toContain('focus-within:ring-(--nb-border)');
+    expect(group.className).toContain('focus-within:shadow-none');
+    expect(group.className).not.toContain('focus-within:border-(--nb-focus');
   });
 });
 

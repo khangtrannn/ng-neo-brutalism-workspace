@@ -21,7 +21,7 @@ export class NbInputPrefix {
     nbClass(
       'flex w-12 shrink-0 justify-center',
       'border-r-2 border-(--nb-border)',
-      'bg-(--nb-input-addon-bg)',
+      'bg-(--nb-input-prefix-bg)',
       this.align() === 'stretch' ? 'self-stretch items-start pt-2' : 'items-center'
     )
   );

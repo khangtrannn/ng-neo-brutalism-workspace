@@ -1,13 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import {
-  NbButton,
-  NbCard,
-  NbCardContent,
-  NbCardDescription,
-  NbCardFooter,
-  NbCardHeader,
-  NbCardTitle,
-} from '@ng-brutalism/ui';
+import { NbButton, NbCard, NbCardContent, NbCardDescription, NbCardFooter, NbCardHeader, NbCardTitle, NbTitle } from '@ng-brutalism/ui';
 
 @Component({
   selector: 'docs-job-listing-card-example',
@@ -20,7 +12,8 @@ import {
     NbCardFooter,
     NbCardHeader,
     NbCardTitle,
-  ],
+    NbTitle
+],
   template: `
     <div class="job-card-demo" role="group" aria-label="Job posting">
       <nb-card class="job-card-shell">
@@ -49,7 +42,7 @@ import {
             <div class="job-card-title-block">
               <nb-card-title class="job-card-title">
                 Senior Frontend<br />
-                <span>Engineer</span>
+                <span nbTitle>Engineer</span>
               </nb-card-title>
               <nb-card-description class="job-card-subtitle">
                 Inspectorio
@@ -159,7 +152,7 @@ import {
                   <line x1="12" y1="6" x2="12" y2="8" />
                   <line x1="12" y1="16" x2="12" y2="18" />
                 </svg>
-                $4,000-$6,000/mo
+                Negotiable
               </button>
               <button
                 nbButton
@@ -327,6 +320,8 @@ import {
         --job-ink: #1a1a1a;
         --job-paper: #ffffff;
         --job-accent-purple: #8b5cf6;
+        --job-inspectorio-blue: #0e47df;
+        --job-inspectorio-ink: #232323;
         --job-tile-purple: #e6d6fb;
         --job-pill-green-bg: #d4f5dc;
         --job-pill-purple-bg: #ead9fb;
@@ -383,9 +378,9 @@ import {
         justify-content: center;
         border: 2.5px solid var(--job-ink);
         border-radius: 14px;
-        background: var(--job-tile-purple);
+        background: var(--job-inspectorio-blue);
         box-shadow: 4px 5px 0 0 var(--job-shadow);
-        color: var(--job-ink);
+        color: var(--job-paper);
       }
 
       .job-card-logo svg {
@@ -428,17 +423,7 @@ import {
       .job-card-title span {
         position: relative;
         display: inline-block;
-      }
-
-      .job-card-title span::after {
-        content: '';
-        position: absolute;
-        right: -8%;
-        bottom: -5px;
-        left: 0;
-        height: 4px;
-        border-radius: 6px;
-        background: var(--job-accent-purple);
+        --nb-title-wave-color: var(--job-inspectorio-blue);
       }
 
       .job-card-subtitle {
@@ -551,7 +536,7 @@ import {
         flex-shrink: 0;
         margin-top: 4px;
         border-radius: 8px;
-        background: var(--job-accent-purple);
+        background: var(--job-inspectorio-blue);
       }
 
       .job-card-footer {

@@ -109,9 +109,19 @@ export class NbSelectComponent implements NbSelectController, OnInit {
     () => this.selectedOption()?.label() ?? ''
   );
 
-  protected readonly hostClasses = computed(() =>
-    this.group !== null ? 'block w-full' : 'relative block w-full'
-  );
+  protected readonly hostClasses = computed(() => {
+    const inGroup = this.group !== null;
+    return inGroup
+      ? 'block w-full'
+      : nbClass(
+          'relative block w-full',
+          'rounded-nb border-2 border-(--nb-border)',
+          'bg-(--nb-input-background,#faf3d6) shadow-nb',
+          'focus-within:outline-none focus-within:ring-2 focus-within:ring-(--nb-border)',
+          'focus-within:ring-offset-2 focus-within:shadow-none',
+          'data-[disabled]:border-gray-400 data-[disabled]:shadow-[5px_5px_0_0_#a3a3a3]',
+        );
+  });
 
   protected readonly triggerClasses = computed(() => {
     const inGroup = this.group !== null;
@@ -121,23 +131,16 @@ export class NbSelectComponent implements NbSelectController, OnInit {
       'disabled:cursor-not-allowed disabled:text-gray-400',
       inGroup
         ? ['flex-1 min-w-0 bg-transparent px-3 focus-visible:outline-none']
-        : [
-            'rounded-nb border-2 border-(--nb-border)',
-            'bg-(--nb-input-background,#ffffff) px-5 shadow-nb',
-            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--nb-focus,#8b5cf6)',
-            'focus-visible:ring-offset-2',
-            'disabled:border-gray-400 disabled:shadow-[5px_5px_0_0_#a3a3a3]',
-            this.open() &&
-              'border-(--nb-select-active-border,#8b5cf6) shadow-[5px_5px_0_0_var(--nb-shadow)]',
-          ]
+        : ['flex-1 min-w-0 bg-transparent px-5 focus-visible:outline-none']
     );
   });
 
   protected readonly listboxClasses = nbClass(
-    'absolute left-0 top-[calc(100%+8px)] z-50 w-full',
-    'rounded-b-nb border-2 border-(--nb-border) bg-(--nb-surface,#ffffff)',
-    'shadow-nb'
-  );
+      'absolute z-50 top-[calc(100%+8px)]',
+      'left-[-6px] w-[calc(100%+12px)]',
+      'rounded-b-nb border-2 border-(--nb-border) bg-(--nb-surface,#ffffff)',
+      'shadow-nb'
+    );
 
   ngOnInit(): void {
     if (this.value() === null && this.defaultValue() !== null) {

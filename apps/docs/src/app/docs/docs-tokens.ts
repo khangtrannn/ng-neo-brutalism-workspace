@@ -190,7 +190,7 @@ const componentTokens: Record<DocsTokenComponent, DocsToken[]> = {
   input: [
     {
       name: '--nb-input-background',
-      defaultValue: '#fbf1bf',
+      defaultValue: '#faf3d6',
       usage: 'Input background',
     },
   ],
@@ -206,9 +206,19 @@ const componentTokens: Record<DocsTokenComponent, DocsToken[]> = {
       usage: 'Prefix and suffix background',
     },
     {
+      name: '--nb-input-prefix-bg',
+      defaultValue: 'var(--nb-input-addon-bg)',
+      usage: 'Prefix background',
+    },
+    {
       name: '--nb-input-background',
-      defaultValue: '#fbf1bf',
-      usage: 'Nested input or textarea background',
+      defaultValue: '#faf3d6',
+      usage: 'Nested field background',
+    },
+    {
+      name: '--nb-yellow',
+      defaultValue: '#ffd24a',
+      usage: 'Prefix icon background',
     },
   ],
   label: [
@@ -228,7 +238,7 @@ const componentTokens: Record<DocsTokenComponent, DocsToken[]> = {
   select: [
     {
       name: '--nb-input-background',
-      defaultValue: '#fbf1bf',
+      defaultValue: '#faf3d6',
       usage: 'Select background',
     },
   ],
@@ -252,6 +262,11 @@ const componentTokens: Record<DocsTokenComponent, DocsToken[]> = {
       name: '--nb-secondary-foreground',
       defaultValue: '#000000',
       usage: 'Text on secondary surfaces',
+    },
+    {
+      name: '--nb-yellow',
+      defaultValue: '#ffd24a',
+      usage: 'Yellow accent and select icons',
     },
     {
       name: '--nb-accent',
@@ -325,8 +340,8 @@ const componentTokens: Record<DocsTokenComponent, DocsToken[]> = {
     },
     {
       name: '--nb-input-background',
-      defaultValue: '#fbf1bf',
-      usage: 'Input and textarea background',
+      defaultValue: '#faf3d6',
+      usage: 'Field background',
     },
     {
       name: '--nb-border-width',
@@ -414,7 +429,7 @@ const componentTokens: Record<DocsTokenComponent, DocsToken[]> = {
   textarea: [
     {
       name: '--nb-input-background',
-      defaultValue: '#fbf1bf',
+      defaultValue: '#faf3d6',
       usage: 'Textarea background',
     },
   ],
