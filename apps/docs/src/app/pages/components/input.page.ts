@@ -101,7 +101,7 @@ import { DocsTokens } from '../../docs/docs-tokens';
         <docs-example [code]="withButtonExampleCode">
           <div class="flex gap-2">
             <input nbInput placeholder="Email" class="w-75" />
-            <button nbButton variant="neutral">Subscribe</button>
+            <button style="background: var(--nb-yellow)" nbButton variant="neutral">Subscribe</button>
           </div>
         </docs-example>
       </section>

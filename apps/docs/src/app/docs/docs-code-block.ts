@@ -14,6 +14,26 @@ import { highlightCode, type HighlightLanguage } from './syntax-highlighter';
 
 type DocsCodeBlockVariant = 'standalone' | 'embedded';
 
+function inferLanguage(title: string, code: string): HighlightLanguage {
+  const normalizedTitle = title.trim().toLowerCase();
+  const trimmedCode = code.trimStart();
+
+  if (
+    normalizedTitle === 'import' ||
+    normalizedTitle.endsWith('.ts') ||
+    normalizedTitle === 'component' ||
+    trimmedCode.startsWith('import ')
+  ) {
+    return 'typescript';
+  }
+
+  if (normalizedTitle === 'install' || trimmedCode.startsWith('pnpm ')) {
+    return 'bash';
+  }
+
+  return 'angular-html';
+}
+
 @Component({
   selector: 'docs-code-block',
   standalone: true,
@@ -144,9 +164,14 @@ type DocsCodeBlockVariant = 'standalone' | 'embedded';
         padding-left: 4.25rem;
         position: relative;
         min-height: 1rem;
+        line-height: 1.25rem;
         white-space: pre-wrap;
         overflow-wrap: anywhere;
         word-break: break-word;
+      }
+
+      .docs-code-block-shiki ::ng-deep pre.shiki .line + .line {
+        margin-top: -0.75rem;
       }
 
       .docs-code-block-shiki ::ng-deep pre.shiki .line::before {
@@ -167,12 +192,15 @@ export class DocsCodeBlock {
   readonly title = input('Code');
   readonly code = input.required<string>();
   readonly variant = input<DocsCodeBlockVariant>('standalone');
-  readonly language = input<HighlightLanguage>('html');
+  readonly language = input<HighlightLanguage | null>(null);
   readonly maxLines = input(18);
 
   protected readonly copied = signal(false);
   protected readonly expanded = signal(false);
   protected readonly highlightedHtml = signal<SafeHtml | null>(null);
+  protected readonly resolvedLanguage = computed(
+    () => this.language() ?? inferLanguage(this.title(), this.code()),
+  );
   protected readonly isCollapsible = computed(
     () => this.code().split('\n').length > this.maxLines(),
   );
@@ -184,7 +212,7 @@ export class DocsCodeBlock {
     effect(
       () => {
         const code = this.code();
-        const lang = this.language();
+        const lang = this.resolvedLanguage();
         if (!this.isBrowser) return;
         void highlightCode(code, lang).then((html) => {
           this.highlightedHtml.set(this.sanitizer.bypassSecurityTrustHtml(html));

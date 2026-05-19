@@ -25,7 +25,10 @@ export class NbInput {
       'text-(--nb-foreground)',
       'font-medium',
       'placeholder:text-gray-400',
-      'file:border-0 file:bg-transparent file:text-sm file:font-medium file:cursor-pointer',
+      'file:h-full file:py-0 file:my-0 file:mr-3 file:px-3',
+      'file:cursor-pointer file:text-sm file:font-bold',
+      'file:bg-(--nb-secondary) file:text-(--nb-secondary-foreground)',
+      'file:border-0 file:border-r-2 file:border-(--nb-border)',
       'disabled:opacity-50 disabled:cursor-not-allowed',
       inGroup
         ? [
@@ -37,6 +40,7 @@ export class NbInput {
         : [
             'rounded-nb',
             'shadow-nb',
+            'bg-[#faf3d6]',
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--nb-border)',
             'focus-visible:ring-offset-2 focus-visible:shadow-none',
           ]

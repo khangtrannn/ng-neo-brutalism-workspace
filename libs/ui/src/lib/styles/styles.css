@@ -88,6 +88,12 @@ body {
     font-size: 1rem;
   }
 
+  :where(input[nbInput][type="file"]) {
+    padding-block: 0;
+    padding-inline-start: 0;
+    align-items: center;
+  }
+
   :where(select[nbSelect]) {
     height: 3.5rem;
     padding: 0.875rem 1.25rem;

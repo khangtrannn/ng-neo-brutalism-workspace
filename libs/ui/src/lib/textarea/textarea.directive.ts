@@ -37,6 +37,7 @@ export class NbTextarea {
         : [
             'rounded-nb',
             'shadow-nb',
+            'bg-[#faf3d6]',
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--nb-border)',
             'focus-visible:ring-offset-2 focus-visible:shadow-none',
           ]
