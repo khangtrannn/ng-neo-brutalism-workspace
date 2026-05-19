@@ -33,6 +33,7 @@
   --nb-pink: #ff7eb6;
   --nb-mint: #99e8c8;
   --nb-lavender: #b8a4ff;
+  --nb-blue: #0e47de;
   --nb-peach: #ffb38a;
   --nb-sky: #9dd7ff;
   --nb-hot: #ff4f8a;
@@ -204,6 +205,12 @@ nb-docs-sidebar::-webkit-scrollbar-thumb {
   transform: rotate(0.5deg);
 }
 
+[data-docs-content] section:nth-of-type(5n) h2:not([data-slot="dialog-title"]):not([data-nb-title]) {
+  background: var(--nb-blue);
+  color: #fff;
+  transform: rotate(-0.5deg);
+}
+
 [data-docs-content] p {
   line-height: 1.65;
 }
@@ -259,6 +266,7 @@ nb-docs-sidebar::-webkit-scrollbar-thumb {
 .nb-stat-tile--pink   { background: var(--nb-pink); }
 .nb-stat-tile--mint   { background: var(--nb-mint); }
 .nb-stat-tile--lavender { background: var(--nb-lavender); }
+.nb-stat-tile--blue { background: var(--nb-blue); color: #fff; }
 
 a.nb-stat-tile,
 .nb-stat-tile--interactive {
