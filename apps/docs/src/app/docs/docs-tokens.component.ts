@@ -13,6 +13,7 @@ type DocsTokenComponent =
   | 'input-group'
   | 'label'
   | 'marquee'
+  | 'select'
   | 'theme'
   | 'textarea';
 
@@ -221,6 +222,13 @@ const componentTokens: Record<DocsTokenComponent, DocsToken[]> = {
       name: '--nb-marquee-duration',
       defaultValue: '5s',
       usage: 'Computed animation duration',
+    },
+  ],
+  select: [
+    {
+      name: '--nb-input-background',
+      defaultValue: '#fbf1bf',
+      usage: 'Select background',
     },
   ],
   theme: [

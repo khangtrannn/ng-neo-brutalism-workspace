@@ -32,6 +32,8 @@ export { NbTextarea } from './lib/textarea';
 export type { NbTextareaSize } from './lib/textarea';
 export { NbInputGroup, NbInputPrefix, NbInputSuffix } from './lib/input-group';
 export type { NbInputPrefixAlign, NbInputSuffixAlign } from './lib/input-group';
+export { NbSelect, NbSelectComponent, NbSelectOption } from './lib/select';
+export type { NbSelectSize, NbSelectValue } from './lib/select';
 export { NbBadge } from './lib/badge';
 export type { NbBadgeVariant } from './lib/badge';
 export { NbAvatar } from './lib/avatar';

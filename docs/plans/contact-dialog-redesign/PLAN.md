@@ -1,8 +1,8 @@
 # Contact Us Dialog — Redesign Plan
 
-**Status:** Phase A complete. Phase B + Phases 1–5 pending.
+**Status:** Phases A + B + 1–4 complete (build + lint clean, both libs and docs). Visual sign-off and atomic commits pending (§5.5).
 **Demo target:** [`apps/docs/src/app/pages/components/dialog.page.ts`](../../../apps/docs/src/app/pages/components/dialog.page.ts)
-**Library targets:** [`libs/ui/src/lib/input-group/`](../../../libs/ui/src/lib/input-group/) **(✅ created)**, [`libs/ui/src/lib/select/`](../../../libs/ui/src/lib/select/) **(new — pending)**
+**Library targets:** [`libs/ui/src/lib/input-group/`](../../../libs/ui/src/lib/input-group/) **(✅ created)**, [`libs/ui/src/lib/select/`](../../../libs/ui/src/lib/select/) **(✅ created)**
 **Prior-art reference:** Angular Material's `MatFormField` + `MatPrefix`/`MatSuffix` and `MatSelect` (see §A.2.1, §B.2.1)
 **Reference screenshot:** [`./reference.png`](./reference.png)
 
@@ -64,7 +64,7 @@ Build clean (`pnpm nx build ui`), lint clean (`pnpm nx lint ui`). Files shipped:
 
 **Visual verification deferred to Phase 2** — the §A.5 checks (focus ring, single shadow, prefix stretch) all overlap §2.4 when the dialog redesign actually consumes the group. No throwaway test page created; if a regression surfaces in Phase 2 that traces to Phase A, fix at the source.
 
-**Phase A commits (held until everything signs off):** Group all Phase A changes into commit 1: `feat(ui): add nb-input-group with nbInputPrefix and nbInputSuffix`. The eslint config change goes with this commit (justified in the commit body as needed for the locked naming convention).
+**Phase A commit:** Already shipped as `f71e320 feat(input-group): introduce NbInputGroup, NbInputPrefix, and NbInputSuffix components`. Commit message diverged from the originally planned `feat(ui): add nb-input-group with nbInputPrefix and nbInputSuffix` but content matches. Remaining commits (Phase B, Phases 1–4) are held until visual sign-off per §5.5.
 
 ---
 
@@ -228,15 +228,30 @@ If/when the library needs floating labels, hint text, or error display inside a 
 
 ---
 
-## Phase B — Library: `[nbSelect]`
+## Phase B — ✅ DONE
 
-### B.1 Scope (new files)
+Build clean (`pnpm nx build ui`), lint clean (`pnpm nx lint ui`). Files shipped:
+
+| File | Status |
+|---|---|
+| `libs/ui/src/lib/select/select.types.ts` | **new** — `NbSelectSize = 'default'` (Q4 — v1 default only) |
+| `libs/ui/src/lib/select/select.directive.ts` | **new** — `NbSelect` directive, group-aware via `inject(NB_INPUT_GROUP, {optional:true})` + `computed()` classes |
+| `libs/ui/src/lib/select/index.ts` | **new** — barrel |
+| `libs/ui/src/lib/styles/styles.css` | **modified** — added `select[nbSelect]` to existing `:where(input[nbInput], textarea[nbTextarea], ...)` bg rule, plus new `:where(select[nbSelect])` block with height/padding/font-size **and** the chevron `background-image` data URI |
+| `libs/ui/src/index.ts` | **modified** — re-exports `NbSelect` + `NbSelectSize` |
+
+**Deviation from Q4 / §B.2 — chevron lives in `styles.css`, not in directive's `nbClass`.** Spec said chevron `bg-[url('…')]` was a directive class. Reality: encoding a multi-character SVG data URI as a Tailwind arbitrary value is unreadable and brittle. Moved the entire `background-image` declaration to the existing `:where(select[nbSelect])` rule in `styles.css` alongside the other shape rules — same zero-specificity scaffolding, much cleaner. The directive keeps `appearance-none pr-10 has-[option:disabled:checked]:text-gray-400` (`:has()` confirmed already used in the lib at `libs/ui/src/lib/card/card.ts:37`, so baseline is fine).
+
+When the field is inside `<nb-input-group>`, `bg-transparent` on the directive overrides only `background-color`; the chevron `background-image` still renders. Standalone: yellow `--nb-input-background` fill + chevron, both from `styles.css`.
+
+### B.1 Scope (new files — as shipped)
 ```
 libs/ui/src/lib/select/
   index.ts
   select.directive.ts
   select.types.ts
 libs/ui/src/index.ts        (modified — re-export)
+libs/ui/src/lib/styles/styles.css  (modified — select shape + chevron)
 ```
 
 ### B.2 API design
@@ -316,7 +331,28 @@ If/when a use case demands templated options or custom panel UI, an overlay-base
 
 ---
 
-## Phase 1 — Dialog header overhaul
+## Phases 1–4 — ✅ DONE (Dialog redesign)
+
+Build clean (`pnpm nx build docs`), lint clean (`pnpm nx lint docs`). Single file touched: [`apps/docs/src/app/pages/components/dialog.page.ts`](../../../apps/docs/src/app/pages/components/dialog.page.ts).
+
+**Header (Phase 1):** Title → "Send us a message"; purple wavy SVG underline below the title; description lengthened, pink `border-b-2 border-[#ff2f68]` removed; close button gets `style="--nb-button-bg: #ffd92e; --nb-button-fg: #000;"` (Q3 yellow). Decoration cluster nudged from `right-24 top-12` to `right-20 top-8` to fit the new third element: a hand-coded 84×68 composite SVG with burst marks (`<g stroke-width="2.5">`), coral blob (`#ff8a6c` filled path), and white speech bubble with tail (Q12). Badge moved to its own row above the title so the wavy underline can sit directly under the heading.
+
+**Body (Phase 2):** `bg-[#faf3d6]` → `bg-white`; all four fields wrapped in `<nb-input-group>` with `<span nbInputPrefix>` icons (Lucide paths inline, stroke-width 2.5, `currentColor` per Q13): user + circle for Name, rect + envelope-fold path for Email, message-square for Subject, pencil for Message. Subject is `<select nbSelect>` with `<option value="" disabled selected>What is this regarding?</option>` followed by the four Q6 options. Message's prefix uses `align="stretch"`.
+
+**Footer (Phase 3):** `bg-[#faf3d6]` → `bg-white`; `gap-4` replaced with `flex-col items-stretch justify-between gap-4 sm:flex-row sm:items-center` so the footer stacks on mobile. Left: hand-rolled `<span class="flex h-10 w-10 …">` purple shield box (Q7 — no shared primitive) + two-line privacy copy. Right: vertical divider span, small 36×14 zigzag SVG (`hidden sm:block`), Cancel button, Send Message button gaining a 16×16 right-arrow SVG.
+
+**Source-string sync (Phase 4):** `withFormExampleCode` rewritten to mirror the new template (with display-only `*` unescaping per §4.2). `importCode` extended to include `NbInput, NbInputGroup, NbInputPrefix, NbLabel, NbSelect, NbTextarea` (the existing dialog imports were under-listed before).
+
+**Component imports added:** `NbInputGroup, NbInputPrefix, NbSelect` (Q8 — `NbInputAddon` was a stray draft reference; `NbInputSuffix` not used in this dialog).
+
+**Open visual-verification items (must be done in browser before commits):**
+- [ ] §5.2 Functional: dialog opens/closes via trigger/×/Cancel/backdrop/Esc; tab order Name → Email → Subject → Message → Cancel → Send Message; subject select opens with mouse/Space/ArrowDown; no console warnings.
+- [ ] §5.3 Visual diff vs. screenshot, especially: header decoration cluster does not overlap the yellow `×` button at `sm:` width (cluster `right-20` ends ~80px from right; close button `sm:right-10` left edge ~80px from right — flush, watch for collisions).
+- [ ] §5.4 Regression: existing `[nbInput]` / `[nbTextarea]` standalone usages elsewhere in the docs app render identically (Phase A modification was supposed to be class-set identical when not in a group).
+
+---
+
+## Phase 1 — Dialog header overhaul (spec, retained for reference)
 
 ### 1.1 Scope
 - `template:` block lines 122–152.
@@ -456,18 +492,17 @@ If/when a use case demands templated options or custom panel UI, an overlay-base
 
 ### 5.5 Commits
 
-Three commits in order. **Hold all commits until visual diff is signed off** (per Q14).
+Three commits in order. Commit 1 has already shipped; commits 2 and 3 are **held until visual diff is signed off** (per Q14).
 
-1. `feat(ui): add nb-input-group with nbInputPrefix and nbInputSuffix`
-   - All Phase A files (see "Phase A — ✅ DONE" section at top).
-   - Bundle the **`eslint.config.js` change** here (Q9 — drop `component-class-suffix` + `directive-class-suffix` rules + button override). The commit body should briefly justify it: existing `NbInput` / `NbLabel` / `NbTextarea` / `NbDialogClose` already violated the rule, lint was already failing on main, and Q9 locked the modern Angular naming convention which makes the rule obsolete.
-   - **Selective staging**: do NOT include the uncommitted `apps/docs/src/app/pages/components/examples/job-listing-card.example.ts` change — that's unrelated work.
+1. ✅ Shipped as `f71e320 feat(input-group): introduce NbInputGroup, NbInputPrefix, and NbInputSuffix components` (Phase A files; eslint config + theme.css `--nb-input-addon-bg` bundled).
 
 2. `feat(ui): add nbSelect directive`
-   - Phase B files: `libs/ui/src/lib/select/{index.ts,select.directive.ts,select.types.ts}` + `libs/ui/src/index.ts` re-exports + `libs/ui/src/lib/styles/styles.css` (extend `:where(...)` to include `select[nbSelect]`).
+   - Phase B files: `libs/ui/src/lib/select/{index.ts,select.directive.ts,select.types.ts}` + `libs/ui/src/index.ts` re-exports + `libs/ui/src/lib/styles/styles.css` (extend `:where(...)` to include `select[nbSelect]`, add `:where(select[nbSelect])` block with chevron `background-image`).
 
 3. `feat(docs): redesign contact us dialog example to match brand reference`
    - Phases 1–4 in `apps/docs/src/app/pages/components/dialog.page.ts` — template + `withFormExampleCode` source string + `importCode` string + `imports:` array. **Atomic** — template and displayed source must change together (Phase 4 = source-string sync).
+
+**Selective staging** for commits 2 and 3: the working tree also carries unrelated WIP that must stay out of these commits — `libs/ui/src/lib/badge/badge.directive.ts`, `libs/ui/src/lib/styles/theme.css` (danger/success/warning color retokenization), and `apps/docs/src/app/docs/docs-tokens.component.ts` (matching badge token docs). Stage explicit paths, not `git add -A`.
 
 ---
 
@@ -503,10 +538,10 @@ All approvals were captured in the grilling session (see "Locked decisions" at t
 
 ## Next-session pickup
 
-When resuming, start at **Phase B** with this context:
+All code is written and passing build + lint. Resuming work is **visual verification + commits only**.
 
-1. Phase A is shipped and clean (build + lint passing). Don't re-touch input-group files unless a Phase 2 visual regression points there.
-2. Phase B is small: ~3 new files (`select/{index.ts, select.directive.ts, select.types.ts}`) + `styles.css` extension + `libs/ui/src/index.ts` re-export. Follow the API design in §B.2 above as the locked spec.
-3. Then Phases 1–4 consume both primitives in the dialog page. Phase 1 = header (incl. yellow close button + hand-coded decoration), Phase 2 = form fields, Phase 3 = footer, Phase 4 = source-string sync.
-4. Don't commit until Phase 5 visual sign-off. Three atomic commits per §5.5.
+1. `pnpm nx serve docs`, navigate to the Dialog page, click "Contact Us". Walk the §5.2 / §5.3 / §5.4 checklists (echoed in the "Open visual-verification items" block under Phases 1–4 above).
+2. If a regression appears in standalone `[nbInput]` / `[nbTextarea]` usage elsewhere in the docs app, trace it to `input.directive.ts` / `textarea.directive.ts` — the standalone class branch must remain byte-identical to pre-Phase-A.
+3. If the header decoration cluster overlaps the yellow `×` button at `sm:` width, narrow the speech-bubble SVG (currently 84×68) or shift cluster anchor further left from `right-20`.
+4. Once signed off, land the two remaining commits per §5.5 with explicit-path staging (the working tree carries unrelated badge/theme WIP — keep it out).
 5. The grilling decision table at the top of this file is the source of truth for any "should we…" question that resembles something already resolved.

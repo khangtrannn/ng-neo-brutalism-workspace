@@ -1,0 +1,399 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  NbButton,
+  NbLabel,
+  NbSelect,
+  NbSelectComponent,
+  NbSelectOption,
+} from '@ng-brutalism/ui';
+
+import { DocsCodeBlockComponent } from '../../docs/docs-code-block.component';
+import { DocsExampleComponent } from '../../docs/docs-example.component';
+import { DocsTokensComponent } from '../../docs/docs-tokens.component';
+
+@Component({
+  selector: 'docs-select-page',
+  standalone: true,
+  imports: [
+    DocsCodeBlockComponent,
+    DocsExampleComponent,
+    DocsTokensComponent,
+    NbButton,
+    NbLabel,
+    NbSelect,
+    NbSelectComponent,
+    NbSelectOption,
+  ],
+  template: `
+    <article>
+      <header id="overview" class="relative mb-10 scroll-mt-32">
+        <div class="mb-5">
+          <p>Components</p>
+          <h1>Select</h1>
+          <p class="mt-3 max-w-3xl text-base font-medium sm:text-lg">
+            Offers a brutal custom dropdown with projected option content,
+            active states, selected checks, and a native select directive for
+            simple forms.
+          </p>
+        </div>
+
+        <div class="mt-7 flex flex-wrap items-center gap-3">
+          <div class="nb-stat-tile nb-stat-tile--yellow">
+            <span class="nb-stat-tile__value">1</span>
+            <span class="nb-stat-tile__label">Size</span>
+          </div>
+          <div class="nb-stat-tile nb-stat-tile--mint">
+            <span class="nb-stat-tile__value">FORM</span>
+            <span class="nb-stat-tile__label">Native</span>
+          </div>
+          <div class="nb-stat-tile nb-stat-tile--pink">
+            <span class="nb-stat-tile__value">A11Y</span>
+            <span class="nb-stat-tile__label">Built-in</span>
+          </div>
+
+          <a
+            nbButton
+            size="sm"
+            variant="neutral"
+            href="https://github.com/khangtrannn/ng-neo-brutalism-workspace/tree/main/libs/ui/src/lib/select"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Source ↗
+          </a>
+        </div>
+      </header>
+
+      <section id="preview">
+        <h2 class="mt-10 mb-4 text-2xl font-bold">Preview</h2>
+        <docs-example [code]="defaultExampleCode">
+          <div class="w-80">
+            <nb-select placeholder="Select an option">
+              <nb-select-option value="worldwide" label="Worldwide">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M3 12h18" />
+                  <path d="M12 3a14 14 0 0 1 0 18" />
+                  <path d="M12 3a14 14 0 0 0 0 18" />
+                </svg>
+                Worldwide
+              </nb-select-option>
+              <nb-select-option value="full-time" label="Full-time">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 8h16v11H4z" />
+                  <path d="M9 8V5h6v3" />
+                  <path d="M4 13h16" />
+                </svg>
+                Full-time
+              </nb-select-option>
+              <nb-select-option value="part-time" label="Part-time">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v6l4 2" />
+                </svg>
+                Part-time
+              </nb-select-option>
+              <nb-select-option value="remote" label="Remote">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 21V4h14v17" />
+                  <path d="M9 8h2M13 8h2M9 12h2M13 12h2M9 16h2M13 16h2" />
+                </svg>
+                Remote
+              </nb-select-option>
+            </nb-select>
+          </div>
+        </docs-example>
+      </section>
+
+      <section id="usage">
+        <h2 class="mt-10 mb-4 text-2xl font-bold">Usage</h2>
+        <docs-code-block class="block mb-5" title="Import" [code]="importCode" />
+        <docs-code-block title="Template" [code]="defaultExampleCode" />
+      </section>
+
+      <section id="with-label">
+        <h2 class="mt-10 mb-4 text-2xl font-bold">With Label</h2>
+        <docs-example [code]="withLabelExampleCode">
+          <div class="grid w-80 gap-2">
+            <label nbLabel id="plan-label">Plan</label>
+            <nb-select placeholder="Select a plan" aria-labelledby="plan-label">
+              <nb-select-option value="starter" label="Starter">Starter</nb-select-option>
+              <nb-select-option value="team" label="Team">Team</nb-select-option>
+              <nb-select-option value="enterprise" label="Enterprise">
+                Enterprise
+              </nb-select-option>
+            </nb-select>
+          </div>
+        </docs-example>
+      </section>
+
+      <section id="with-icon">
+        <h2 class="mt-10 mb-4 text-2xl font-bold">Option Content</h2>
+        <docs-example [code]="withIconExampleCode">
+          <div class="w-80">
+            <nb-select placeholder="Select location" defaultValue="worldwide">
+              <nb-select-option label="Select location">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 21s7-5.2 7-12a7 7 0 0 0-14 0c0 6.8 7 12 7 12Z" />
+                  <circle cx="12" cy="9" r="2.4" />
+                </svg>
+                Select location
+              </nb-select-option>
+              <nb-select-option value="worldwide" label="Worldwide">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M3 12h18" />
+                  <path d="M12 3a14 14 0 0 1 0 18" />
+                  <path d="M12 3a14 14 0 0 0 0 18" />
+                </svg>
+                Worldwide
+              </nb-select-option>
+              <nb-select-option value="north-america" label="North America">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M3 12h18" />
+                </svg>
+                North America
+              </nb-select-option>
+              <nb-select-option value="europe" label="Europe">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M3 12h18" />
+                </svg>
+                Europe
+              </nb-select-option>
+              <nb-select-option value="asia-pacific" label="Asia Pacific">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M3 12h18" />
+                </svg>
+                Asia Pacific
+              </nb-select-option>
+              <nb-select-option value="south-america" label="South America">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M3 12h18" />
+                </svg>
+                South America
+              </nb-select-option>
+              <nb-select-option value="africa" label="Africa">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M3 12h18" />
+                </svg>
+                Africa
+              </nb-select-option>
+            </nb-select>
+          </div>
+        </docs-example>
+      </section>
+
+      <section id="disabled">
+        <h2 class="mt-10 mb-4 text-2xl font-bold">Disabled</h2>
+        <docs-example [code]="disabledExampleCode">
+          <div class="w-80">
+            <nb-select placeholder="Select an option" disabled>
+              <nb-select-option value="one" label="One">One</nb-select-option>
+            </nb-select>
+          </div>
+        </docs-example>
+      </section>
+
+      <section id="native-select">
+        <h2 class="mt-10 mb-4 text-2xl font-bold">Native Select</h2>
+        <docs-example [code]="nativeExampleCode">
+          <select
+            nbSelect
+            class="w-80"
+            aria-label="Favorite accent"
+          >
+            <option value="" disabled selected>Favorite accent</option>
+            <option value="mint">Mint</option>
+            <option value="yellow">Yellow</option>
+            <option value="pink">Pink</option>
+          </select>
+        </docs-example>
+      </section>
+
+      <docs-tokens component="select" />
+
+      <section id="api">
+        <h2 class="mt-10 mb-4 text-2xl font-bold">API</h2>
+
+        <div
+          class="overflow-hidden border-2 border-(--nb-border) bg-nb-surface shadow-[5px_5px_0_0_var(--nb-shadow)]"
+        >
+          <table class="w-full border-collapse text-left">
+            <thead class="bg-nb-secondary text-nb-secondary-fg">
+              <tr>
+                <th class="border-b-2 border-r-2 border-(--nb-border) px-4 py-3 font-bold">
+                  Input
+                </th>
+                <th class="border-b-2 border-r-2 border-(--nb-border) px-4 py-3 font-bold">
+                  Type
+                </th>
+                <th class="border-b-2 border-r-2 border-(--nb-border) px-4 py-3 font-bold">
+                  Default
+                </th>
+                <th class="border-b-2 border-(--nb-border) px-4 py-3 font-bold">
+                  Description
+                </th>
+              </tr>
+            </thead>
+            <tbody class="font-medium">
+              <tr class="border-b-2 border-(--nb-border)">
+                <td class="border-r-2 border-(--nb-border) px-4 py-3">
+                  placeholder
+                </td>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">
+                  string
+                </td>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">
+                  'Select an option'
+                </td>
+                <td class="px-4 py-3">Text shown when no option is selected.</td>
+              </tr>
+              <tr class="border-b-2 border-(--nb-border)">
+                <td class="border-r-2 border-(--nb-border) px-4 py-3">
+                  defaultValue
+                </td>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">
+                  NbSelectValue | null
+                </td>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">
+                  null
+                </td>
+                <td class="px-4 py-3">Initial selected value for uncontrolled usage.</td>
+              </tr>
+              <tr class="border-b-2 border-(--nb-border)">
+                <td class="border-r-2 border-(--nb-border) px-4 py-3">
+                  value
+                </td>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">
+                  ModelSignal&lt;NbSelectValue | null&gt;
+                </td>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">
+                  null
+                </td>
+                <td class="px-4 py-3">Selected value for two-way binding.</td>
+              </tr>
+              <tr class="border-b-2 border-(--nb-border)">
+                <td class="border-r-2 border-(--nb-border) px-4 py-3">
+                  disabled
+                </td>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">
+                  boolean
+                </td>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">
+                  false
+                </td>
+                <td class="px-4 py-3">Disables the trigger and all options.</td>
+              </tr>
+              <tr class="border-b-2 border-(--nb-border)">
+                <td class="border-r-2 border-(--nb-border) px-4 py-3">
+                  defaultOpen
+                </td>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">
+                  boolean
+                </td>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">
+                  false
+                </td>
+                <td class="px-4 py-3">Initial open state for uncontrolled usage.</td>
+              </tr>
+              <tr class="border-b-2 border-(--nb-border)">
+                <td class="border-r-2 border-(--nb-border) px-4 py-3">
+                  aria-label
+                </td>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">
+                  string | null
+                </td>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">
+                  null
+                </td>
+                <td class="px-4 py-3">Accessible label for the trigger.</td>
+              </tr>
+              <tr>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3">
+                  aria-labelledby
+                </td>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">
+                  string | null
+                </td>
+                <td class="border-r-2 border-(--nb-border) px-4 py-3 font-mono text-sm">
+                  null
+                </td>
+                <td class="px-4 py-3">ID reference for an external label.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </article>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export default class SelectPageComponent {
+  protected readonly defaultExampleCode = `<div class="w-80">
+  <nb-select placeholder="Select an option">
+    <nb-select-option value="worldwide" label="Worldwide">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18" />
+      </svg>
+      Worldwide
+    </nb-select-option>
+    <nb-select-option value="full-time" label="Full-time">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 8h16v11H4z" />
+        <path d="M9 8V5h6v3" />
+      </svg>
+      Full-time
+    </nb-select-option>
+  </nb-select>
+</div>`;
+
+  protected readonly importCode = `import { NbSelect, NbSelectComponent, NbSelectOption } from '@ng-brutalism/ui';`;
+
+  protected readonly withLabelExampleCode = `<div class="grid w-80 gap-2">
+  <label nbLabel id="plan-label">Plan</label>
+  <nb-select placeholder="Select a plan" aria-labelledby="plan-label">
+    <nb-select-option value="starter" label="Starter">Starter</nb-select-option>
+    <nb-select-option value="team" label="Team">Team</nb-select-option>
+    <nb-select-option value="enterprise" label="Enterprise">Enterprise</nb-select-option>
+  </nb-select>
+</div>`;
+
+  protected readonly withIconExampleCode = `<div class="w-80">
+  <nb-select placeholder="Select location" defaultValue="worldwide">
+    <nb-select-option value="worldwide" label="Worldwide">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18" />
+        <path d="M12 3a14 14 0 0 1 0 18" />
+        <path d="M12 3a14 14 0 0 0 0 18" />
+      </svg>
+      Worldwide
+    </nb-select-option>
+    <nb-select-option value="north-america" label="North America">North America</nb-select-option>
+    <nb-select-option value="europe" label="Europe">Europe</nb-select-option>
+  </nb-select>
+</div>`;
+
+  protected readonly disabledExampleCode = `<div class="w-80">
+  <nb-select placeholder="Select an option" disabled>
+    <nb-select-option value="one" label="One">One</nb-select-option>
+  </nb-select>
+</div>`;
+
+  protected readonly nativeExampleCode = `<select
+  nbSelect
+  class="w-80"
+  aria-label="Favorite accent"
+>
+  <option value="" disabled selected>Favorite accent</option>
+  <option value="mint">Mint</option>
+  <option value="yellow">Yellow</option>
+  <option value="pink">Pink</option>
+</select>`;
+}
