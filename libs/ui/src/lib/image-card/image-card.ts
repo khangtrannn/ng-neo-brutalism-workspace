@@ -14,7 +14,7 @@ import { nbClass } from '../core/class';
       decoding="async"
     />
     @if (caption()) {
-      <div [class]="captionClasses()" data-slot="image-card-caption">
+      <div [class]="captionClasses" data-slot="image-card-caption">
         {{ caption() }}
       </div>
     }
@@ -44,7 +44,5 @@ export class NbImageCardComponent {
     )
   );
 
-  protected readonly captionClasses = computed(() =>
-    nbClass('px-6 py-4 text-center font-bold text-base')
-  );
+  protected readonly captionClasses = nbClass('px-6 py-4 text-center font-bold text-base');
 }

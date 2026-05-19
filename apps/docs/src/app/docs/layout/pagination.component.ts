@@ -97,8 +97,7 @@ import { DOC_NAV } from '../nav';
 })
 export class NbDocsPaginationComponent {
   private readonly router = inject(Router);
-
-  private readonly allItems = computed(() => DOC_NAV.flatMap((group) => group.items));
+  private readonly allItems = DOC_NAV.flatMap((group) => group.items);
 
   private readonly currentPath = toSignal(
     this.router.events.pipe(
@@ -110,16 +109,14 @@ export class NbDocsPaginationComponent {
   );
 
   protected readonly prev = computed(() => {
-    const items = this.allItems();
-    const index = items.findIndex((item) => item.path === this.currentPath());
+    const index = this.allItems.findIndex((item) => item.path === this.currentPath());
 
-    return index > 0 ? items[index - 1] : null;
+    return index > 0 ? this.allItems[index - 1] : null;
   });
 
   protected readonly next = computed(() => {
-    const items = this.allItems();
-    const index = items.findIndex((item) => item.path === this.currentPath());
+    const index = this.allItems.findIndex((item) => item.path === this.currentPath());
 
-    return index >= 0 && index < items.length - 1 ? items[index + 1] : null;
+    return index >= 0 && index < this.allItems.length - 1 ? this.allItems[index + 1] : null;
   });
 }

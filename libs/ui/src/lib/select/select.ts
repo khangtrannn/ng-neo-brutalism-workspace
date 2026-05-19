@@ -62,7 +62,7 @@ let nextSelectId = 0;
         [id]="listboxId"
         role="listbox"
         [attr.aria-labelledby]="triggerId"
-        [class]="listboxClasses()"
+        [class]="listboxClasses"
       >
         <ng-content />
       </div>
@@ -120,12 +120,10 @@ export class NbSelectComponent implements NbSelectController, OnInit {
     )
   );
 
-  protected readonly listboxClasses = computed(() =>
-    nbClass(
-      'absolute left-0 top-[calc(100%+8px)] z-50 w-full',
-      'rounded-b-nb border-2 border-(--nb-border) bg-(--nb-surface,#ffffff)',
-      'shadow-nb'
-    )
+  protected readonly listboxClasses = nbClass(
+    'absolute left-0 top-[calc(100%+8px)] z-50 w-full',
+    'rounded-b-nb border-2 border-(--nb-border) bg-(--nb-surface,#ffffff)',
+    'shadow-nb'
   );
 
   ngOnInit(): void {
