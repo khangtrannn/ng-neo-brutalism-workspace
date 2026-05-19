@@ -55,7 +55,13 @@ import { DocsTokens } from '../../docs/docs-tokens';
       <section id="preview">
         <h2 class="mt-10 mb-4 text-2xl font-bold">Preview</h2>
         <docs-example [code]="defaultExampleCode">
-          <button nbButton variant="neutral">Button</button>
+          <button
+            nbButton
+            variant="neutral"
+            style="--nb-button-bg: var(--nb-yellow)"
+          >
+            Button
+          </button>
         </docs-example>
       </section>
 
@@ -69,7 +75,12 @@ import { DocsTokens } from '../../docs/docs-tokens';
         <h2 class="mt-10 mb-4 text-2xl font-bold">Full width</h2>
         <docs-example [code]="fullWidthExampleCode">
           <div class="w-full max-w-md">
-            <button nbButton variant="neutral" [fullWidth]="true">
+            <button
+              nbButton
+              variant="neutral"
+              [fullWidth]="true"
+              style="--nb-button-bg: var(--nb-yellow)"
+            >
               Full width button
             </button>
           </div>
@@ -80,10 +91,22 @@ import { DocsTokens } from '../../docs/docs-tokens';
         <h2 class="mt-10 mb-4 text-2xl font-bold">Disabled</h2>
         <docs-example [code]="disabledExampleCode">
           <div class="flex flex-wrap items-center justify-center gap-4">
-            <button nbButton variant="neutral" disabled>
+            <button
+              nbButton
+              variant="neutral"
+              disabled
+              style="--nb-button-bg: var(--nb-yellow)"
+            >
               Disabled button
             </button>
-            <a nbButton href="#" aria-disabled="true">Disabled link style</a>
+            <a
+              nbButton
+              href="#"
+              aria-disabled="true"
+              style="--nb-button-bg: var(--nb-yellow)"
+            >
+              Disabled link style
+            </a>
           </div>
         </docs-example>
       </section>
@@ -97,6 +120,7 @@ import { DocsTokens } from '../../docs/docs-tokens';
               href="https://angular.dev"
               target="_blank"
               rel="noreferrer"
+              style="--nb-button-bg: var(--nb-yellow)"
             >
               Angular Docs
             </a>
@@ -107,6 +131,7 @@ import { DocsTokens } from '../../docs/docs-tokens';
               href="https://github.com/khangtrannn/ng-neo-brutalism-workspace"
               target="_blank"
               rel="noreferrer"
+              style="--nb-button-bg: var(--nb-yellow)"
             >
               GitHub Repo
             </a>
@@ -197,7 +222,7 @@ import { DocsTokens } from '../../docs/docs-tokens';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ButtonPageComponent {
-  protected readonly defaultExampleCode = `<button nbButton variant="neutral">Button</button>`;
+  protected readonly defaultExampleCode = `<button nbButton variant="neutral" style="--nb-button-bg: var(--nb-yellow)">Button</button>`;
 
   protected readonly importCode = `import { NbButton } from '@ng-brutalism/ui';`;
 
@@ -218,14 +243,14 @@ export const appConfig: ApplicationConfig = {
 <button nbButton size="lg" variant="neutral">Large</button>
 <button nbButton size="icon" variant="neutral" aria-label="Icon button">+</button>`;
 
-  protected readonly fullWidthExampleCode = `<button nbButton variant="neutral" [fullWidth]="true">
+  protected readonly fullWidthExampleCode = `<button nbButton variant="neutral" [fullWidth]="true" style="--nb-button-bg: var(--nb-yellow)">
   Full width button
 </button>`;
 
-  protected readonly disabledExampleCode = `<button nbButton variant="neutral" disabled>Disabled button</button>
-<a nbButton href="#" aria-disabled="true">Disabled link style</a>`;
+  protected readonly disabledExampleCode = `<button nbButton variant="neutral" disabled style="--nb-button-bg: var(--nb-yellow)">Disabled button</button>
+<a nbButton href="#" aria-disabled="true" style="--nb-button-bg: var(--nb-yellow)">Disabled link style</a>`;
 
-  protected readonly anchorExampleCode = `<a nbButton href="https://angular.dev" target="_blank" rel="noreferrer">
+  protected readonly anchorExampleCode = `<a nbButton href="https://angular.dev" target="_blank" rel="noreferrer" style="--nb-button-bg: var(--nb-yellow)">
   Angular Docs
 </a>
 
@@ -235,6 +260,7 @@ export const appConfig: ApplicationConfig = {
   href="https://github.com/khangtrannn/ng-neo-brutalism-workspace"
   target="_blank"
   rel="noreferrer"
+  style="--nb-button-bg: var(--nb-yellow)"
 >
   GitHub Repo
 </a>`;
